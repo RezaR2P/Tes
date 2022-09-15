@@ -8,6 +8,9 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
+                            <div class="card-body">
+                            <div class="flash-data" data-flashdata="<?= $this->session->flashdata('success'); ?>"></div>
+                            <?php if($this->session->flashdata('success')): ?>
                             <form class="user" method="post" action="<?= base_url('auth/registration');?>">
                             <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="name" name="name"

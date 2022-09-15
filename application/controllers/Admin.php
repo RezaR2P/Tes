@@ -3,6 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Admin extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->library('form_validation');
+    }
     public function index()
     {
         $data['title'] = 'Dashboard';
@@ -14,10 +19,7 @@ class Admin extends CI_Controller
     public function registration()
     {
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
-        $this->form_validation->set_rules('name', 'Name', 'required|trim');
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
-            'is_unique' => 'This email has already register'
-        ]);
+        $this->form_validation->set_rules('username', 'Username', 'required|trim');
         $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
             'matches' => 'Password not match!',
             'min_length' => 'Password too short!'
@@ -26,22 +28,21 @@ class Admin extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $this->load->view("layout/header");
-            $this->load->view("layout/navbar");
             $this->load->view("admin/registration");
             $this->load->view("layout/footer");
         } else {
 
             $data = [
-                'id_user' => rand(),
+                'id_user' => rand(1, 1000),
                 'name' => htmlspecialchars($this->input->post('name', true)),
-                'username' => htmlspecialchars($this->input->post('email', true)),
+                'username' => htmlspecialchars($this->input->post('username', true)),
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-                'avatar' => 'default.jpg',
-                'role_id' => 2,
+                'avatar' => '',
+                'role' => 2,
             ];
             $this->db->insert('user', $data);
             $this->session->set_flashdata('msg_success', 'Congratulation! your account has been created. Please Login');
-            redirect('auth');
+            redirect('admin/registration');
         }
     }
 }
