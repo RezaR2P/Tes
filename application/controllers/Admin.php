@@ -33,7 +33,7 @@ class Admin extends CI_Controller
         } else {
 
             $data = [
-                'iduser' => rand(1, 1000),
+                'id_user' => rand(1, 1000),
                 'name' => htmlspecialchars($this->input->post('name', true)),
                 'username' => htmlspecialchars($this->input->post('username', true)),
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
