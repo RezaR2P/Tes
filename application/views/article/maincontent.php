@@ -2,5 +2,5 @@
     <h2 class=""><?= $content->title; ?></h2>
     <p><?= $content->username; ?> - <?= date('d F Y', $content->date); ?></p>
     <img src="<?= base_url('assets/img/content/komputer.jpg'); ?>" class="img-fluid" alt="Responsive image">
-    <p class="mt-4"><?= $content->content; ?></p>
+    <p class="mt-4 text-justify"><?= $content->content; ?></p>
 </div>

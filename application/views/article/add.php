@@ -30,6 +30,14 @@
                                     <input type="file" class="custom-file-input" id="mainImage" name="mainImage">
                                     <label for="mainImage" class="custom-file-label">Pilih Gambar Utama</label>
                                 </div>
+
+                        
+                            <div class="form-group">
+                            <label for="content">Konten</label>
+                            <input type="hidden" name="content" value="<?= set_value('content') ?>">
+                            <div id="editor" style="min-height: 160px;"><?= set_value('content') ?></div>
+                                
+
                             </div>
                         </div>
                     </div>
