@@ -37,8 +37,10 @@
                                 </div>
                         
                             <div class="form-group">
-                                <label for="content">Konten Artikel</label>
-                                <textarea class="form-control" id="content" rows="12" placeholder="Masukkan isi artikel disini....."  name="content"></textarea>
+                            <label for="content">Konten</label>
+                            <input type="hidden" name="content" value="<?= set_value('content') ?>">
+                            <div id="editor" style="min-height: 160px;"><?= set_value('content') ?></div>
+                                
                             </div>
 
                             <!-- <div class="custom-control custom-checkbox">
