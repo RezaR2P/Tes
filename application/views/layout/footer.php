@@ -11,34 +11,39 @@
 
 <script>
     let quill = new Quill('#editor', {
-    theme: 'snow',
-    modules: {
-      toolbar: [
-        [{ header: [1, 2, 3, 4, 5, 6, false] }],
-        [{ font: [] }],
-        ["bold", "italic"],
-        ["link", "blockquote", "code-block", "image", "align"],
-        [{ list: "ordered" }, { list: "bullet" }],
-      ]
-    },
-    placeholder: 'Masukkan Konten artikel disini.....',
+        theme: 'snow',
+        modules: {
+            toolbar: [
+                [{
+                    font: []
+                }],
+                ["bold", "italic"],
+                ["link", "blockquote", "code-block", "image", "align"],
+                [{
+                    list: "ordered"
+                }, {
+                    list: "bullet"
+                }],
+                [{
+                    'align': []
+                }],
+            ]
+
+        },
+        placeholder: 'Masukkan Konten artikel disini.....',
     });
+
     quill.on('text-change', function(delta, oldDelta, source) {
         document.querySelector("input[name='content']").value = quill.root.innerHTML;
     });
 </script>
 <script>
-    const flashData = $('.flash-data').data('flashdata');
-
-
-if (flashData) {
-    Swal.fire({
-        title: 'Data Berhasil ' + flashData,
-        text: '',
-        icon: 'success'
+    $('.custom-file-input').on('change', function() {
+        let fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').addClass("selected").html(fileName);
     });
-}
 </script>
+
 </body>
 
 </html>
