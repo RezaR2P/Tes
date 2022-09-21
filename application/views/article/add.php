@@ -9,7 +9,7 @@
                     <input type="text" class="form-control" name="title" id="judul" placeholder="Cara Menjadi Tampan">
                     <?= form_error('title', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
-
+                a
                 <div class="form-group">
                     <label for="category">Kategori</label>
                     <select class="form-control" id="category" name="category">
