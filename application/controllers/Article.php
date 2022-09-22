@@ -106,6 +106,43 @@ class Article extends CI_Controller
         $this->load->view("layout/footer", $data);
     }
 
+    public function uploadImage()
+    {
+        if (isset($_POST['btn_simpan'])) {
+            //Include file koneksi, untuk koneksikan ke database
+            include 'article.php';
+            //Cek apakah ada kiriman form dari method post
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+                $ekstensi_diperbolehkan    = array('png', 'jpg', 'jpeg', 'pdf', '3gp');
+                $gambar = $_FILES['gambar']['name'];
+                $x = explode('.', $gambar);
+                $ekstensi = strtolower(end($x));
+                $file_tmp = $_FILES['gambar']['tmp_name'];
+
+                if (!empty($gambar)) {
+                    if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
+
+                        //Mengupload gambar
+                        move_uploaded_file($file_tmp, './assets/img/content/' . $gambar);
+
+                        $sql = "insert into kliping_gambar (gambar) values ('$gambar')";
+
+                        $simpan_bank = mysqli_query($kon, $sql);
+
+                        // if ($simpan_bank) {
+                        //     header("Location:index.php?add=berhasil");
+                        // } else {
+                        //     header("Location:index.php?add=gagal");
+                        // }
+                    }
+                } else {
+                    $gambar = "no-image.jpg";
+                }
+            }
+        }
+    }
+
     public function mainContent($id_article)
     {
         if (!$this->session->userdata('username')) {
