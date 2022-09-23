@@ -9,14 +9,14 @@ class Article_model extends CI_Model
     public $title;
     public $date;
     public $content;
-    public $images;
+    public $coverImage;
     public $category;
     public $comments;
 
     public function getData()
     {
         $this->db->from($this->_table);
-        $this->db->order_by('date', "asc");
+        $this->db->order_by('date', "desc");
         $query = $this->db->get();
         return $query->result();
     }
@@ -26,20 +26,29 @@ class Article_model extends CI_Model
         return $this->db->get_where($this->_table, ["id_article" => $id_article])->row();
     }
 
-    public function save()
+    public function save($id_article, $username, $title, $coverImage, $date, $content, $category, $comments)
     {
-        $post = $this->input->post();
-        $this->id_article = 'article_' . date('Ym') . mt_rand(11111, 99999);
-        $this->username = $post["username"];
-        $this->title = $post["title"];
-        $this->date =  time();
-
-        $this->images =  ($post["image"])  ? $post["image"] : "no-image.jpg";
-        $this->content = $post["content"];
-        $this->category = $post["category"];
-        $this->comments = 1;
-        return $this->db->insert($this->_table, $this);
+        $query = $this->db->query("INSERT INTO article (id_article,username,title, coverImage, date, content, category, comments) VALUES ('$id_article', '$username', '$title', '$coverImage', $date, '$content', '$category', '$comments')");
+        return $query;
+        // return $this->db->insert($this->_table, $thistit);
+        //         $query = $this->db->query("INSERT INTO tbl_berita (berita_judul,berita_isi,berita_image) VALUES ('$jdl','$berita','$gambar')");
+        //         return $query;
     }
+
+    // public function save()
+    // {
+    //     $post = $this->input->post();
+    //     $this->id_article = 'article_' . date('Ym') . mt_rand(11111, 99999);
+    //     $this->username = $post["username"];
+    //     $this->title = $post["title"];
+    //     $this->date =  time();
+
+    //     $this->coverImage =  ($post["image"])  ? $post["image"] : "no-image.jpg";
+    //     $this->content = $post["content"];
+    //     $this->category = $post["category"];
+    //     $this->comments = 1;
+    //     return $this->db->insert($this->_table, $this);
+    // }
 
     public function update()
     {
