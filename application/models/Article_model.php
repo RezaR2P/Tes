@@ -26,6 +26,15 @@ class Article_model extends CI_Model
         return $this->db->get_where($this->_table, ["id_article" => $id_article])->row();
     }
 
+    public function upload(){
+    $nama = $_FILES['image']['name'];
+    $tmp = $_FILES['image']['tmp_name'];
+
+    move_uploaded_file($tmp, './assets/img/content/'.$nama);
+}
+
+
+
     public function save()
     {
         $post = $this->input->post();
@@ -33,8 +42,10 @@ class Article_model extends CI_Model
         $this->username = $post["username"];
         $this->title = $post["title"];
         $this->date =  time();
-
-        $this->images =  ($post["image"])  ? $post["image"] : "no-image.jpg";
+        if ($post["image"]) {
+            $this->images = $this->upload();
+        }
+        // $this->images =  ($post["image"])  ? $post["image"] : "no-image.jpg";
         $this->content = $post["content"];
         $this->category = $post["category"];
         $this->comments = 1;

@@ -1,8 +1,7 @@
 <div class="col-md-8 " id="content">
-    <hr>
     <div class="card">
         <div class="card-body">
-            <form action="<?= base_url('article/add'); ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url('article/add'); ?>" method="POST" enctype="multipart/form-data">
                 <input type="hidden" class="form-control" name="username" value="<?= $user['username']; ?>">
                 <div class="form-group">
                     <label for="judul">Judul Artikel</label>
@@ -22,18 +21,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="mainImage" class="col-form-label">Gambar Utama :</label>
+                    <label for="mainImage" class="col-form-label">Cover Artikel:</label>
                     <div class="col-sm-12">
 
 
                         <div class="row">
                             <div class="col-sm-3">
-                                <img src="<?= base_url('assets/img/content/no-image.jpg') ?>" class="img-thumbnail">
+                                <img src="<?= base_url('assets/img/content/no-image.jpg') ?>" id="preview" class="img-thumbnail">
                             </div>
                             <div class="col-sm-9">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="image" name="image">
-                                    <label for="image" class="custom-file-label">Pilih Avatar</label>
+                                    <label for="image" class="custom-file-label">Pilih Cover</label>
                                 </div>
                             </div>
                             <?= form_error('images', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -52,22 +51,21 @@
 
                     <?= form_error('content', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
+                <input class="btn btn-primary mt-4 w-50 mx-auto btn-block" type="submit" name="btn" value="Buat" />
+            </form>
         </div>
-
-
+    </div>
+</div>
+            
+            
+        
         <!-- <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="comments">
                             <label class="custom-control-label" for="comments" name="comments" value="1">Aktifkan Komentar?</label>
                             </div> -->
 
-        <input class="btn btn-primary mt-4 w-50 mx-auto btn-block" type="submit" name="btn" value="Buat" />
-
-
-        </form>
-
-    </div>
-</div>
-</div>
-
-
-</div>
+                            
+                    
+             
+                
+                

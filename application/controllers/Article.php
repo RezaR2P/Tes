@@ -39,27 +39,29 @@ class Article extends CI_Controller
         $this->form_validation->set_rules('title', 'Title', 'required|xss_clean|callback_alpha_dash_space');
         $this->form_validation->set_rules('content', 'Content', 'required|xss_clean');
         $this->form_validation->set_rules('category', 'Category', 'required');
-        if ($this->input->post('image')) {
-            // $image = $this->input->post('image');
+        
+        // if ($this->input->post('image')) {
+        //     // $image = $this->input->post('image');
 
-            $upload_image = $_FILES['image']['name'];
+        //     $upload_image = $_FILES['image']['name'];
 
-            if ($upload_image) {
-                $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
-                $config['max_size'] = 20480000;
-                $config['upload_path'] = './assets/img/content/';
+        //     if ($upload_image) {
+        //         $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
+        //         $config['max_size'] = 20480000;
+        //         $config['upload_path'] =  base_url('/assets/img/content/');
 
 
-                $this->load->library('upload', $config);
+        //         $this->load->library('upload', $config);
 
-                if ($this->upload->do_upload('image')) {
-                    $new_image = $this->upload->data('file_name');
-                    $this->db->set('images', $new_image);
-                } else {
-                    echo $this->upload->dispay_errors();
-                }
-            };
-        }
+        //         if ($this->upload->do_upload('image')) {
+        //             $new_image = $this->upload->data('file_name');
+        //             $this->db->set('images', $new_image);
+                   
+        //         } else {
+        //             echo $this->upload->dispay_errors();
+        //         }
+        //     };
+        // }
 
         $this->form_validation->set_message('alpha_dash_space', '%s Hanya boleh diisi Huruf dan Angka');
         $this->form_validation->set_message('required', '%s Harus diisi');
