@@ -52,20 +52,11 @@ class Article_model extends CI_Model
 //         return $this->db->insert($this->_table, $this);
 //     }
 
-    // public function save()
-    // {
-    //     $post = $this->input->post();
-    //     $this->id_article = 'article_' . date('Ym') . mt_rand(11111, 99999);
-    //     $this->username = $post["username"];
-    //     $this->title = $post["title"];
-    //     $this->date =  time();
-
-    //     $this->coverImage =  ($post["image"])  ? $post["image"] : "no-image.jpg";
-    //     $this->content = $post["content"];
-    //     $this->category = $post["category"];
-    //     $this->comments = 1;
-    //     return $this->db->insert($this->_table, $this);
-    // }
+    public function save($data)
+    {
+       
+        return $this->db->insert($this->_table, $data);
+    }
 
     public function update()
     {

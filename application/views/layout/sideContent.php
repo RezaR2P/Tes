@@ -6,7 +6,7 @@
                             Admin Menu
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Halo Admin</h5>
+                            <h5 class="card-title">Halo <?= $user["username"]; ?></h5>
                             <div class="list-group">
                                 <a href="<?= base_url("article"); ?>" class="list-group-item list-group-item-action active" aria-current="true">
                                     <i class="fa-solid fa-gauge fa-fw mr-2"></i>Dashboard

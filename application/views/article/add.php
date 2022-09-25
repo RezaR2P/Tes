@@ -21,27 +21,9 @@
                 <?= form_error('category', '<small class="text-danger pl-3">', '</small>'); ?>
             </div>
 
-                <div class="form-group">
-                    <label for="mainImage" class="col-form-label">Cover Artikel:</label>
-                    <div class="col-sm-12">
+               <div class="form-group">
 
-
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <img src="<?= base_url('assets/img/content/no-image.jpg') ?>" id="preview" class="img-thumbnail">
-                            </div>
-                            <div class="col-sm-9">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="image" name="image">
-                                    <label for="image" class="custom-file-label">Pilih Cover</label>
-                                </div>
-                            </div>
-                            <?= form_error('images', '<small class="text-danger pl-3">', '</small>'); ?>
-                        </div>
-                    </div>
-                    <?= form_error('images', '<small class="text-danger pl-3">', '</small>'); ?>
-                </div> -->
-
+                   <label for="gambar">Cover Gambar</label>
                 <div class="row">
                     <div class="col-sm-4">
                         <img src="<?= base_url('assets/'); ?>img/content/no-image.jpg" id="preview" class="img-thumbnail">
@@ -54,8 +36,8 @@
                             <div class="input-group-append">
                                 <button type="button" id="pilih_gambar" class="browse btn btn-primary">Pilih Gambar</button>
                             </div>
+                            <?= form_error('gambar', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
-
                     </div>
 
 
@@ -67,8 +49,9 @@
                 <!-- <input type="hidden" name="content" value="<?= set_value('content') ?>"> -->
                 <textarea name="content" id="editor1" name="content">
 
+                </textarea>
                     <?= form_error('content', '<small class="text-danger pl-3">', '</small>'); ?>
-                </div>
+            </div>
                 <input class="btn btn-primary mt-4 w-50 mx-auto btn-block" type="submit" name="btn" value="Buat" />
             </form>
         </div>

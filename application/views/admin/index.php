@@ -1,9 +1,17 @@
-
+<!-- 
 <div class="container">
 
         </div>
 
+    </div> -->
+<div class="row">
+    <div class="col-lg-7 bg-samsudin">
+        
     </div>
+    <div class="col-lg-5">
+
+    </div>
+</div>
     <div class="col-lg-5">
 
         <div class="card o-hidden border-0 shadow-lg my-5">
