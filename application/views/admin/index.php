@@ -1,18 +1,17 @@
-<!-- Outer Row -->
-<div class="row vh-100 d-flex justify-content-center align-items-center">
-    <div class="col-lg-7 bg-samsudin">
-        <div class="kiri ">
-            <img src="<?= base_url('assets/img/login/pablita-522 1.png'); ?>" alt="" srcset="">
-        </div>
-        <div class="title text-center text-light">
-            <h1>I PORTAL</h1>
-            <p>Core Value Akhlak Insan
-                INTI Group
-            </p>
+<!-- 
+<div class="container">
 
         </div>
+
+    </div> -->
+<div class="row">
+    <div class="col-lg-7 bg-samsudin">
+        
+    </div>
+    <div class="col-lg-5">
 
     </div>
+</div>
     <div class="col-lg-5">
 
         <div class="card o-hidden border-0 shadow-lg my-5">

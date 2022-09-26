@@ -21,24 +21,9 @@
                 <?= form_error('category', '<small class="text-danger pl-3">', '</small>'); ?>
             </div>
 
-            <div class="form-group">
-                <label for="mainImage" class="col-form-label">Gambar Utama :</label>
+               <div class="form-group">
 
-
-
-                <!-- <div class="row">
-                    <div class="col-sm-3">
-                        <img src="gambar/80x80.png" id="preview" class="img-thumbnail">
-                    </div>
-                    <div class="col-sm-9">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="file" name="image">
-                            <label for="image" id="pilih_gambar" class="custom-file-label">Pilih Gambar</label>
-                        </div>
-                    </div>
-                    <?= form_error('images', '<small class="text-danger pl-3">', '</small>'); ?>
-                </div> -->
-
+                   <label for="gambar">Cover Gambar</label>
                 <div class="row">
                     <div class="col-sm-4">
                         <img src="<?= base_url('assets/'); ?>img/content/no-image.jpg" id="preview" class="img-thumbnail">
@@ -51,8 +36,8 @@
                             <div class="input-group-append">
                                 <button type="button" id="pilih_gambar" class="browse btn btn-primary">Pilih Gambar</button>
                             </div>
+                            <?= form_error('gambar', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
-
                     </div>
 
 
@@ -64,41 +49,24 @@
                 <!-- <input type="hidden" name="content" value="<?= set_value('content') ?>"> -->
                 <textarea name="content" id="editor1" name="content">
 
-                    </textarea>
-
-                <?= form_error('content', '<small class="text-danger pl-3">', '</small>'); ?>
+                </textarea>
+                    <?= form_error('content', '<small class="text-danger pl-3">', '</small>'); ?>
             </div>
-            <input class="btn btn-primary mt-4 w-50 mx-auto btn-block" type="submit" name="btn" value="Buat" />
+                <input class="btn btn-primary mt-4 w-50 mx-auto btn-block" type="submit" name="btn" value="Buat" />
+            </form>
         </div>
-
-
+    </div>
+</div>
+            
+            
+        
         <!-- <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="comments">
                             <label class="custom-control-label" for="comments" name="comments" value="1">Aktifkan Komentar?</label>
                             </div> -->
 
-
-        </form>
-
-
-        <!-- <form action="<?= base_url('article/uploadimage'); ?>" method="post" enctype="multipart/form-data">
-            <div class="col-sm-4">
-                <img src="<?= base_url('assets/'); ?>img/content/no-image.jpg" id="preview" class="img-thumbnail">
-
-            </div>
-            <div class="col-sm-8">
-                <input type="file" name="gambar" class="file d-none">
-                <div class="input-group my-3">
-                    <input type="text" class="form-control" disabled placeholder="Upload Gambar" id="file">
-                    <div class="input-group-append">
-                        <button type="button" id="pilih_gambar" class="browse btn btn-primary">Pilih Gambar</button>
-                    </div>
-                </div>
-
-            </div>
-            <input class="btn btn-primary mt-4 w-50 mx-auto btn-block" type="submit" name="btn" value="Buat" />
-        </form> -->
-
-
-    </div>
-</div>
+                            
+                    
+             
+                
+                
