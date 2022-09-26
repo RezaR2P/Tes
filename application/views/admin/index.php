@@ -4,14 +4,14 @@
         </div>
 
     </div> -->
-<div class="row">
-    <div class="col-lg-7 bg-samsudin">
-        
+<div class="row vh-100">
+    <div class="col-lg-7  bg-samsudin p-3 ">
+        <img src="<?= base_url('assets/'); ?>img/login/pablita-522 1.png" class="heroImage" alt="" srcset="">
+        <h1>I PORTAL</h1>
+        <p>Akhlak</p>
     </div>
-    <div class="col-lg-5">
+    
 
-    </div>
-</div>
     <div class="col-lg-5">
 
         <div class="card o-hidden border-0 shadow-lg my-5">

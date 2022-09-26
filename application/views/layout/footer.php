@@ -13,9 +13,9 @@
 <script>
     CKEDITOR.disableAutoInline = true;
     CKEDITOR.replace('editor1', {
-        language: 'th',
-        uiColor: '#dddddd'
+        customConfig: '<?= base_url('assets/js/customCkeditor.js')?>'
     });
+    
     // let quill = new Quill('#editor', {
     //     theme: 'snow',
     //     modules: {
