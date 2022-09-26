@@ -5,13 +5,13 @@
 
     </div> -->
 <div class="row">
-    <div class="col-lg-7 bg-samsudin">
-        
-    </div>
+    <!-- <div class="col-lg-7  bg-cyan">
+        <img src="<?= base_url('assets/img/login/pablita-522 1.png'); ?>" alt="">
+    </div> -->
     <div class="col-lg-5">
 
     </div>
-</div>
+
     <div class="col-lg-5">
 
         <div class="card o-hidden border-0 shadow-lg my-5">
@@ -45,9 +45,9 @@
                                 </button>
                             </form>
                             <hr>
-                            <!-- <div class="text-center">
-                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                </div> -->
+                            <div class="text-center">
+                                <a class="small" href="<?= base_url('auth/forgotpassword'); ?>">Forgot Password?</a>
+                            </div>
                             <div class="text-center">
                                 <a class="small" href="<?= base_url('admin/registration'); ?>">Create an Account!</a>
                             </div>
@@ -57,4 +57,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

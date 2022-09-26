@@ -12,21 +12,23 @@
     <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-
-        body{
+        body {
             font-family: 'Poppins', sans-serif;
         }
 
-        h2, h4 {
-            font-weight: 700!important;
+        h2,
+        h4 {
+            font-weight: 700 !important;
         }
+
         h5 {
-            font-weight: 600!important;
+            font-weight: 600 !important;
         }
-        .bg-samsudin {
+
+        .bg-cyan {
             background-color: #1A9DBF;
         }
     </style>
