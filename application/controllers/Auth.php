@@ -72,9 +72,11 @@ class Auth extends CI_Controller
         $this->load->library('email', $config);
 
         $this->email->from('kecilreza575@gmail.com', 'Reza Aja');
-        $this->email->to('rezaramdanp@gmail.com');
-        $this->email->subject('Reset Password');
-        $this->email->message('p');
+        $this->email->to($this->input->post('email'));
+        if ($type == 'forgot') {
+            $this->email->subject('Reset Password');
+            $this->email->message('Click this link to reset you password : <a href="' . base_url() . 'auth/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '" >Reset Password</a>');
+        }
 
         if ($this->email->send()) {
             return true;
@@ -124,6 +126,54 @@ class Auth extends CI_Controller
                 $this->session->set_flashdata('msg_error', 'Email is not registered');
                 redirect('auth/forgotpassword');
             }
+        }
+    }
+
+    public function resetpassword()
+    {
+        $email = $this->input->get('email');
+        $token = $this->input->get('token');
+
+        $user = $this->db->get_where('user_token', ['email' => $email])->row_array();
+
+        if ($user) {
+            $user_token = $this->db->get_where('user_token', ['token' => $token])->row_array();
+
+            if ($user_token) {
+                $this->session->set_userdata('reset_email', $email);
+                $this->changepassword();
+            } else {
+                $this->session->set_flashdata('msg_error', 'Reset password failed! Wrong token.');
+                redirect('auth');
+            }
+        } else {
+            $this->session->set_flashdata('msg_error', 'Reset password failed! Wrong email.');
+            redirect('auth');
+        }
+    }
+
+    public function changepassword()
+    {
+        if (!$this->session->userdata('reset_email')) {
+            redirect('auth');
+        }
+        $this->form_validation->set_rules('password1', 'Password', 'trim|required|min_length[3]|matches[password2]');
+        $this->form_validation->set_rules('password2', 'Repeat Password', 'trim|required|min_length[3]|matches[password1]');
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Change Password';
+            $this->load->view("layout/header", $data);
+            $this->load->view("auth/change-password");
+            $this->load->view("layout/footer");
+        } else {
+            $password = password_hash($this->input->post('password1'), PASSWORD_DEFAULT);
+            $email = $this->session->userdata('reset_email');
+            $this->db->set('password', $password);
+            $this->db->where('email', $email);
+            $this->db->update('user');
+
+            $this->session->unset_userdata('reset_email');
+            $this->session->set_flashdata('msg_success', 'Password has been change please login.');
+            redirect('auth');
         }
     }
 }
