@@ -22,7 +22,7 @@ CKEDITOR.editorConfig = function (config) {
 		{ name: "others", groups: ["others"] },
 		{ name: "about", groups: ["about"] },
 	];
-
+	config.styleSet = "<?= base_url('assets/js/customStyles.js')?>";
 	config.removeButtons =
 		"Save,NewPage,Templates,Preview,ExportPdf,Print,Source,PasteFromWord,PasteText,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,CopyFormatting,RemoveFormat,CreateDiv,Language,Unlink,Anchor,Smiley,Iframe,PageBreak,Format,FontSize,TextColor,BGColor,ShowBlocks,About";
 };

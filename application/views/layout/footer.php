@@ -13,7 +13,8 @@
 <script>
     CKEDITOR.disableAutoInline = true;
     CKEDITOR.replace('editor1', {
-        customConfig: '<?= base_url('assets/js/customCkeditor.js')?>'
+        customConfig: '<?= base_url('assets/js/customCkeditor.js')?>',
+        
     });
     
     // let quill = new Quill('#editor', {
