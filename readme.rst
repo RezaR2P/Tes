@@ -1,5 +1,5 @@
 ###################
-##Tugas yang harus diselesaikan
+Tugas yang harus diselesaikan
 ###################
 
 1.upload image dengan browse 
