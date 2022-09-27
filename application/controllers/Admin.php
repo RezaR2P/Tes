@@ -8,6 +8,9 @@ class Admin extends CI_Controller
         $this->load->library('form_validation');
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
         $this->form_validation->set_rules('username', 'Username', 'required|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
+            'is_unique' => 'This email has already register'
+        ]);
         $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
             'matches' => 'Password not match!',
             'min_length' => 'Password too short!'
@@ -21,9 +24,10 @@ class Admin extends CI_Controller
         } else {
 
             $data = [
-                'id_user' => rand(1, 1000),
+                'id_user' => 'user_' . date('Ym') . mt_rand(11111, 99999),
                 'name' => htmlspecialchars($this->input->post('name', true)),
                 'username' => htmlspecialchars($this->input->post('username', true)),
+                'email' => htmlspecialchars($this->input->post('email', true)),
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'avatar' => 'default.jpg',
                 'role' => 2,

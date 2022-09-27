@@ -64,6 +64,7 @@ class Auth extends CI_Controller
             'smtp_pass' => '1234567890',
             'smtp_port' =>  465,
             'mailtype' =>  'html',
+            'starttls'  => true,
             'charset' =>  'utf-8',
             'newline' =>  "\r\n"
         ];
@@ -72,10 +73,8 @@ class Auth extends CI_Controller
 
         $this->email->from('kecilreza575@gmail.com', 'Reza Aja');
         $this->email->to('rezaramdanp@gmail.com');
-        if ($type == 'forgot') {
-            $this->email->subject('Reset Password');
-            $this->email->message('Click this link to reset your account : <a href="' . base_url() . 'auth/forgotpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
-        }
+        $this->email->subject('Reset Password');
+        $this->email->message('p');
 
         if ($this->email->send()) {
             return true;
