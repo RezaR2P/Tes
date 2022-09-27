@@ -1,10 +1,9 @@
-
 <div class="md:flex items-center">
-    <div class="kiri column-7 bg-slate-600  h-screen flex flex-col justify-center items-center">
+    <div class="kiri column-7 bg-[#19ADBF]  h-screen flex flex-col justify-center items-center">
         <img src="<?= base_url('assets/'); ?>img/login/pablita-522 1.png" class="w-full aspect-video" alt="" srcset="">
         <h1 class="text-5xl font-bold text-start mt-8 text-light">I-PORTAL</h1>
         <p class="text-light mt-1">Core Value Akhlak Insan INTI GROUP</p>
-        
+
     </div>
     <div class="kanan">
 
@@ -45,11 +44,11 @@
             <!-- <div class="text-center">
                     <a class="small" href="forgot-password.html">Forgot Password?</a>
                 </div> -->
-            <!-- <div class="text-center">
+<!-- <div class="text-center">
                 <a class="small" href="<?= base_url('admin/registration'); ?>">Create an Account!</a>
             </div>
         </div>
     </div>
 
     
-</div> --> 
+</div> -->
