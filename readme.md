@@ -10,6 +10,6 @@
 ### 7. meredesign web
 ### 8. penyeragaman warna
 ### 9. slidebar 
-### 10. menyimpan foto yang diaplod ke arsip secara otomatis 
+### 10. menyimpan foto yang diaplod ke arsip secara otomatis ✔
 ### 11. menambahkan grafik / tabel di tengah artikel 
 ### 12. upload file pdf
