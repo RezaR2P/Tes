@@ -43,11 +43,11 @@ class Auth extends CI_Controller
                 }
             } else {
                 $this->session->set_flashdata('msg_error', 'Password Salah');
-                redirect('admin');
+                redirect('auth');
             }
         } else {
             $this->session->set_flashdata('msg_error', 'Username tidak terdaftar');
-            redirect('admin');
+            redirect('auth');
         }
     }
     public function logout()
