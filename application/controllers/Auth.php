@@ -61,13 +61,14 @@ class Auth extends CI_Controller
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
             'smtp_user' => 'kecilreza575@gmail.com',
-            'smtp_pass' => '1234567890',
+            'smtp_pass' => 'sad',
             'smtp_port' =>  465,
             'mailtype' =>  'html',
             'charset' =>  'utf-8'
         );
 
-        $this->load->library('email', $config);
+        $this->load->library('email');
+        $this->email->initialize($config);
         $this->email->set_newline("\r\n");
 
         $this->email->from('kecilreza575@gmail.com', 'Reza Aja');
