@@ -1,4 +1,4 @@
-<div class="col-md-4" id="sideContent">
+<div class="basis-4/12" id="sideContent">
 
                 <section id="menuadmin">
                     <div class="card">
