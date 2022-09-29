@@ -57,19 +57,18 @@ class Auth extends CI_Controller
 
     private function _sendEmail($token, $type)
     {
-        $config = [
+        $config = array(
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
             'smtp_user' => 'kecilreza575@gmail.com',
             'smtp_pass' => '1234567890',
             'smtp_port' =>  465,
             'mailtype' =>  'html',
-            'starttls'  => true,
-            'charset' =>  'utf-8',
-            'newline' =>  "\r\n"
-        ];
+            'charset' =>  'utf-8'
+        );
 
         $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
 
         $this->email->from('kecilreza575@gmail.com', 'Reza Aja');
         $this->email->to($this->input->post('email'));
