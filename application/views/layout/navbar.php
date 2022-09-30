@@ -51,18 +51,18 @@
 
             <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Kliping</a>
             
-            <a href="#" id="dropdownTopik" data-dropdown-toggle="dropdownDivider" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium inline-flex">Topik <svg class="ml-2 mt-0.5 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
+            <a href="#" id="dropdownTopik"  data-dropdown-toggle="dropdownAja" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium inline-flex">Topik <svg class="ml-2 mt-0.5 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
 
-            <!-- <button id="dropdownTopik" data-dropdown-toggle="dropdownDivider" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Dropdown divider <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button> -->
+            <!-- <button id="dropdownTopik" data-dropdown-toggle="dropdownAja" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Dropdown divider <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button> -->
 
             <!-- Dropdown menu -->
-            <div id="dropdownDivider" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+            <div id="dropdownAja" class="hidden z-10 w-44 bg-white  rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
                 <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownTopik">
                 <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Layanan umum & properti</a>
+                    <a href="#" class="block py-2 px-4 hover:bg-slate-300 dark:hover:bg-gray-600 dark:hover:text-white">Layanan umum & properti</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Penomoran Surat</a>
+                    <a href="#" class="block py-2 px-4 hover:bg-slate-300 dark:hover:bg-gray-600 dark:hover:text-white">Penomoran Surat</a>
                 </li>
               
                 </ul>
@@ -71,19 +71,19 @@
             
             <a href="#" id="dropdownTautan" data-dropdown-toggle="dropdownDivider" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium inline-flex">Tautan <svg class="ml-2 mt-0.5 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
 
-            <!-- <button id="dropdownTautan" data-dropdown-toggle="dropdownDivider" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Dropdown divider <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button> -->
+            
 
             <!-- Dropdown menu -->
-            <div id="dropdownDivider" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+            <div id="dropdownDivider" class="hidden z-10 w-44 bg-white text-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
                 <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownTautan">
                 <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Inti</a>
+                    <a href="#" class="block py-2 px-4 hover:bg-slate-300 dark:hover:bg-gray-600 dark:hover:text-white">Inti</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Koperasi</a>
+                    <a href="#" class="block py-2 px-4 hover:bg-slate-300 dark:hover:bg-gray-600 dark:hover:text-white">Koperasi</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Serikat Kerja</a>
+                    <a href="#" class="block py-2 px-4 hover:bg-slate-300 dark:hover:bg-gray-600 dark:hover:text-white">Serikat Kerja</a>
                 </li>
                 </ul>
                 
@@ -97,28 +97,33 @@
         <!-- Profile dropdown -->
         <div class="relative ml-3">
           <div>
-            <button type="button" class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+            <button type="button" class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="dropdownUser"  data-dropdown-toggle="dropdownMenu">
               <span class="sr-only">Open user menu</span>
               <img class="h-8 w-8 rounded-full" src="<?= base_url('assets/img/profile/') . $user["avatar"]; ?>" alt="">
             </button>
           </div>
 
-          <!--
-            Dropdown menu, show/hide based on menu state.
-
-            Entering: "transition ease-out duration-100"
-              From: "transform opacity-0 scale-95"
-              To: "transform opacity-100 scale-100"
-            Leaving: "transition ease-in duration-75"
-              From: "transform opacity-100 scale-100"
-              To: "transform opacity-0 scale-95"
-          -->
-          <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+          <div id="dropdownMenu" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownUser">
+                <li>
+               
+                    <a href="<?= base_url('user/profile/') .$user['username']; ?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-300"> <i class="fa-solid fa-user fa-fw mr-2"></i>Profil Saya</a>
+                </li>
+                <li>
+                    <a href="<?= base_url('user/editprofile/') .$user['username']; ?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-300"><i class="fa-solid fa-user-edit fa-fw mr-2"></i>Edit Profil</a>
+                </li>
+                <li>
+                    <a href="<?= base_url('auth/logout'); ?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-300"><i class="fa-solid fa-right-from-bracket fa-fw mr-2"></i>Logout</a>
+                </li>
+                </ul>
+                
+            </div>
+          <!-- <div id="dropdownUser" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"> -->
             <!-- Active: "bg-gray-100", Not Active: "" -->
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
-          </div>
+            <!-- <a href="<?= base_url('user/profile'); ?>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Profil Saya</a>
+            <a href="<?= base_url('user/editprofile'); ?>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Edit Profil</a>
+            <a href="<?= base_url('auth/logout'); ?>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Logout</a>
+          </div> -->
         </div>
       </div>
     </div>
@@ -126,9 +131,9 @@
 
   <!-- Mobile menu, show/hide based on menu state. -->
   <div class="sm:hidden" id="mobile-menu">
-    <div class="space-y-1 px-2 pt-2 pb-3">
+    <div class="space-y-1 px-2 pt-2 pb-3"> -->
       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-      <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Dashboard</a>
+       <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Dashboard</a>
 
       <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Team</a>
 
@@ -136,7 +141,7 @@
 
       <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendar</a>
     </div>
-  </div>
+  </div> 
 </nav>
 
     <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">

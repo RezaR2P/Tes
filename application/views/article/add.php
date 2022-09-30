@@ -1,6 +1,52 @@
-<div class="col-md-8 " id="content">
+<div class="basis-8/12 " id="content">
 
-    <div class="card">
+    <div class="mt-4 p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <?= form_open_multipart('article/add'); ?>
+            <input type="hidden" class="" name="username" value="<?= $user['username']; ?>">
+            <div class="mb-6">
+                <label for="title" class="block mb-2  font-semibold text-gray-900 dark:text-gray-300">Judul Artikel</label>
+                <input type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan Judul Artikel.." required="">
+            </div>
+            <div class="mb-6">
+                <label for="category" class="block mb-2 font-semibold text-gray-900 dark:text-gray-400">Kategori</label>
+                <select id="category" name="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="berita">Berita</option>
+                    <option value="artikel">Artikel</option>
+                    <option value="pengumuman">Pengumuman</option>
+                </select>
+            </div>
+            <div class="mb-6">
+                <label for="category" class="block mb-2 font-semibold text-gray-900 dark:text-gray-400">Cover Artikel</label>
+                <div class="flex gap-4">
+                    <div class="basis-4/12">
+                        <img src="<?= base_url('assets/'); ?>img/content/no-image.jpg" id="preview" class="border-4 border-slate-700 shadow-lg rounded-lg max-w-full">
+                    </div>
+                    <div class="basis-8/12 ">
+                        <input type="file" name="gambar" class="file d-none">
+
+                        <div class="input-group ">
+                            <input type="text" class="form-control bg-gray-50 border border-gray-300 text-gray-900 rounded-lg" disabled placeholder="Upload Gambar" id="file">
+                            <div class="input-group-append">
+                                <button type="button" id="pilih_gambar" class="browse text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-r-lg text-sm px-2 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Pilih Gambar</button>
+                            </div>
+                            <?= form_error('gambar', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-6">
+                <label for="editor1" class="block mb-2  font-semibold text-gray-900 dark:text-gray-300">Konten</label>
+                <textarea name="content" id="editor1"></textarea>
+            </div>
+            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm max-w-full sm:w-auto px-5 py-2.5 block dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buat</button>
+            
+
+        </form>
+    
+    </div>
+</div>
+
+    <!-- <div class="card">
         <div class="card-body">
             <?= form_open_multipart('article/add'); ?>
             <input type="hidden" class="form-control" name="username" value="<?= $user['username']; ?>">
@@ -46,8 +92,8 @@
             </div>
             <div class="form-group">
                 <label for="content">Konten</label>
-                <!-- <input type="hidden" name="content" value="<?= set_value('content') ?>"> -->
-                <textarea name="content" id="editor1" name="content">
+                <input type="hidden" name="content" value="<?= set_value('content') ?>"> -->
+                <!-- <textarea name="content" id="editor1" name="content">
 
                 </textarea>
                     <?= form_error('content', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -56,7 +102,7 @@
             </form>
         </div>
     </div>
-</div>
+</div> --> 
             
             
         
