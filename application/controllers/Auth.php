@@ -58,20 +58,23 @@ class Auth extends CI_Controller
     private function _sendEmail($token, $type)
     {
         $config = array(
-            'protocol' => 'smtp',
+            'protocol' => 'smtp', // 'mail', 'sendmail', or 'smtp'
             'smtp_host' => 'ssl://smtp.googlemail.com',
-            'smtp_user' => 'kecilreza575@gmail.com',
-            'smtp_pass' => 'sad',
-            'smtp_port' =>  465,
-            'mailtype' =>  'html',
-            'charset' =>  'utf-8'
+            'smtp_port' => 465,
+            'smtp_user' => 'rplmedcom23@gmail.com',
+            'smtp_pass' => 'rplajuar4',
+            'smtp_crypto' => 'ssl', //can be 'ssl' or 'tls' for example
+            'mailtype' => 'html', //plaintext 'text' mails or 'html'
+            'smtp_timeout' => '4', //in seconds
+            'charset' => 'utf-8',
+            'wordwrap' => TRUE
         );
 
         $this->load->library('email');
         $this->email->initialize($config);
         $this->email->set_newline("\r\n");
 
-        $this->email->from('kecilreza575@gmail.com', 'Reza Aja');
+        $this->email->from('rplmedcom23@gmail.com', 'Reza Aja');
         $this->email->to($this->input->post('email'));
         if ($type == 'forgot') {
             $this->email->subject('Reset Password');
