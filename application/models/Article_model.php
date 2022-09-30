@@ -26,31 +26,7 @@ class Article_model extends CI_Model
         return $this->db->get_where($this->_table, ["id_article" => $id_article])->row();
     }
 
-//     public function upload(){
-//     $nama = $_FILES['image']['name'];
-//     $tmp = $_FILES['image']['tmp_name'];
 
-//     move_uploaded_file($tmp, './assets/img/content/'.$nama);
-// }
-
-
-
-//     public function save()
-//     {
-//         $post = $this->input->post();
-//         $this->id_article = 'article_' . date('Ym') . mt_rand(11111, 99999);
-//         $this->username = $post["username"];
-//         $this->title = $post["title"];
-//         $this->date =  time();
-//         if ($post["image"]) {
-//             $this->images = $this->upload();
-//         }
-//         // $this->images =  ($post["image"])  ? $post["image"] : "no-image.jpg";
-//         $this->content = $post["content"];
-//         $this->category = $post["category"];
-//         $this->comments = 1;
-//         return $this->db->insert($this->_table, $this);
-//     }
 
     public function save($data)
     {

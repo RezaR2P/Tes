@@ -1,6 +1,6 @@
 
-<div class="md:flex ">
-    <div class="col-lg-7 column-7 bg-[#1A9DBF]  h-screen flex justify-center items-center">
+<div class="flex ">
+    <div class="basis-7/12 bg-[#1A9DBF]  h-screen flex justify-center items-center">
         <div class="bungkus flex items-center flex-col">
         <img src="<?= base_url('assets/'); ?>img/login/pablita-522 1.png" class="w-75 mb-10 mx-auto aspect-video" alt="" srcset="">
         <div class="text text-start ">
@@ -10,7 +10,7 @@
         </div>
     </div>
     <!-- component -->
-    <div class=" col-lg-5 flex flex-col px-12 justify-center items-center ">
+    <div class=" basis-5/12 flex flex-col px-12 justify-center items-center ">
         <img src="<?= base_url('assets/'); ?>img/login/iportal-03 1.png" class="w-4/5 mb-12" alt="" srcset="">
     <!-- Author: FormBold Team -->
     <!-- Learn More: https://formbold.com -->

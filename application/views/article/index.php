@@ -5,7 +5,7 @@
         <div class="flex gap-6 border-b-2 py-4">
             <div class="basis-2/6">
             <a href="<?= base_url("article/maincontent/") . $article->id_article; ?>">
-            <img class="border-4 border-slate-700 shadow-lg rounded-lg max-w-full h-fit" src="<?= base_url('assets/img/content/') . $article->coverImage; ?>" alt="<?= $article->title; ?>"></a>
+            <img class="border-4 border-slate-700 shadow-lg rounded-lg mx-auto w-auto max-h-72" src="<?= base_url('assets/img/content/') . $article->coverImage; ?>" alt="<?= $article->title; ?>"></a>
             </div>  
             <div class="basis-4/6">
             <h5 class="text-xl"><?= $article->title; ?></h5>
