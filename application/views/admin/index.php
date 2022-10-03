@@ -2,13 +2,14 @@
 <div class="flex ">
     <div class="basis-7/12 bg-[#1A9DBF]  h-screen flex justify-center items-center">
         <div class="bungkus flex items-center flex-col">
-        <img src="<?= base_url('assets/'); ?>img/login/pablita-522 1.png" class="w-75 mb-10 mx-auto aspect-video" alt="" srcset="">
-        <div class="text text-start ">
-        <h1 class="text-6xl font-bold mt-8 text-light">I-PORTAL</h1>
-        <p class="text-light font-semibold text-lg mt-3">Core Value Akhlak Insan <br>INTI GROUP</p>
-        </div>
+            <img src="<?= base_url('assets/'); ?>img/login/pablita-522 1.png" class="w-75 mb-10 mx-auto aspect-video" alt="" srcset="">
+            <div class="text text-start ">
+                <h1 class="text-6xl font-bold mt-8 text-light">I-PORTAL</h1>
+                <p class="text-light font-semibold text-lg mt-3">Core Value Akhlak Insan <br>INTI GROUP</p>
+            </div>
         </div>
     </div>
+
     <!-- component -->
     <div class=" basis-5/12 flex flex-col px-12 justify-center items-center ">
         <img src="<?= base_url('assets/'); ?>img/login/iportal-03 1.png" class="w-4/5 mb-12" alt="" srcset="">
@@ -53,13 +54,17 @@
                     <input id="rememberme" type="checkbox" value="1" name="rememberme" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2  dark:border-gray-600">
                     <label for="rememberme" class="ml-2 -mt-1 text-m font-small text-dark dark:text-gray-300">Remember Me</label>
                 </div>
+
             </div>
             </div>
+
             <div class="w-full px-3 text-end -mt-1 sm:w-1/2">
                 
             <a class="text-[#150544]" href="">Forgot Password?</a>
+
             </div>
         </div>
+
 
         
         <div>
@@ -74,4 +79,4 @@
         </div>
     </div>
 </div>
-        
+
