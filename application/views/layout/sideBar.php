@@ -4,7 +4,7 @@
             <aside class="w-72" aria-label="Sidebar">
             <div class="overflow-y-auto py-4 px-3 bg-white rounded dark:bg-gray-800">
                 <div class="flex flex-col justify-center items-center">
-                    <img src="<?= ($user['avatar']) ? $user['avatar'] : base_url('assets/img/profile/default.jpg'); ?>" alt="Avatar" class="w-24 h-24 rounded-full">
+                    <img src="<?= ($user['avatar']) ? base_url('assets/img/profile/') . $user['avatar'] : base_url('assets/img/profile/default.jpg'); ?>" alt="Avatar" class="w-24 h-24 rounded-full">
                     <h4 class="font-semibold text-xl mt-3"><?= $user['username']; ?></h4>
                     <a href="<?= base_url("article"); ?>"><p class="font-medium mt-1">Dashboard</p></a>
                 </div>
