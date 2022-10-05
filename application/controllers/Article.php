@@ -33,6 +33,9 @@ class Article extends CI_Controller
         return (!preg_match("/^([-a-z0-9_ ])+$/i", $str_in)) ? FALSE : TRUE;
     }
 
+
+
+
     public function add()
     {
         if (!$this->session->userdata('username')) {
@@ -44,12 +47,12 @@ class Article extends CI_Controller
         $this->form_validation->set_rules('title', 'Title', 'required|xss_clean|callback_alpha_dash_space');
         // $this->form_validation->set_rules('content', 'Content', 'required|xss_clean');
         $this->form_validation->set_rules('category', 'Category', 'required');
-        
+
         $validation = $this->form_validation;
         $this->form_validation->set_message('alpha_dash_space', '%s Hanya boleh diisi Huruf dan Angka');
         $this->form_validation->set_message('required', '%s Harus diisi');
 
-        
+
         // $validation->set_rules($crud->rules());
         // $validation->set_message($crud->errorMessage());
 
@@ -64,34 +67,47 @@ class Article extends CI_Controller
             $config['max_size']             = 20480000;
             $config['overwrite'] = TRUE;
             $this->upload->initialize($config);
-			if(!$this->upload->do_upload('gambar')){ 
-				$this->session->set_userdata('upload_error', $this->upload->display_errors());
-				redirect('article/add');
-			}else{
-				
-				// Hapus session upload error_get_last
-				$this->session->unset_userdata('upload_error');
-				
-				// Ambil data avatar yang di upload
-				$upload = $this->upload->data();
-				
-				$data = array(
-					'id_article' => 'article_' . date('Ym') . mt_rand(11111, 99999),
-					'username' => $this->input->post('username'),
-					'title' => $this->input->post('title'),
-					'date' => time(),
+            if (!$this->upload->do_upload('gambar')) {
+                $this->session->set_userdata('upload_error', $this->upload->display_errors());
+                redirect('article/add');
+            } else {
+
+                // Hapus session upload error_get_last
+                $this->session->unset_userdata('upload_error');
+
+                // Ambil data avatar yang di upload
+                $upload = $this->upload->data();
+
+                $data = array(
+                    'id_article' => 'article_' . date('Ym') . mt_rand(11111, 99999),
+                    'username' => $this->input->post('username'),
+                    'title' => $this->input->post('title'),
+                    'date' => time(),
                     'content' => $this->input->post('content'),
-					'coverImage' => $upload['file_name'],
+                    'coverImage' => $upload['file_name'],
                     'category' => $this->input->post('category'),
                     'comments' => 1
-				);
-				$this->article_model->save($data);
-				redirect('article');
-			}  
+                );
+                $this->article_model->save($data);
+                redirect('article');
+            }
         }
 
-      
-       
+        // if ($this->input->post('gambar')) {
+
+
+        //     $this->load->library('upload', $config);
+        //     $this->upload->initialize($config);
+
+        //     if (!$this->upload->do_upload('gambar')) {
+        //         $error = array('error' => $this->upload->display_errors());
+        //     } else {
+        //         $data = array('upload_data' => $this->upload->data());
+        //     }
+        // }
+
+
+
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
         $data["title"] = "Tambah Artikel";
@@ -119,7 +135,7 @@ class Article extends CI_Controller
         $this->load->view("layout/footer", $data);
     }
 
-   
+
     public function mainContent($id_article)
     {
         if (!$this->session->userdata('username')) {
