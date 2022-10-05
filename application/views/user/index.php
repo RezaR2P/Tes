@@ -1,4 +1,4 @@
-<div class="basis-10/12 py-4 px-8 bg-gray-50">
+<div class="basis-10/12 py-4 px-8  bg-gray-50 max-h-screen overflow-y-scroll">
     <h1 class="text-3xl font-bold text-gray-800">Artikel Saya</h1>
 
     <section id="filter">
@@ -11,77 +11,57 @@
 
     <section id="content">
     <div class="overflow-x-auto relative mt-3">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <table class="w-full text-sm text-left text-gray-500 bg-white rounded-lg dark:text-gray-400">
         <thead class="text-gray-900 dark:text-gray-400">
             <tr>
-                <th scope="col" class="py-3 px-6">
-                    #
-                </th>
+               
                 <th scope="col" class="py-3 px-6">
                     Cover
                 </th>
                 <th scope="col" class="py-3 px-6">
                     Judul
                 </th>
-                <th scope="col" class="py-3 px-6">
+                <th scope="col" class="py-3 px-6 text-center">
                     Tanggal Posting
                 </th>
-                <th scope="col" class="py-3 px-6">
+                <th scope="col" class="py-3 px-6 text-center">
                     Kategori
                 </th>
-                <th scope="col" class="py-3 px-6">
-                    Aksi
+                <th scope="col" class="py-3 px-6 text-center">
+                    Edit
+                </th>
+                <th scope="col" class="py-3 px-6 text-center">
+                    Hapus
                 </th>
             </tr>
         </thead>
         <tbody>
+        
             <?php  foreach($contentuser as $content) : ?>
+               
             <tr class=" dark:bg-gray-800">
-                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    1
-                </th>
+               
                 <td class="py-4 px-6">
-                    <img src="<?= base_url('assets/img/content/') . $content['coverImage']; ?>" alt="">
+                    <img class="border-4 border-slate-700 shadow-lg rounded-lg mx-auto w-auto max-h-48" src="<?= base_url('assets/img/content/') . $content['coverImage']; ?>" alt="">
                 </td>
-                <td class="py-4 px-6">
+                <td class="py-4 px-6 text-slate-600">
                     <?= $content['title']; ?>
                 </td>
-                <td class="py-4 px-6">
-                    Laptop
+                <td class="py-4 px-6 text-slate-600 text-center">
+                    <?= date('Y-m-d h:i:s', $content['date']); ?>
                 </td>
-                <td class="py-4 px-6">
-                    $2999
+                <td class="py-4 px-6 text-slate-600 text-center">
+                    <?= $content['category']; ?>
+                </td>
+                <td class="py-4 px-6 text-center">
+                <a href="<?= base_url('article/edit/') . $content['id_article']; ?>"><button type="button" class="mx-auto text-slate-700 bg-gray-300 hover:bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-8 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Edit</button></a>
+                </td>
+                 <td class="py-4 px-6">
+                 <a href="<?= base_url('article/delete/') . $content['id_article']; ?>"><button type="button" class="mx-auto text-white bg-red-600 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-6 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Hapus</button></a>
                 </td>
             </tr>
             <?php  endforeach; ?>
-            <tr class="bg-white dark:bg-gray-800">
-                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Microsoft Surface Pro
-                </th>
-                <td class="py-4 px-6">
-                    White
-                </td>
-                <td class="py-4 px-6">
-                    Laptop PC
-                </td>
-                <td class="py-4 px-6">
-                    $1999
-                </td>
-            </tr>
-            <tr class="bg-white dark:bg-gray-800">
-                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Magic Mouse 2
-                </th>
-                <td class="py-4 px-6">
-                    Black
-                </td>
-                <td class="py-4 px-6">
-                    Accessories
-                </td>
-                <td class="py-4 px-6">
-                    $99
-                </td>
-            </tr>
+           
         </tbody>
     </table>
 </div>
@@ -91,33 +71,3 @@
         
 
       
-
-                <!-- Begin Page Content -->
-                <!-- <div class="container-fluid"> -->
-
-                    <!-- Page Heading -->
-                    <!-- <h1 class="h3 mb-4 text-gray-800">Artikel Saya</h1>
-
-                    <div class="card mb-3" style="max-width: 540px">
-                        <div class="row no-gutters">
-                            <div class="col-md-4">
-                                <img src="<?= base_url('assets/img/profile/') . $user['image'];?>">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $user['name']; ?></h5>
-                                <p class="card-text"><?= $user['email']; ?></p>
-                                <p class="card-text"><small class="text-muted">Member since <?= date('d F Y', $user['date_created']); ?></small></p>
-                    </div>
-                </div>
-        </div>
-</div>
-
-                </div> -->
-                <!-- /.container-fluid -->
-
-            <!-- </div> -->
-            <!-- End of Main Content -->
-
-            </div>
-</section>
