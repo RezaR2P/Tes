@@ -57,29 +57,26 @@ class Auth extends CI_Controller
 
     private function _sendEmail($token, $type)
     {
-        $config = array(
-            'protocol' => 'smtp', // 'mail', 'sendmail', or 'smtp'
-            'smtp_host' => 'ssl://smtp.googlemail.com',
-            'smtp_port' => 465,
-            'smtp_user' => 'rplmedcom23@gmail.com',
-            'smtp_pass' => 'rplajuar4',
-            'smtp_crypto' => 'ssl', //can be 'ssl' or 'tls' for example
-            'mailtype' => 'html', //plaintext 'text' mails or 'html'
-            'smtp_timeout' => '4', //in seconds
-            'charset' => 'utf-8',
-            'wordwrap' => TRUE
-        );
-
         $this->load->library('email');
+        $config = array();
+        $this->load->library('email');
+        $config['protocol'] = 'smtp';
+        $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+        $config['smtp_user'] = 'kecilreza575@gmail.com';
+        $config['smtp_pass'] = 'sitllibvxndgjgiq';
+        $config['smtp_port'] = 465;
+        $config['mailtype'] = 'html';
+        $config['charset'] = 'utf-8';
         $this->email->initialize($config);
         $this->email->set_newline("\r\n");
 
-        $this->email->from('rplmedcom23@gmail.com', 'Reza Aja');
+        $this->email->from('kecilreza575@gmail.com', 'Reza Aja');
         $this->email->to($this->input->post('email'));
         if ($type == 'forgot') {
             $this->email->subject('Reset Password');
-            $this->email->message('Click this link to reset you password : <a href="' . base_url() . 'auth/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '" >Reset Password</a>');
+            $this->email->message('Click this link to reset your password : <a href="' . base_url() . 'auth/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
         }
+
 
         if ($this->email->send()) {
             return true;
@@ -157,9 +154,7 @@ class Auth extends CI_Controller
 
     public function changepassword()
     {
-        if (!$this->session->userdata('reset_email')) {
-            redirect('auth');
-        }
+
         $this->form_validation->set_rules('password1', 'Password', 'trim|required|min_length[3]|matches[password2]');
         $this->form_validation->set_rules('password2', 'Repeat Password', 'trim|required|min_length[3]|matches[password1]');
         if ($this->form_validation->run() == false) {
