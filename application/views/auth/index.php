@@ -45,7 +45,7 @@
 
                     <div class="w-full px-3 text-end -mt-1 sm:w-1/2">
 
-                        <a class="text-[#150544]" href="">Forgot Password?</a>
+                        <a class="text-[#150544]" href="<?= base_url('auth/forgotpassword'); ?>">Forgot Password?</a>
 
                     </div>
                 </div>
