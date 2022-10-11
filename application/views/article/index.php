@@ -1,4 +1,5 @@
-
+<div class="flash-data" data-flashdata="<?= $this->session->flashdata('success'); ?>"></div>
+<div class="flash-video" data-flashdata="<?= $this->session->flashdata('videoSuccess'); ?>"></div>
 
 <div class="basis-8/12 " id="content">
     <?php foreach ($db_article as $article) : ?>

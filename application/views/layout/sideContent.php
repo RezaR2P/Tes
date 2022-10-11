@@ -30,6 +30,24 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="<?= base_url("article/add"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-camera fa-fw text-gray-500 text-xl"></i>
+                                <span class="ml-3">Tambah Foto</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url("article/add"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-link fa-fw text-gray-500 text-xl"></i>
+                                <span class="ml-3">Tambah Tautan</span>
+                                </a>
+                            </li>
+                             <li>
+                                <a href="<?= base_url("video/add"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-video fa-fw text-gray-500 text-xl"></i>
+                                <span class="ml-3">Tambah Video</span>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="<?= base_url("article/kliping"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <i class="fa-solid fa-book fa-fw text-gray-500 text-xl"></i>
                                 <span class="ml-3">Kliping</span>
@@ -53,35 +71,6 @@
                     </aside>
                     </div>
                 </section>
-
-                <!-- <section id="menuadmin">
-                    <div class="card">
-                        <div class="card-header">
-                            Admin Menu
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Halo <?= $user["username"]; ?></h5>
-                            <div class="list-group">
-                                <a href="<?= base_url("article"); ?>" class="list-group-item list-group-item-action active" aria-current="true">
-                                    <i class="fa-solid fa-gauge fa-fw mr-2"></i>Dashboard
-                                </a>
-                                <a href="<?= base_url("article/arsip"); ?>" class="list-group-item list-group-item-action">
-                                    <i class="fa-solid fa-calendar-days fa-fw mr-2"></i>Arsip Artikel</a>
-                                <a href="<?= base_url("article/add"); ?>" class="list-group-item list-group-item-action">
-                                    <i class="fa-solid fa-pen fa-fw mr-2"></i>Tambah Artikel</a>
-                                <a href="<?= base_url("article/kliping"); ?>" class="list-group-item list-group-item-action">
-                                    <i class="fa-solid fa-book fa-fw mr-2"></i>Kliping</a>
-                                <a href="<?= base_url("article/comment"); ?>" class="list-group-item list-group-item-action">
-                                    <i class="fa-solid fa-comment fa-fw mr-2"></i>Maintain Comment</a>
-                                <a href="<?= base_url("auth/logout"); ?>" class="list-group-item list-group-item-action">
-                                <i class="fa-solid fa-right-from-bracket fa-fw mr-2"></i>Logout</a>
-
-                            </div>
-                        </div>
-                    </div>
-                </section> -->
-
-
                 <section id="pengumuman">
 
                 <div class="mt-4 p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
@@ -92,7 +81,7 @@
                 <p class="mt-3 font-normal text-sm text-start text-gray-800 dark:text-gray-400">Senin, 19 Februari 2018</p>
                 <p class="font-semibold text-md text-start text-gray-800 dark:text-gray-400">NEWS: PUBLIKASI PERATURAN DANA PENSIUN INTI YANG TERBARU (TAHUN 2017)</p>
             
-            </div>
+                </div>
 
                 </section>
 
@@ -106,18 +95,34 @@
                 </section>
 
                 <section id="video">
-                <div class="mt-4 p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                        <h5 class="mb-4 text-xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">Video Terbaru</h5>
-                    
-                        <img src="https://images.unsplash.com/photo-1663287695452-bf59337d8746?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxM3x8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" alt="" class="border-4 border-slate-700 shadow-lg rounded-lg max-w-full">
                 
+                <div class="mt-4 p-2 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                        <h5 class="mb-4 mt-3 text-xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">Video Terbaru</h5>
+
+                        <!-- Slider main container -->
+                        <div class="swiper h-48">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <?php foreach($video as $v): ?>
+                            <?php $url = explode("/", $v->url); ?>
+                            <div class="swiper-slide">
+                                <iframe class="mx-auto rounded-xl shadow-lg w-9/12 max-h-96" src="https://www.youtube.com/embed/<?= $url[3]; ?>" title="<?= $v->title; ?>" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+
+                        <!-- If we need scrollbar -->
+                        <div class="swiper-scrollbar"></div>
+                        </div>
+
+
+                        
                 </div>
                 </section>
-            </div>
-
-            </div>
-
-
-
-    </div>
-</section>
+</div>

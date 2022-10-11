@@ -41,7 +41,7 @@
                                 </a>
                             </li>
                              <li>
-                                <a href="<?= base_url("article/add"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <a href="<?= base_url("video/add"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <i class="fa-solid fa-video fa-fw text-gray-500 text-xl"></i>
                                 <span class="ml-3">Tambah Video</span>
                                 </a>

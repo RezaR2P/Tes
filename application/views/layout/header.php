@@ -16,6 +16,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"> 
 <link href="<?= base_url('dist/output.css'); ?>" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
+<link href="<?= base_url('assets/vendor/lightbox2/src/css/'); ?>lightbox.css" rel="stylesheet" />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+/>
 
 <script src="<?= base_url(); ?>/dist/flowbite.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>

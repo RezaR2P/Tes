@@ -1,3 +1,5 @@
+<div class="flash-data" data-flashdata="<?= $this->session->flashdata('success'); ?>"></div>
+
 <div class="basis-10/12 py-4 px-8  bg-gray-50 max-h-screen overflow-y-scroll">
     <h1 class="text-3xl font-bold text-gray-800">Artikel Saya</h1>
 
@@ -48,7 +50,7 @@
                     <?= $content['title']; ?>
                 </td>
                 <td class="py-4 px-6 text-slate-600 text-center">
-                    <?= date('Y-m-d h:i:s', $content['date']); ?>
+                    <?= date('Y-m-d H:i:s', $content['date']); ?>
                 </td>
                 <td class="py-4 px-6 text-slate-600 text-center">
                     <?= $content['category']; ?>
@@ -57,7 +59,7 @@
                 <a href="<?= base_url('article/edit/') . $content['id_article']; ?>"><button type="button" class="mx-auto text-slate-700 bg-gray-300 hover:bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-8 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Edit</button></a>
                 </td>
                  <td class="py-4 px-6">
-                 <a href="<?= base_url('article/delete/') . $content['id_article']; ?>"><button type="button" class="mx-auto text-white bg-red-600 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-6 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Hapus</button></a>
+                 <a href="<?= base_url('article/delete/') . $content['id_article']; ?>" class="tombol-hapus"><button type="button" class=" mx-auto text-white bg-red-600 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-6 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Hapus</button></a>
                 </td>
             </tr>
             <?php  endforeach; ?>

@@ -25,6 +25,7 @@ class User_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('db_article');
+        $this->db->order_by('date', "desc");
         $this->db->like('username', $username);
         $query = $this->db->get();
         return $query->result_array();
