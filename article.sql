@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2022 at 05:39 AM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 7.3.29
+-- Waktu pembuatan: 10 Okt 2022 pada 04.26
+-- Versi server: 10.4.20-MariaDB
+-- Versi PHP: 7.3.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `db_article`
+-- Struktur dari tabel `db_article`
 --
 
 CREATE TABLE `db_article` (
@@ -39,57 +39,131 @@ CREATE TABLE `db_article` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `db_article`
+-- Dumping data untuk tabel `db_article`
 --
 
 INSERT INTO `db_article` (`id_article`, `username`, `title`, `date`, `content`, `coverImage`, `category`, `comments`) VALUES
-('article_20220930798', 'qmak', 'BUKAN RONALDO INILAH DAFTAR PEMAIN DENGAN GAJI TERMAHAL NO 5 BIKIN BULU KUDUK KAMU BERDIRI', 1664089693, '\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non consectetur mauris. Phasellus a nibh lacinia, maximus augue id, semper turpis. Cras auctor tristique mauris eu commodo. Donec pulvinar neque nulla, in ornare mi finibus aliquet. Praesent nec ante gravida, ullamcorper ligula at, maximus orci. Praesent elit quam, scelerisque sed ante ut, vulputate ullamcorper metus. In dignissim nunc sed elit viverra posuere. Duis nec risus ligula. Mauris elementum urna id enim iaculis, et egestas libero pretium. Pellentesque eu feugiat dui. Proin eu quam non risus varius faucibus. Mauris eu lacinia dui, eu consectetur sem. Duis interdum nulla bibendum orci lacinia tristique.</p>\r\n\r\n<p>Aenean porttitor tincidunt augue nec sagittis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque non pellentesque diam. Nunc facilisis condimentum diam, a condimentum nisi facilisis sit amet. Donec elit risus, cursus id felis tristique, ultrices dapibus massa. In nulla nunc, mollis quis arcu accumsan, placerat pretium massa. Donec non arcu vulputate, varius orci ut, elementum sem.</p>\r\n</div>\r\n\r\n<div class=\"simple-translate-dark-theme\" id=\"simple-translate\">\r\n<div>\r\n<div class=\"isShow simple-translate-button\" style=\"background-image:url(&quot;moz-extension://9181ba3b-aa3c-4657-94e9-d31433caad5c/icons/512.png&quot;); height:22px; left:607px; top:177px; width:22px\">&nbsp;</div>\r\n\r\n<div class=\" simple-translate-panel\" style=\"font-size:13px; height:200px; left:0px; top:0px; width:300px\">\r\n<div class=\"simple-translate-result-wrapper\" style=\"overflow:hidden\">\r\n<div class=\"simple-translate-move\" draggable=\"true\">&nbsp;</div>\r\n\r\n<div class=\"simple-translate-result-contents\">\r\n<p class=\"simple-translate-result\" dir=\"auto\">&nbsp;</p>\r\n\r\n<p class=\"simple-translate-candidate\" dir=\"auto\">&nbsp;</p>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n', 'mailchimp-lsdA8QpWN_A-unsplash.jpg', 'berita', 1),
-('article_20220941285', 'qmak', 'wawa', 1664199652, '<img alt=\"pemandangan\" class=\"img-thumbnail\" src=\"https://images.unsplash.com/photo-1663875928932-3bf9dba77e26?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDl8Ym84alFLVGFFMFl8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60\" style=\"height:400px; width:600px\" />\r\n', 'logo-pt-inti.jpg', 'berita', 1),
-('article_20220950032', 'qmak', 'Cara Mengubah Dosa Menjadi Kuota 100GB', 1664088745, '\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non consectetur mauris. Phasellus a nibh lacinia, maximus augue id, semper turpis. Cras auctor tristique mauris eu commodo. Donec pulvinar neque nulla, in ornare mi finibus aliquet. Praesent nec ante gravida, ullamcorper ligula at, maximus orci. Praesent elit quam, scelerisque sed ante ut, vulputate ullamcorper metus. In dignissim nunc sed elit viverra posuere. Duis nec risus ligula. Mauris elementum urna id enim iaculis, et egestas libero pretium. Pellentesque eu feugiat dui. Proin eu quam non risus varius faucibus. Mauris eu lacinia dui, eu consectetur sem. Duis interdum nulla bibendum orci lacinia tristique.</p>\r\n\r\n<p>Aenean porttitor tincidunt augue nec sagittis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque non pellentesque diam. Nunc facilisis condimentum diam, a condimentum nisi facilisis sit amet. Donec elit risus, cursus id felis tristique, ultrices dapibus massa. In nulla nunc, mollis quis arcu accumsan, placerat pretium massa. Donec non arcu vulputate, varius orci ut, elementum sem.</p>\r\n\r\n<p>Quisque nec sem et quam dictum facilisis. Sed nec ipsum a augue tincidunt sollicitudin. Praesent faucibus mauris vitae aliquet semper. Morbi maximus eget odio quis pharetra. Etiam a ullamcorper diam. Sed vestibulum euismod lectus vel posuere. Quisque sit amet tristique erat, id eleifend arcu. Curabitur sit amet mattis sapien, ac sollicitudin erat. Aenean arcu lectus, ultrices at quam a, tincidunt fringilla ante. Pellentesque sed urna ut arcu ullamcorper sagittis. Nulla nec luctus massa, nec elementum augue. Nam fringilla et tortor vitae viverra. Nam dignissim mauris in convallis euismod. Maecenas rutrum laoreet consectetur. Curabitur risus orci, malesuada et est non, pellentesque eleifend nibh.</p>\r\n\r\n<p>Duis vitae sapien a leo sodales tristique. Nam porta suscipit est, ut bibendum metus. Fusce interdum, quam et aliquet eleifend, dolor dolor consequat mauris, eu bibendum neque nisl sit amet lectus. Integer volutpat ultrices lectus. Vivamus eu magna neque. Mauris et ex pharetra, efficitur mauris in, auctor augue. Suspendisse potenti.</p>\r\n\r\n<p>Aliquam sodales auctor vulputate. Integer malesuada justo vel augue interdum, non ultrices est vulputate. Sed in congue justo. In vel convallis enim. Vivamus maximus est sem, sed consectetur dui venenatis nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer cursus convallis leo et tincidunt.</p>\r\n\r\n', 'logo-pt-inti.jpg', 'pengumuman', 1),
-('article_20220952484', 'qmak', 'kaowaokwka', 1664089201, '\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non consectetur mauris. Phasellus a nibh lacinia, maximus augue id, semper turpis. Cras auctor tristique mauris eu commodo. Donec pulvinar neque nulla, in ornare mi finibus aliquet. Praesent nec ante gravida, ullamcorper ligula at, maximus orci. Praesent elit quam, scelerisque sed ante ut, vulputate ullamcorper metus. In dignissim nunc sed elit viverra posuere. Duis nec risus ligula. Mauris elementum urna id enim iaculis, et egestas libero pretium. Pellentesque eu feugiat dui. Proin eu quam non risus varius faucibus. Mauris eu lacinia dui, eu consectetur sem. Duis interdum nulla bibendum orci lacinia tristique.</p>\r\n\r\n<p>Aenean porttitor tincidunt augue nec sagittis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque non pellentesque diam. Nunc facilisis condimentum diam, a condimentum nisi facilisis sit amet. Donec elit risus, cursus id felis tristique, ultrices dapibus massa. In nulla nunc, mollis quis arcu accumsan, placerat pretium massa. Donec non arcu vulputate, varius orci ut, elementum sem.</p>\r\n\r\n<p>Quisque nec sem et quam dictum facilisis. Sed nec ipsum a augue tincidunt sollicitudin. Praesent faucibus mauris vitae aliquet semper. Morbi maximus eget odio quis pharetra. Etiam a ullamcorper diam. Sed vestibulum euismod lectus vel posuere. Quisque sit amet tristique erat, id eleifend arcu. Curabitur sit amet mattis sapien, ac sollicitudin erat. Aenean arcu lectus, ultrices at quam a, tincidunt fringilla ante. Pellentesque sed urna ut arcu ullamcorper sagittis. Nulla nec luctus massa, nec elementum augue. Nam fringilla et tortor vitae viverra. Nam dignissim mauris in convallis euismod. Maecenas rutrum laoreet consectetur. Curabitur risus orci, malesuada et est non, pellentesque eleifend nibh.</p>\r\n\r\n<p>Duis vitae sapien a leo sodales tristique. Nam porta suscipit est, ut bibendum metus. Fusce interdum, quam et aliquet eleifend, dolor dolor consequat mauris, eu bibendum neque nisl sit amet lectus. Integer volutpat ultrices lectus. Vivamus eu magna neque. Mauris et ex pharetra, efficitur mauris in, auctor augue. Suspendisse potenti.</p>\r\n\r\n<p>Aliquam sodales auctor vulputate. Integer malesuada justo vel augue interdum, non ultrices est vulputate. Sed in congue justo. In vel convallis enim. Vivamus maximus est sem, sed consectetur dui venenatis nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer cursus convallis leo et tincidunt.</p>\r\n\r\n', 'logo-pt-inti.jpg', 'berita', 1),
-('article_20220952906', 'qmak', 'Tabel Tabelan', 1664199138, '<table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" style=\"width:500px\" class=\"table table-stripted\">\r\n	<tbody>\r\n		<tr>\r\n			<td>qmak</td>\r\n			<td>2</td>\r\n		</tr>\r\n		<tr>\r\n			<td>budi</td>\r\n			<td>1</td>\r\n		</tr>\r\n		<tr>\r\n			<td>sip</td>\r\n			<td>4</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n', 'mailchimp-lsdA8QpWN_A-unsplash.jpg', 'berita', 1),
-('article_20220978614', 'qmak', 'Testt', 1664446648, '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin maximus enim a tincidunt tempor. Praesent eleifend, eros non efficitur sodales, urna erat faucibus eros, nec suscipit magna neque ac dui. Vestibulum quam nunc, ornare quis elit in, molestie laoreet mi. Cras iaculis pellentesque orci, id laoreet dolor suscipit quis. Suspendisse in felis sit amet sapien eleifend scelerisque id ac augue. Aliquam leo eros, aliquet in metus vel, rhoncus suscipit purus. Quisque pretium maximus bibendum. Vivamus consectetur sem eget tincidunt fermentum. Curabitur nec ex risus. Nunc vitae nisl nec augue commodo imperdiet eget in magna. Integer quis nunc vel ex eleifend placerat. Nullam nec fringilla elit. Quisque mollis viverra eros, eget feugiat enim. Donec ac massa enim.</p>\r\n\r\n<p>Donec porta hendrerit nunc, in sodales turpis interdum eu. Nunc sollicitudin luctus lectus placerat dictum. Maecenas ac dui sed mauris commodo commodo. Etiam erat magna, ornare non eros et, rhoncus congue nisl. Phasellus a nisi lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis ornare venenatis viverra. Ut lacus justo, auctor ac dignissim sed, malesuada at diam. Etiam eu eros at diam sollicitudin fermentum. Pellentesque sed fringilla sapien. Suspendisse lobortis nibh sapien, a malesuada dolor suscipit ac. Donec venenatis elementum ultrices. Duis a mi et orci vulputate rhoncus. Duis laoreet dolor at elit ultrices sollicitudin. Fusce tristique porta nisl non imperdiet.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu malesuada mauris. Ut a metus malesuada, scelerisque enim et, facilisis nisl. Sed pellentesque mauris non dui malesuada molestie. Nullam sed nibh vulputate, feugiat dolor non, lobortis magna. Suspendisse vel tortor sit amet metus dapibus sodales vel sit amet metus. Sed interdum leo a ex tempus, et finibus lacus aliquet. Nulla sodales ultrices felis semper fringilla. Donec ut nibh in diam pharetra ornare et eget sem. Donec ac commodo lacus. Mauris tincidunt condimentum ex, vitae tempus quam maximus ac. Donec at sapien orci. Vestibulum blandit laoreet magna.</p>\r\n\r\n<p>Aenean aliquet diam ut aliquam fermentum. Sed nisi quam, vehicula vel neque maximus, ultrices sollicitudin elit. Quisque feugiat facilisis rhoncus. Morbi erat elit, sagittis quis faucibus et, iaculis id augue. In a euismod massa. Morbi porttitor viverra massa, faucibus euismod augue auctor et. Aliquam condimentum dui eu enim sollicitudin rhoncus. Praesent consectetur justo ligula, convallis placerat dolor imperdiet eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi ut aliquam urna, ut malesuada ex. Nulla rutrum odio a aliquam ullamcorper. Vestibulum nec bibendum quam. Nullam nec nibh et justo pharetra pulvinar.</p>\r\n\r\n<p>Sed nunc enim, pulvinar et imperdiet ut, auctor quis nisi. Suspendisse faucibus nulla id blandit scelerisque. Integer vitae maximus odio. Nulla purus tellus, dapibus ut tristique vel, efficitur eget lorem. Pellentesque congue dictum dui. Donec sagittis, lorem nec ultricies tincidunt, tortor purus egestas risus, non sodales orci lorem quis ligula. Duis velit dui, tincidunt sed lorem nec, aliquet fermentum felis. Phasellus eget volutpat mauris. Donec faucibus metus sed vehicula dictum. Sed ac tellus et urna rhoncus condimentum. Nulla ex libero, malesuada rutrum elit nec, iaculis scelerisque nibh.</p>\r\n', 'mailchimp-lsdA8QpWN_A-unsplash.jpg', 'pengumuman', 1),
-('article_20220978952', 'qmak', 'yahhahahawaa', 1664425605, '<p>ffff</p>\r\n', 'giordano-rossoni-sx1f8vqTsu8-unsplash.jpg', 'berita', 1),
-('article_20220984264', 'qmak', 'Cara Kebal Bor Kepala', 1664503241, '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent arcu orci, tristique ac tellus eget, mollis sollicitudin tellus. Maecenas maximus magna eu nulla finibus, eget blandit ligula dapibus. Nullam iaculis eros malesuada, rutrum mi quis, commodo nisl. Vivamus tempus est id ligula laoreet, a porttitor magna suscipit. Phasellus placerat bibendum nulla, at rutrum tortor faucibus ut. Mauris auctor dictum volutpat. Donec eget ultrices dolor. Sed id erat eget tellus ultricies varius. Proin ac dolor a odio finibus aliquam. Aliquam sagittis feugiat tellus, at pulvinar elit laoreet eu. Quisque orci lacus, aliquam at sagittis sit amet, iaculis eu ligula.</p>\r\n\r\n<p>Curabitur enim leo, aliquet nec consequat non, aliquam quis est. Nulla at nibh urna. Aenean dictum purus velit, a euismod ipsum sodales eu. In dolor urna, pulvinar sit amet accumsan non, volutpat in turpis. Integer nulla augue, laoreet viverra sollicitudin sed, consectetur id sapien. Curabitur sodales sem ac dui euismod tempor. Aliquam erat volutpat.</p>\r\n\r\n<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer suscipit turpis a turpis luctus eleifend. Integer tempus, est quis consectetur ultrices, tellus quam consequat est, vitae commodo metus purus id leo. Donec in magna ac sapien fermentum dapibus. Fusce semper sed arcu in accumsan. Maecenas vel mollis purus. Nam vel sapien non felis vestibulum aliquam sed ac nisi. Nam vulputate nec sapien sit amet posuere.</p>\r\n\r\n<p>Quisque interdum ligula maximus, egestas purus ut, tempor lorem. Nam sit amet auctor lacus. Duis tincidunt, felis quis gravida pharetra, arcu leo malesuada nulla, vel ultrices tellus elit et ex. Donec quis lacus at augue varius bibendum at vel velit. Nulla nec volutpat massa, non vulputate purus. Integer scelerisque fringilla lorem eget rhoncus. Proin consectetur sit amet diam vel laoreet. Pellentesque faucibus libero a hendrerit dictum. Morbi mollis ante vitae massa auctor vehicula. Proin volutpat, mi ut iaculis sollicitudin, nulla elit placerat metus, eu venenatis mauris est vitae ligula. In ultricies, orci id molestie feugiat, libero nisi porttitor ligula, vitae scelerisque leo ante sed nibh. Cras sit amet lectus sapien. Integer auctor pellentesque leo, ac pulvinar nulla aliquet tempor. Sed nec vehicula massa. Praesent sodales dolor eget orci consectetur commodo.</p>\r\n\r\n<p>Nam felis lacus, blandit imperdiet lorem sit amet, dignissim fringilla sem. Proin sit amet facilisis nibh. Fusce eu justo vehicula, rutrum felis non, mattis libero. Donec tempor venenatis felis, sit amet interdum lectus. Nunc semper diam a magna fringilla rhoncus. Sed sit amet condimentum velit, hendrerit maximus ex. Phasellus dictum luctus libero, vel efficitur purus iaculis feugiat. Etiam ultrices eros ac vestibulum laoreet. Curabitur accumsan diam eget pretium placerat. Aliquam in magna pharetra nibh pellentesque sagittis. In molestie justo in magna ornare sagittis. Vivamus ut est neque. Proin pellentesque eros quis metus porttitor dapibus. Nulla facilisi. Nullam vulputate laoreet sollicitudin.</p>\r\n\r\n<p>Etiam eget facilisis felis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi diam, suscipit eget sem id, malesuada eleifend purus. Etiam sagittis nisl at massa luctus malesuada. Quisque eu turpis dapibus sapien bibendum viverra et id sapien. Nam euismod tincidunt lectus, id auctor tortor convallis ut. Mauris imperdiet felis erat, et porta leo lobortis eget. Suspendisse quis magna tristique, scelerisque velit eu, egestas lectus. In hac habitasse platea dictumst.</p>\r\n\r\n<p>Nam vel magna vitae eros aliquet rhoncus ut ac mi. Duis fringilla varius massa vitae condimentum. Praesent porttitor maximus tellus non tincidunt. Cras elementum mi augue, ut suscipit nisi aliquet non. Aliquam tincidunt eros vel ipsum malesuada, nec rhoncus justo scelerisque. Nulla vulputate tincidunt orci, vitae suscipit neque luctus ac. Fusce auctor nibh mauris. Morbi sollicitudin libero nec sapien semper, sed euismod ante imperdiet. Nulla nibh purus, accumsan ut feugiat quis, iaculis quis quam. Pellentesque rutrum sem sit amet diam tempus mollis. Duis ut augue urna. Nunc at diam et lacus suscipit maximus non sed sem. Nunc id ante varius, vestibulum turpis ac, fermentum metus.</p>\r\n\r\n<p>Pellentesque feugiat hendrerit maximus. Vestibulum sem ipsum, suscipit mollis fringilla tincidunt, posuere non ipsum. Pellentesque at nisi ac nulla faucibus viverra sed eget augue. Donec in eros vel turpis maximus molestie ac at metus. Maecenas mattis nisi eu dapibus tempus. Etiam a faucibus lorem. Aliquam sed nunc auctor, semper nisl nec, gravida lacus. Sed dignissim id ipsum sit amet cursus. Curabitur iaculis consectetur nunc. In tempor pretium sapien, nec aliquet diam efficitur vel. Vivamus et ante sagittis, ullamcorper dui vel, commodo nisl. Nulla magna sem, fermentum vel feugiat a, tincidunt sed magna. Vestibulum dignissim ullamcorper fringilla. Pellentesque aliquet posuere diam, a aliquam eros tempus vel.</p>\r\n\r\n<p>Sed lobortis, erat at posuere sollicitudin, nisl sapien condimentum nibh, nec malesuada metus tortor vestibulum felis. Mauris ac urna eget quam aliquam tincidunt. Cras nec dolor imperdiet, mattis tortor a, bibendum libero. Morbi tristique odio non libero iaculis luctus. Nullam at pharetra tellus. Fusce placerat malesuada ligula ut convallis. Maecenas porta velit sit amet rutrum imperdiet. Aliquam pharetra risus id ex facilisis, eu aliquet nunc dapibus. Ut euismod turpis mollis massa dignissim, nec rhoncus urna ornare. Donec faucibus non odio nec condimentum. Nulla facilisi. Donec tempor dapibus nisl sed volutpat. Aliquam erat volutpat.</p>\r\n\r\n<p style=\"text-align:justify\">Pellentesque faucibus pulvinar velit eu pellentesque. Duis eleifend lacus non facilisis ullamcorper. Duis ligula diam, euismod in dictum vel, accumsan at nulla. Sed a nibh dapibus, eleifend libero nec, accumsan urna. Suspendisse sit amet ligula porttitor, blandit est at, finibus felis. Mauris feugiat pretium accumsan. Fusce vel nisl sed ante dictum facilisis id a sem.</p>\r\n', '5(1).png', 'pengumuman', 1),
-('article_20220987091', 'qmak', 'kokokokk', 1664086856, '<p>llolol</p>\r\n', 'mailchimp-lsdA8QpWN_A-unsplash.jpg', 'artikel', 1);
+('article_20221017765', 'Reza', 'jnjknkjn', 1664868471, '<p>jkhkjhkjkj</p>\r\n', 'Capture.PNG', 'berita', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `kliping_gambar`
+--
+
+CREATE TABLE `kliping_gambar` (
+  `id_gambar` varchar(20) NOT NULL,
+  `gambar` varchar(255) NOT NULL,
+  `ukuran` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
-  `id_user` int(20) NOT NULL,
+  `id_user` varchar(20) NOT NULL,
   `name` varchar(128) NOT NULL,
   `username` varchar(128) NOT NULL,
-  `password` varchar(128) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `avatar` varchar(255) NOT NULL,
   `role` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id_user`, `name`, `username`, `password`, `avatar`, `role`) VALUES
-(421, 'qmak', 'qmak', '$2y$10$CrLziiF2CoaMRWBSUxB7fulhDUdiwBWGFIgnZlLSRZBqd/xD6e2fO', '', 1);
+INSERT INTO `user` (`id_user`, `name`, `username`, `email`, `password`, `avatar`, `role`) VALUES
+('user_20221012390', 'riki', 'riki', 'riki@gmail.com', '$2y$10$2BvlbCLSqMG8dYj1mh3cGO0pK8sPuBy0BXAJ354q0h4FYZDi7YiAu', 'default.jpg', 2),
+('user_20221054686', 'Asep', 'asepdsds', 'akunbott0p@gmail.com', '$2y$10$3fD/26rVZXB/tREg9CT52eqrUIRKwJ134VS9sOoEYks9zwQcmtnum', 'default.jpg', 2),
+('user_20221073642', 'Reza', 'Reza', 'rmdanp@gmail.com', '', 'default.jpg', 2),
+('user_20221084855', 'Bagas', 'Bagasadsdsa', 'bagasqmak@gmail.com', '$2y$10$iAvplw9oxeZUvP6bQueSBeTAER5ybENtS.4ApY/f.BRV5mNDj0WSa', 'default.jpg', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user_token`
+--
+
+CREATE TABLE `user_token` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `date_created` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `user_token`
+--
+
+INSERT INTO `user_token` (`id`, `email`, `token`, `date_created`) VALUES
+(1, 'rezaramdanp@gmail.com', 'FswcMAVPI6rTkSDazYSg7XZMZ8GAfimey05NyqKdwdQ=', 1664868736),
+(2, 'rezaramdanp@gmail.com', '2AGudowrd1JOQQAESXa5vhvbeWb5Y3FtXLEI5ud0bJ4=', 1664868751),
+(3, 'rezaramdanp@gmail.com', 'wnZiGujchJZMmKyweytzW+8qESzGwfKRua0hjdxu2jw=', 1664870161),
+(4, 'rezaramdanp@gmail.com', 'LppdWeKXTDCoM7afbp7CurTkiGyAJQ48iHYXF1G9w+Q=', 1664870570),
+(5, 'rezaramdanp@gmail.com', 'Uipg0XjtIc/CzDaht7TpXJ1SJi92JpX/xLR0YJY4FxU=', 1664870576),
+(6, 'rezaramdanp@gmail.com', 'CK/m31gypi5h1I7vx74S22HUvV7zSjh678RgoBsCwbg=', 1664870947),
+(7, 'rezaramdanp@gmail.com', 'pJGUb8wC5/FbLASuAJaK99WD3icBi4Tt0WIHZ01dOMQ=', 1664871065),
+(8, 'rezaramdanp@gmail.com', 'oeL2yuzOThxLSys2OymhsbzDamTS6hxcw0us/d3eZRM=', 1664871361),
+(9, 'rezaramdanp@gmail.com', 'LXlGxypSoUxNEb+dHE3pC0q5vUtM4CFFa1OmKgN8zig=', 1664871721),
+(10, 'rezaramdanp@gmail.com', 'aJvo+FEuJ1xg06TVPCD5BChyfK4n/u9ltEzzP8noCWw=', 1664871764),
+(11, 'rezaramdanp@gmail.com', 'XdvVtzUFNAS9/lGT8n+m2ykJHpYIkIBfYeNo0aSb5o0=', 1664871947),
+(12, 'rezaramdanp@gmail.com', 'B2pTbGHdBgLTnFLPQ3ACnin3XX5q6myYUND3uzBeD2w=', 1664871992),
+(13, 'rezaramdanp@gmail.com', '+epZAAjfifujUEliPkuIkheJjpxSu7F+zzpq/VmKfHE=', 1664901439),
+(14, 'rezaramdanp@gmail.com', 'D2Nt7jntW2v0Ye9doewcj9JadphnF38AZfuUXg1S+V8=', 1664901614),
+(15, 'rezaramdanp@gmail.com', 'YwdY5RSFHydo6egQCkUwBP1TGozVXyBGJNwu1HOud8A=', 1664901640),
+(16, 'rezaramdanp@gmail.com', '3Jz/qMaJj7na1oMvFmX52XvmINrUpcckWUe1+BotmVM=', 1664901835),
+(17, 'rezaramdanp@gmail.com', 'XK+i2z1IEA7Y0QjjD6+oXnCgFcnLx1p+O4XEmgvqU98=', 1664901862),
+(18, 'rezaramdanp@gmail.com', '7NZUrWn1e70Szbnr7ZpYqRAAzntbHYspD+W5XbmKWuM=', 1664902424),
+(19, 'rezaramdanp@gmail.com', '90bXzQYwwZk0D7ZkchlAsja2viU/E8w+GvP/pcq2x6A=', 1664902494),
+(20, 'rezaramdanp@gmail.com', 'bRKpkuw3/7D51JFeeFoBT8jkKqsgsyDg++NhHGmJqqo=', 1664902593),
+(21, 'rezaramdanp@gmail.com', 'O/MlCkP/9UIkgljOyDEg5d9XT2fuIlKWS9tOEeI707Y=', 1664903327),
+(22, 'rezaramdanp@gmail.com', 'SyHtX4wkiDw6w/5ePwfRXqoowIwuSpnWWf4gLN9hIsM=', 1664903709),
+(23, 'bagasqmak@gmail.com', 'Y/U9ktbTpTFJD+1eD5oDxiEPTf/wAjx1B89HQCPRiG8=', 1664953162),
+(24, 'bagasqmak@gmail.com', 'drNlKRldqX+Ep7T7NJMrytwD7nLsSi3LDVug9wgauso=', 1664953197),
+(25, 'rezaramdanp@gmail.com', 'CtUo9ysfFG50BSHog9tQAeRxFaq8C5kOCk/UjSjwGI8=', 1664953531),
+(26, 'akunbott0p@gmail.com', 'QLsZeR5JsSZC9Aq5f9WuBDJyjT4NYZ8ZieCFdoDXhM0=', 1664953648),
+(27, 'bagasqmak@gmail.com', 'PEP9ng7EV74h21YzOKSk9D8ghKOmuBI8OLj6YLJFUrs=', 1664954070),
+(28, 'rezaramdanp@gmail.com', 'XwZT6x6FhgjlrI5jWApo0qVCZ301ONS4Qgd4jaBDb5w=', 1664956662),
+(29, 'rezaramdanp@gmail.com', 'Um+JtykYOrGtzLasbQYaey/3nXl9++ejv4OFo9AmffM=', 1664956696),
+(30, 'rezaramdanp@gmail.com', 'CIQkFex57o3Avkt+oi+kmk05cpn5vj2RfXNpWfC1M68=', 1665038412),
+(31, 'rezaramdanp@gmail.com', 'qxS08NMgdq8rxs8NdiX87uBrN9eiJC7HQvWVvJWhmyQ=', 1665038460);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `db_article`
+-- Indeks untuk tabel `db_article`
 --
 ALTER TABLE `db_article`
   ADD PRIMARY KEY (`id_article`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
+
+--
+-- Indeks untuk tabel `user_token`
+--
+ALTER TABLE `user_token`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `user_token`
+--
+ALTER TABLE `user_token`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
