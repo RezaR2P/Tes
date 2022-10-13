@@ -1,3 +1,5 @@
+<div class="flash-data" data-flashdata="<?= $this->session->flashdata('success'); ?>"></div>
+
 <div class="basis-10/12 py-4 px-8  bg-gray-50 max-h-screen overflow-y-scroll">
     <h1 class="text-3xl font-bold text-gray-800">Artikel Saya</h1>
 
@@ -17,6 +19,7 @@
     </div>
 
     <section id="content">
+
         <div class="overflow-x-auto relative mt-3">
             <table class="w-full text-sm text-left text-gray-500 bg-white rounded-lg dark:text-gray-400">
                 <thead class="text-gray-900 dark:text-gray-400">
@@ -43,6 +46,7 @@
                     </tr>
                 </thead>
                 <tbody>
+
 
                     <?php foreach ($contentuser as $content) : ?>
 

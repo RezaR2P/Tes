@@ -34,21 +34,15 @@ class Article_model extends CI_Model
         return $this->db->insert($this->_table, $data);
     }
 
-    public function update()
+    public function updateArticle($data, $id_article)
     {
-        $post = $this->input->post();
-        $this->id_article = 'article_' . date('Ym') . mt_rand(11111, 99999);
-        $this->username = "Ujang";
-        $this->title = $post["title"];
-        $this->date = $post["date"];
-        $this->content = $post["content"];
-        $this->category = $post["category"];
-        // $this->comments = ;
-        return $this->db->update($this->_table, $this, array('no' => $post['no']));
+        $this->db->where('id_article', $id_article);
+        $query = $this->db->update($this->_table, $data);
+        return $query;
     }
 
-    public function hapus($no)
+    public function delete($id_article)
     {
-        return $this->db->delete($this->_table, array("no" => $no));
+        return $this->db->delete($this->_table, array("id_article" => $id_article));
     }
 }

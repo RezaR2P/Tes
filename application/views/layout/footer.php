@@ -8,9 +8,81 @@
 <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
 
 <script src="<?= base_url('assets/'); ?>vendor/ckeditor/ckeditor.js"></script>
+<script src="<?= base_url('assets/'); ?>vendor/lightbox2/src/js/lightbox.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<script>
+       const flashData = $('.flash-data').data('flashdata');
+       const flashVideo = $('.flash-video').data('flashdata');
+
+
+       if (flashData) {
+           Swal.fire({
+               title: 'Artikel Berhasil ' + flashData,
+               text: '',
+               icon: 'success'
+           });
+       }
+
+       if (flashVideo) {
+           Swal.fire({
+               title: 'Video Berhasil ' + flashVideo,
+               text: '',
+               icon: 'success'
+           });
+       }
+
+
+       // tombol hapus
+       $('.tombol-hapus').on('click', function(e) {
+           e.preventDefault();
+
+           const href = $(this).attr('href');
+
+
+           Swal.fire({
+               text: "Setelah dihapus, artikel ini tidak dapat diakses lagi!",
+                icon: 'warning',
+                cancelButtonColor: "#9CA3AF",
+                confirmButtonColor: "#DD6B55",
+               title: 'Apakah kamu yakin ingin menghapus Artikel ini?',
+               showCancelButton: true,
+               confirmButtonText: 'Hapus',
+           }).then((result) => {
+               /* Read more about isConfirmed, isDenied below */
+               if (result.isConfirmed) {
+                   document.location.href = href;
+               }
+           });
+       });
+   </script>
+   
+   <script>
+       const swiper = new Swiper('.swiper', {
+        // Optional parameters
+        direction: 'horizontal',
+        loop: true,
+
+        // If we need pagination
+        pagination: {
+            el: '.swiper-pagination',
+        },
+
+        // Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+        // And if we need scrollbar
+        scrollbar: {
+            el: '.swiper-scrollbar',
+        },
+        });
+
+   </script>
 
 <script>
     CKEDITOR.disableAutoInline = true;
