@@ -7,8 +7,12 @@ class User extends CI_Controller
     {
         parent::__construct();
         $this->load->model('user_model');
+
+        date_default_timezone_set('Asia/Jakarta');
+
         $this->get_datasess = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
+
     }
 
     public function index()
