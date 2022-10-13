@@ -47,11 +47,11 @@ class User extends CI_Controller
         $this->form_validation->set_rules('name', 'Name', 'required|xss_clean|trim');
         $this->form_validation->set_rules('username', 'Username', 'required|xss_clean|trim');
         $this->form_validation->set_rules('email', 'Email', 'required|xss_clean|trim');
-        if ($this->input->post('image')) {
+        if ($this->input->post('avatar')) {
             // $image = $this->input->post('image');
 
 
-            $upload_image = $_FILES['image']['image'];
+            $upload_image = $_FILES['avatar']['avatar'];
 
             if ($upload_image) {
                 $config['allowed_types'] = 'gif|jpg|png';
@@ -61,7 +61,7 @@ class User extends CI_Controller
 
                 $this->load->library('upload', $config);
 
-                if ($this->upload->do_upload('image')) {
+                if ($this->upload->do_upload('avatar')) {
                     $new_image = $this->upload->data('file_name');
                     $this->db->set('image', $new_image);
                 }
