@@ -16,7 +16,8 @@
 <script>
        const flashData = $('.flash-data').data('flashdata');
        const flashVideo = $('.flash-video').data('flashdata');
-
+       const flashFoto = $('.flash-foto').data('flashdata');
+       const flashTautan = $('.flash-tautan').data('flashdata');
 
        if (flashData) {
            Swal.fire({
@@ -29,6 +30,22 @@
        if (flashVideo) {
            Swal.fire({
                title: 'Video Berhasil ' + flashVideo,
+               text: '',
+               icon: 'success'
+           });
+       }
+
+       if (flashFoto) {
+           Swal.fire({
+               title: 'Foto Berhasil ' + flashFoto,
+               text: '',
+               icon: 'success'
+           });
+       }
+
+       if (flashTautan) {
+           Swal.fire({
+               title: 'Tautan Berhasil ' + flashTautan,
                text: '',
                icon: 'success'
            });

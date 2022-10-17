@@ -1,40 +1,29 @@
 <?php
 
-class Article_model extends CI_Model
+class Photo_model extends CI_Model
 {
-    private $_table = "db_article";
+    private $_table = "photo";
 
-    public $id_article;
+    public $id_photo;
     public $username;
     public $title;
-    public $date;
-    public $content;
-    public $coverImage;
-    public $category;
-    public $comments;
+    public $date_created;
+    public $photo;
 
     public function getData()
     {
         $this->db->from($this->_table);
-        $this->db->order_by('date', "desc");
+        $this->db->order_by('date_created', "desc");
         $query = $this->db->get();
         return $query->result();
     }
 
-    public function getById($id_article)
+    public function getById($id_photo)
     {
-        return $this->db->get_where($this->_table, ["id_article" => $id_article])->row();
+        return $this->db->get_where($this->_table, ["id_photo" => $id_photo])->row();
     }
 
-    public function getDataArtikel() {
- 
-        $this->db->from($this->_table);
-        $this->db->order_by('date', "desc");
-        $this->db->like('category', 'artikel');
-        $query = $this->db->get();
-        return $query->result();
-    
-    }
+
 
     public function save($data)
     {

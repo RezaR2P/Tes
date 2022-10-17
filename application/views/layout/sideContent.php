@@ -30,13 +30,13 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="<?= base_url("article/add"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <a href="<?= base_url("photo/add"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <i class="fa-solid fa-camera fa-fw text-gray-500 text-xl"></i>
                                 <span class="ml-3">Tambah Foto</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?= base_url("article/add"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <a href="<?= base_url("tautan/add"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <i class="fa-solid fa-link fa-fw text-gray-500 text-xl"></i>
                                 <span class="ml-3">Tambah Tautan</span>
                                 </a>
@@ -89,8 +89,27 @@
                 <div class="mt-4 p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                         <h5 class="mb-4 text-xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">Foto Terbaru</h5>
                     
-                        <img src="https://www.investopedia.com/thmb/1D5gzfGl4VYttKWJ5HMEGHjRLOs=/380x214/smart/filters:no_upscale()/aa014176-5bfc2b8bc9e77c002630643b.jpg" alt="" class="border-4 border-slate-700 shadow-lg rounded-lg max-w-full">
+                        <div class="swiper">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <?php foreach($photo as $p): ?>
                 
+                                <div class="swiper-slide">
+                                    
+                                    <img src="<?= base_url('assets/img/photo/') . $p->photo; ?>" alt="<?= $p->title; ?>" class="border-4 border-slate-700 shadow-lg rounded-lg max-w-full max-h-96">
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+
+                        <!-- If we need scrollbar -->
+                        <div class="swiper-scrollbar"></div>
+                        </div>
                 </div>
                 </section>
 

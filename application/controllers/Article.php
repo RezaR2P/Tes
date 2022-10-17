@@ -8,6 +8,7 @@ class Article extends CI_Controller
         parent::__construct();
         $this->load->model('article_model');
         $this->load->model('video_model');
+        $this->load->model('photo_model');
         $this->load->helper(array('form', 'url'));
         $this->load->library('upload');
         
@@ -22,6 +23,7 @@ class Article extends CI_Controller
         $this->session->userdata('username')])->row_array();
         $data["db_article"] = $this->article_model->getData();
         $data["video"] = $this->video_model->getData();
+        $data["photo"] = $this->photo_model->getData();
         $data["title"] = "Dashboard";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
@@ -36,7 +38,24 @@ class Article extends CI_Controller
         return (!preg_match("/^([-a-z0-9_ ])+$/i", $str_in)) ? FALSE : TRUE;
     }
 
-
+    public function artikel() 
+    {
+        if (!$this->session->userdata('username')) {
+            redirect('auth');
+        }
+        $data['user'] = $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
+        $data["db_article"] = $this->article_model->getDataArtikel();
+        $data["video"] = $this->video_model->getData();
+        $data["photo"] = $this->photo_model->getData();
+        $data["title"] = "Artikel";
+        $this->load->view("layout/header", $data);
+        $this->load->view("layout/navbar", $data);
+        $this->load->view("layout/subtitle", $data);
+        $this->load->view("article/artikel", $data);
+        $this->load->view("layout/sidecontent", $data);
+        $this->load->view("layout/footer", $data);
+    }
 
 
     public function add()
