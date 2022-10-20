@@ -11,10 +11,29 @@ class Tautan_model extends CI_Model
     public $category;
     public $date_created;
 
-    public function getData()
+    public function getDataInti()
     {
         $this->db->from($this->_table);
         $this->db->order_by('date_created', "desc");
+        $this->db->like('category', 'inti');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function getDataKoperasi()
+    {
+        $this->db->from($this->_table);
+        $this->db->order_by('date_created', "desc");
+        $this->db->like('category', 'koperasi');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function getDataKerja()
+    {
+        $this->db->from($this->_table);
+        $this->db->order_by('date_created', "desc");
+        $this->db->like('category', 'serikatkerja');
         $query = $this->db->get();
         return $query->result();
     }

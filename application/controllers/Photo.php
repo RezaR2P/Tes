@@ -23,6 +23,10 @@ class Photo extends CI_Controller {
             redirect('auth');
         }
 
+        if (intval($this->session->userdata('role') == 3)) {
+            redirect('article');
+        }
+
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('title', 'Title', 'required|xss_clean|callback_alpha_dash_space');

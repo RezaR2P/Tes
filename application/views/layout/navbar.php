@@ -90,8 +90,11 @@
           <div id="dropdownMenu" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
                 <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownUser">
                 <li>
-               
-                    <a href="<?= base_url('user/profile/') .$user['username']; ?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-300"> <i class="fa-solid fa-user fa-fw mr-2"></i>Profil Saya</a>
+                    <?php if($this->session->userdata('role') == 3) : ?>
+                      <a href="<?= base_url('user/profile/') .$user['username']; ?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-300"> <i class="fa-solid fa-user fa-fw mr-2"></i>Profil Saya</a>
+                    <?php else : ?>
+                      <a href="<?= base_url('user/article/') .$user['username']; ?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-300"> <i class="fa-solid fa-user fa-fw mr-2"></i>Profil Saya</a>
+                    <?php endif; ?>
                 </li>
                 <li>
                     <a href="<?= base_url('user/editprofile/') .$user['username']; ?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-300"><i class="fa-solid fa-user-edit fa-fw mr-2"></i>Edit Profil</a>

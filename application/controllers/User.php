@@ -24,7 +24,7 @@ class User extends CI_Controller
         $this->session->userdata('username')])->row_array();
     }
 
-    public function profile($username)
+    public function article($username)
     {
         if (!$this->session->userdata('username')) {
             redirect('auth');
@@ -32,12 +32,73 @@ class User extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
         $data["contentuser"] = $this->user_model->getByUser($username);
+        
+        $data["title"] = "Profil Saya";
+        $this->load->view("layout/header", $data);
+        $this->load->view("layout/sidebar", $data);
+        $this->load->view("user/article", $data);
+        $this->load->view("layout/footer", $data);
+    }
+
+    public function photo($username) {
+        if (!$this->session->userdata('username')) {
+            redirect('auth');
+        }
+        $data['user'] = $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
+        $data["contentuser"] = $this->user_model->getByUser($username);
+        
+        $data["title"] = "Profil Saya";
+        $this->load->view("layout/header", $data);
+        $this->load->view("layout/sidebar", $data);
+        $this->load->view("user/photo", $data);
+        $this->load->view("layout/footer", $data);
+    }
+
+    public function video($username) {
+        if (!$this->session->userdata('username')) {
+            redirect('auth');
+        }
+        $data['user'] = $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
+        $data["contentuser"] = $this->user_model->getByUser($username);
+        
+        $data["title"] = "Profil Saya";
+        $this->load->view("layout/header", $data);
+        $this->load->view("layout/sidebar", $data);
+        $this->load->view("user/video", $data);
+        $this->load->view("layout/footer", $data);
+    }
+
+    public function tautan($username) {
+        if (!$this->session->userdata('username')) {
+            redirect('auth');
+        }
+        $data['user'] = $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
+        $data["contentuser"] = $this->user_model->getByUser($username);
+        
+        $data["title"] = "Profil Saya";
+        $this->load->view("layout/header", $data);
+        $this->load->view("layout/sidebar", $data);
+        $this->load->view("user/tautan", $data);
+        $this->load->view("layout/footer", $data);
+    }
+
+    public function profile() {
+        if (!$this->session->userdata('username')) {
+            redirect('auth');
+        }
+        $data['user'] = $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
+        
         $data["title"] = "Profil Saya";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/sidebar", $data);
         $this->load->view("user/index", $data);
         $this->load->view("layout/footer", $data);
     }
+
     public function editProfile()
     {
 

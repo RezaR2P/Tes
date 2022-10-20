@@ -53,7 +53,7 @@
 
 
        // tombol hapus
-       $('.tombol-hapus').on('click', function(e) {
+       $('.tombol-hapus').click(function(e) {
            e.preventDefault();
 
            const href = $(this).attr('href');
@@ -70,6 +70,9 @@
            }).then((result) => {
                /* Read more about isConfirmed, isDenied below */
                if (result.isConfirmed) {
+                   inputAttributes: {
+                       name: "deleteArticle"
+                   }
                    document.location.href = href;
                }
            });

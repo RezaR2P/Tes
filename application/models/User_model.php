@@ -3,6 +3,7 @@
 class User_model extends CI_Model
 {
     private $_user = "user";
+    public $id_user;
     public $name;
     public $username;
     public $email;

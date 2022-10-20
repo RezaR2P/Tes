@@ -19,6 +19,10 @@ class Video extends CI_Controller
             redirect('auth');
         }
 
+        if (intval($this->session->userdata('role') == 3)) {
+            redirect('article');
+        }
+
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('title', 'Title', 'required|xss_clean|callback_alpha_dash_space');
@@ -53,6 +57,10 @@ class Video extends CI_Controller
             redirect('auth');
         }
 
+        if (intval($this->session->userdata('role') == 3)) {
+            redirect('article');
+        }
+
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('title', 'Title', 'required|xss_clean|callback_alpha_dash_space');
@@ -76,6 +84,10 @@ class Video extends CI_Controller
     public function deleteVideo($id_video) {
         if( !$this->session->userdata('username')) {
             redirect('auth');
+        }
+
+        if (intval($this->session->userdata('role') == 3)) {
+            redirect('article');
         }
 
         if (!isset($id_video)) show_404();

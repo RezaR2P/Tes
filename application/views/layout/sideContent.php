@@ -1,5 +1,6 @@
 <div class="basis-4/12 px-4 pt-4" id="sideContent">
 
+        <?php if (intval($this->session->userdata('role') == 1 || intval($this->session->userdata('role') == 2))) : ?>
                 <section id="menuadmin">
                     
                     <div class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
@@ -71,6 +72,7 @@
                     </aside>
                     </div>
                 </section>
+                <?php endif; ?>
                 <section id="pengumuman">
 
                 <div class="mt-4 p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">

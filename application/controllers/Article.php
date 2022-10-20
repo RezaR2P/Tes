@@ -64,6 +64,10 @@ class Article extends CI_Controller
             redirect('auth');
         }
 
+        if (intval($this->session->userdata('role') == 3)) {
+            redirect('article');
+        }
+
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('title', 'Title', 'required|xss_clean|callback_alpha_dash_space');
@@ -137,9 +141,18 @@ class Article extends CI_Controller
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
+
+        if (intval($this->session->userdata('role') == 3)) {
+            redirect('article');
+        }
+
+
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array(); 
         $data["content"] = $this->article_model->getById($id_article);
+
+        
+
         $data["title"] = "Edit Artikel";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
@@ -223,15 +236,24 @@ class Article extends CI_Controller
     public function delete($id_article = null) {
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
+        $content = $this->article_model->getById($id_article);
         if( !$this->session->userdata('username')) {
             redirect('auth');
         }
 
+        if (intval($this->session->userdata('role') == 3)) {
+            redirect('article');
+        }
+
         if (!isset($id_article)) show_404();
         
-        if ($this->article_model->delete($id_article)) {
-            $this->session->set_flashdata('success', 'Dihapus');
+        if($content->username != $this->session->userdata('username')) {
             redirect('article');
+        } else {
+            if ($this->article_model->delete($id_article)) {
+                $this->session->set_flashdata('success', 'Dihapus');
+                redirect('article');
+            }
         }
     }
 
