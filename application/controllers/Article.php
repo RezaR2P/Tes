@@ -10,7 +10,6 @@ class Article extends CI_Controller
         $this->load->model('video_model');
         $this->load->helper(array('form', 'url'));
         $this->load->library('upload');
-        
     }
 
     public function index()
@@ -94,12 +93,11 @@ class Article extends CI_Controller
                     'category' => $this->input->post('category'),
                     'comments' => 1
 
-				);
-				$this->article_model->save($data);
+                );
+                $this->article_model->save($data);
                 $this->session->set_flashdata('success', 'Dibuat!');
-				redirect('article');
-			}  
-      
+                redirect('article');
+            }
         }
 
 
@@ -114,12 +112,13 @@ class Article extends CI_Controller
         $this->load->view("layout/footer", $data);
     }
 
-    public function edit($id_article) {
+    public function edit($id_article)
+    {
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
         $data['user'] = $this->db->get_where('user', ['username' =>
-        $this->session->userdata('username')])->row_array(); 
+        $this->session->userdata('username')])->row_array();
         $data["content"] = $this->article_model->getById($id_article);
         $data["title"] = "Edit Artikel";
         $this->load->view("layout/header", $data);
@@ -139,27 +138,27 @@ class Article extends CI_Controller
         // $this->form_validation->set_rules('content', 'Content', 'required|xss_clean');
         $this->form_validation->set_rules('category', 'Category', 'required');
         $this->form_validation->set_rules('content', 'Content', 'required');
-        
+
         $validation = $this->form_validation;
         $this->form_validation->set_message('alpha_dash_space', '%s Hanya boleh diisi Huruf dan Angka');
         $this->form_validation->set_message('required', '%s Harus diisi');
-       
+
 
         if ($validation->run() == FALSE) {
             $this->session->set_flashdata('error', 'Artikel Gagal Diubah');
         } else {
-                
+
 
             $config['upload_path']          = './assets/img/content/';
             $config['allowed_types']        = 'gif|jpg|png|jpeg|pdf';
             $config['max_size']             = 20480000;
             $config['overwrite'] = TRUE;
             $this->upload->initialize($config);
-			if(!$this->upload->do_upload('gambar')){ 
+            if (!$this->upload->do_upload('gambar')) {
                 // $id = $this->uri->segment(3);
                 // $old_image = $this->article_model->getById($id);
                 $data = array(
-                    'coverImage' => $this->input->post('gambar'), 
+                    'coverImage' => $this->input->post('gambar'),
                     'id_article' => $this->input->post('id_article'),
                     'username' => $this->input->post('username'),
                     'title' => $this->input->post('title'),
@@ -171,17 +170,17 @@ class Article extends CI_Controller
                 );
                 $this->article_model->updateArticle($data, $this->input->post('id_article'));
                 $this->session->set_flashdata('success', 'Diubah');
-                redirect(base_url('user/profile/'). $this->input->post('username'));
-            }else {
+                redirect(base_url('user/profile/') . $this->input->post('username'));
+            } else {
                 $old_image = $this->input->post('gambar');
                 if ($old_image != 'default.jpg') {
                     unlink(FCPATH . 'assets/img/content/' . $old_image);
                 }
-                
+
                 $new_image = $this->upload->data('file_name');
-               
+
                 $data = array(
-                    'coverImage' => $new_image, 
+                    'coverImage' => $new_image,
                     'id_article' => $this->id_article,
                     'username' => $this->input->post('username'),
                     'title' => $this->input->post('title'),
@@ -193,30 +192,29 @@ class Article extends CI_Controller
                 );
                 $this->article_model->updateArticle($data, $this->input->post('id_article'));
                 $this->session->set_flashdata('success', 'Diubah');
-                redirect(base_url('user/profile/'). $this->input->post('username'));
-           
+                redirect(base_url('user/profile/') . $this->input->post('username'));
             }
-                
         }
     }
 
-   
-    public function delete($id_article = null) {
+
+    public function delete($id_article = null)
+    {
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
-        if( !$this->session->userdata('username')) {
+        if (!$this->session->userdata('username')) {
             redirect('auth');
         }
 
         if (!isset($id_article)) show_404();
-        
+
         if ($this->article_model->delete($id_article)) {
             $this->session->set_flashdata('success', 'Dihapus');
             redirect('article');
         }
     }
 
-   
+
 
     public function mainContent($id_article)
     {

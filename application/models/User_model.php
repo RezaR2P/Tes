@@ -8,23 +8,23 @@ class User_model extends CI_Model
     public $email;
     public $avatar;
 
-    // public function getData()
-    // {
-    //     $this->db->from($this->_table);
-    //     $this->db->order_by('date', "desc");
-    //     $query = $this->db->get();
-    //     return $query->result();
-    // }
+    public function getData()
+    {
+        $this->db->from($this->_table);
+        $this->db->order_by('date', "desc");
+        $query = $this->db->get();
+        return $query->result();
+    }
 
-    // public function getByUser($username)
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('db_article');
-    //     $this->db->like('username', $username);
-    //     $query = $this->db->get();
-    //     return $query->result_array();
-    //     // return $this->db->get_where($this->_table, ["username" => $username])->result_array();
-    // }
+    public function getByUser($username)
+    {
+        $this->db->select('*');
+        $this->db->from('db_article');
+        $this->db->like('username', $username);
+        $query = $this->db->get();
+        return $query->result_array();
+        return $this->db->get_where($this->_table, ["username" => $username])->result_array();
+    }
 
 
     public function tampilData()
@@ -44,6 +44,5 @@ class User_model extends CI_Model
         $this->email = $post["email"];
         $this->avatar = ($post["avatar"])  ? $post["avatar"] : "default.jpg";
         return $this->db->update($this->_user, $this, array('name' => $post['name']));
-
     }
 }
