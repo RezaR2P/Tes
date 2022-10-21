@@ -37,37 +37,21 @@
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-3">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Home</a>
+            <a href="<?= base_url('article'); ?>" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Home</a>
 
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Berita</a>
+            <a href="<?= base_url('berita'); ?>" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Berita</a>
 
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Liputan</a>
+            <a href="<?= base_url('liputan'); ?>" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Liputan</a>
 
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Regulasi</a>
+            <a href="<?= base_url('regulasi'); ?>" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Regulasi</a>
 
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Pengumuman</a>
+            <a href="<?= base_url('pengumuman'); ?>" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Pengumuman</a>
 
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Artikel</a>
+            <a href="<?= base_url('article/artikel'); ?>" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Artikel</a>
 
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Kliping</a>
+            <a href="<?= base_url('arsip'); ?>" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Kliping</a>
             
-            <a href="#" id="dropdownTopik"  data-dropdown-toggle="dropdownAja" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium inline-flex">Topik <svg class="ml-2 mt-0.5 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
-
-            <!-- <button id="dropdownTopik" data-dropdown-toggle="dropdownAja" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Dropdown divider <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button> -->
-
-            <!-- Dropdown menu -->
-            <div id="dropdownAja" class="hidden z-10 w-44 bg-white  rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownTopik">
-                <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-slate-300 dark:hover:bg-gray-600 dark:hover:text-white">Layanan umum & properti</a>
-                </li>
-                <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-slate-300 dark:hover:bg-gray-600 dark:hover:text-white">Penomoran Surat</a>
-                </li>
-              
-                </ul>
-                
-            </div>
+           
             
             <a href="#" id="dropdownTautan" data-dropdown-toggle="dropdownDivider" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium inline-flex">Tautan <svg class="ml-2 mt-0.5 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
 
@@ -77,13 +61,13 @@
             <div id="dropdownDivider" class="hidden z-10 w-44 bg-white text-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
                 <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownTautan">
                 <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-slate-300 dark:hover:bg-gray-600 dark:hover:text-white">Inti</a>
+                    <a href="<?= base_url('tautan/inti'); ?>" class="block py-2 px-4 hover:bg-slate-300 dark:hover:bg-gray-600 dark:hover:text-white">Inti</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-slate-300 dark:hover:bg-gray-600 dark:hover:text-white">Koperasi</a>
+                    <a href="<?= base_url('tautan/koperasi'); ?>" class="block py-2 px-4 hover:bg-slate-300 dark:hover:bg-gray-600 dark:hover:text-white">Koperasi</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-slate-300 dark:hover:bg-gray-600 dark:hover:text-white">Serikat Kerja</a>
+                    <a href="<?= base_url('tautan/serikatkerja'); ?>" class="block py-2 px-4 hover:bg-slate-300 dark:hover:bg-gray-600 dark:hover:text-white">Serikat Kerja</a>
                 </li>
                 </ul>
                 
@@ -106,8 +90,11 @@
           <div id="dropdownMenu" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
                 <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownUser">
                 <li>
-               
-                    <a href="<?= base_url('user/profile/') .$user['username']; ?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-300"> <i class="fa-solid fa-user fa-fw mr-2"></i>Profil Saya</a>
+                    <?php if($this->session->userdata('role') == 3) : ?>
+                      <a href="<?= base_url('user/profile/') .$user['username']; ?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-300"> <i class="fa-solid fa-user fa-fw mr-2"></i>Profil Saya</a>
+                    <?php else : ?>
+                      <a href="<?= base_url('user/article/') .$user['username']; ?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-300"> <i class="fa-solid fa-user fa-fw mr-2"></i>Profil Saya</a>
+                    <?php endif; ?>
                 </li>
                 <li>
                     <a href="<?= base_url('user/editprofile/') .$user['username']; ?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-300"><i class="fa-solid fa-user-edit fa-fw mr-2"></i>Edit Profil</a>

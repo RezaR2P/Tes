@@ -16,7 +16,8 @@
 <script>
        const flashData = $('.flash-data').data('flashdata');
        const flashVideo = $('.flash-video').data('flashdata');
-
+       const flashFoto = $('.flash-foto').data('flashdata');
+       const flashTautan = $('.flash-tautan').data('flashdata');
 
        if (flashData) {
            Swal.fire({
@@ -34,9 +35,25 @@
            });
        }
 
+       if (flashFoto) {
+           Swal.fire({
+               title: 'Foto Berhasil ' + flashFoto,
+               text: '',
+               icon: 'success'
+           });
+       }
+
+       if (flashTautan) {
+           Swal.fire({
+               title: 'Tautan Berhasil ' + flashTautan,
+               text: '',
+               icon: 'success'
+           });
+       }
+
 
        // tombol hapus
-       $('.tombol-hapus').on('click', function(e) {
+       $('.tombol-hapus').click(function(e) {
            e.preventDefault();
 
            const href = $(this).attr('href');
@@ -53,6 +70,9 @@
            }).then((result) => {
                /* Read more about isConfirmed, isDenied below */
                if (result.isConfirmed) {
+                   inputAttributes: {
+                       name: "deleteArticle"
+                   }
                    document.location.href = href;
                }
            });

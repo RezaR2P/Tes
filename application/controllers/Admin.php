@@ -5,6 +5,14 @@ class Admin extends CI_Controller
 {
     public function registration()
     {
+        if (!$this->session->userdata('username')) {
+            redirect('auth');
+        }
+
+        if (intval($this->session->userdata('role') != 1)) {
+            redirect('article');
+        }
+
         $this->load->library('form_validation');
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
         $this->form_validation->set_rules('username', 'Username', 'required|trim');
@@ -30,7 +38,7 @@ class Admin extends CI_Controller
                 'email' => htmlspecialchars($this->input->post('email', true)),
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'avatar' => 'default.jpg',
-                'role' => 2,
+                'role' => htmlspecialchars($this->input->post('role', true)),
             ];
             $this->db->insert('user', $data);
             $this->session->set_flashdata('msg_success', 'Congratulation! your account has been created. Please Login');

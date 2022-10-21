@@ -3,28 +3,29 @@
 class User_model extends CI_Model
 {
     private $_user = "user";
+    public $id_user;
     public $name;
     public $username;
     public $email;
     public $avatar;
 
-    // public function getData()
-    // {
-    //     $this->db->from($this->_table);
-    //     $this->db->order_by('date', "desc");
-    //     $query = $this->db->get();
-    //     return $query->result();
-    // }
+    public function getData()
+    {
+        $this->db->from($this->_table);
+        $this->db->order_by('date', "desc");
+        $query = $this->db->get();
+        return $query->result();
+    }
 
-    // public function getByUser($username)
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('db_article');
-    //     $this->db->like('username', $username);
-    //     $query = $this->db->get();
-    //     return $query->result_array();
-    //     // return $this->db->get_where($this->_table, ["username" => $username])->result_array();
-    // }
+    public function getByUser($username)
+    {
+        $this->db->select('*');
+        $this->db->from('db_article');
+        $this->db->like('username', $username);
+        $query = $this->db->get();
+        return $query->result_array();
+        // return $this->db->get_where($this->_table, ["username" => $username])->result_array();
+    }
 
 
     public function tampilData()

@@ -1,3 +1,7 @@
+<?php if($content->username !== $this->session->userdata('username')) {
+            redirect('article');
+        } ?>
+
 <div class="basis-8/12 " id="content">
     <div class="mt-4 p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
     <form action="<?= base_url('article/prosesedit') ?>" method="post" enctype="mulripart/form-data">
