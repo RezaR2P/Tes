@@ -7,6 +7,10 @@ class User extends CI_Controller
     {
         parent::__construct();
         $this->load->model('user_model');
+        $this->load->model('article_model');
+        $this->load->model('photo_model');
+        $this->load->model('video_model');
+        $this->load->model('tautan_model');
 
         date_default_timezone_set('Asia/Jakarta');
 
@@ -31,9 +35,9 @@ class User extends CI_Controller
         }
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
-        $data["contentuser"] = $this->user_model->getByUser($username);
+        $data["contentuser"] = $this->article_model->getByUser($username);
         
-        $data["title"] = "Profil Saya";
+        $data["title"] = "Artikel Saya";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/sidebar", $data);
         $this->load->view("user/article", $data);
@@ -46,9 +50,9 @@ class User extends CI_Controller
         }
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
-        $data["contentuser"] = $this->user_model->getByUser($username);
+        $data["photo"] = $this->photo_model->getByUser($username);
         
-        $data["title"] = "Profil Saya";
+        $data["title"] = "Foto Saya";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/sidebar", $data);
         $this->load->view("user/photo", $data);
@@ -61,9 +65,9 @@ class User extends CI_Controller
         }
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
-        $data["contentuser"] = $this->user_model->getByUser($username);
+        $data["video"] = $this->video_model->getByUser($username);
         
-        $data["title"] = "Profil Saya";
+        $data["title"] = "Video Saya";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/sidebar", $data);
         $this->load->view("user/video", $data);
@@ -76,9 +80,9 @@ class User extends CI_Controller
         }
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
-        $data["contentuser"] = $this->user_model->getByUser($username);
+        $data["tautan"] = $this->tautan_model->getByUser($username);
         
-        $data["title"] = "Profil Saya";
+        $data["title"] = "Tautan Saya";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/sidebar", $data);
         $this->load->view("user/tautan", $data);

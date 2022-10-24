@@ -7,6 +7,7 @@ class Article extends CI_Controller
     {
         parent::__construct();
         $this->load->model('article_model');
+        $this->load->model('comment_model');
         $this->load->model('video_model');
         $this->load->model('photo_model');
         $this->load->helper(array('form', 'url'));
@@ -128,6 +129,8 @@ class Article extends CI_Controller
 
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
+        $data["video"] = $this->video_model->getData();
+        $data["photo"] = $this->photo_model->getData();
         $data["title"] = "Tambah Artikel";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
@@ -266,7 +269,12 @@ class Article extends CI_Controller
         }
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
+        $data["video"] = $this->video_model->getData();
+        $data["photo"] = $this->photo_model->getData();
         $data["content"] = $this->article_model->getById($id_article);
+        $data["cfirst"] = $this->comment_model->getByArticle($id_article);
+        $data["comment"] = $this->comment_model->getData();
+        $data["countComment"] = $this->comment_model->countData($id_article);
         $data["title"] = "Konten Artikel";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);

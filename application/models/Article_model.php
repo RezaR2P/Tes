@@ -26,6 +26,16 @@ class Article_model extends CI_Model
         return $this->db->get_where($this->_table, ["id_article" => $id_article])->row();
     }
 
+    public function getByUser($username)
+    {
+        $this->db->select('*');
+        $this->db->from('db_article');
+        $this->db->like('username', $username);
+        $query = $this->db->get();
+        return $query->result_array();
+        // return $this->db->get_where($this->_table, ["username" => $username])->result_array();
+    }
+
     public function getDataArtikel() {
  
         $this->db->from($this->_table);

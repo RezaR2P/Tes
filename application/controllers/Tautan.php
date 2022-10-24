@@ -102,6 +102,8 @@ class Tautan extends CI_Controller
 
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
+        $data["video"] = $this->video_model->getData();
+        $data["photo"] = $this->photo_model->getData();
         $data["title"] = "Tambah Tautan";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
@@ -111,7 +113,31 @@ class Tautan extends CI_Controller
         $this->load->view("layout/footer", $data);
     }
 
-    public function edit() {
+    public function edit($id_tautan) 
+    {
+        if (!$this->session->userdata('username')) {
+            redirect('auth');
+        }
+
+        if (intval($this->session->userdata('role') == 3)) {
+            redirect('article');
+        }
+
+        $data['user'] = $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
+        $data["tautan"] = $this->tautan_model->getById($id_tautan);
+        $data["video"] = $this->video_model->getData();
+        $data["photo"] = $this->photo_model->getData();
+        $data["title"] = "Edit Tautan";
+        $this->load->view("layout/header", $data);
+        $this->load->view("layout/navbar", $data);
+        $this->load->view("layout/subtitle", $data);
+        $this->load->view("tautan/edit", $data);
+        $this->load->view("layout/sidecontent", $data);
+        $this->load->view("layout/footer", $data);
+    }
+
+    public function prosesEdit() {
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
@@ -131,16 +157,19 @@ class Tautan extends CI_Controller
         $this->form_validation->set_message('required', '%s Harus diisi');
 
         if ($validation->run() == FALSE) {
-            $this->session->set_flashdata('error', 'Video Gagal Ditambahkan');
+            $this->session->set_flashdata('error', 'Tautan Gagal Diubah');
         } else {
-            $this->video_model->update();
-            $this->session->set_flashdata('videoSuccess', 'Ditambahkan');
+            $this->tautan_model->update();
+            $this->session->set_flashdata('tautanSuccess', 'Diubah');
             redirect('article');
         }
     }
     
 
-    public function deleteVideo($id_video) {
+    public function delete($id_tautan = null) {
+        $data['user'] = $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
+        $content = $this->tautan_model->getById($id_tautan);
         if( !$this->session->userdata('username')) {
             redirect('auth');
         }
@@ -149,11 +178,15 @@ class Tautan extends CI_Controller
             redirect('article');
         }
 
-        if (!isset($id_video)) show_404();
+        if (!isset($id_tautan)) show_404();
         
-        if ($this->article_model->delete($id_video)) {
-            $this->session->set_flashdata('videoSuccess', 'Dihapus');
+        if($content->username != $this->session->userdata('username')) {
             redirect('article');
+        } else {
+            if ($this->tautan_model->delete($id_tautan)) {
+                $this->session->set_flashdata('success', 'Dihapus');
+                redirect(base_url('user/tautan/') . $content->username);
+            }
         }
     }
 }

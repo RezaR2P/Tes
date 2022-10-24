@@ -40,9 +40,14 @@ class Tautan_model extends CI_Model
 
     public function getById($id_tautan)
     {
+        return $this->db->get_where($this->_table, ["id_tautan" => $id_tautan])->result_array();
+    }
+
+    public function getByUser($username)
+    {
         $this->db->select('*');
-        $this->db->from('db_article');
-        $this->db->order_by('date', "desc");
+        $this->db->from('tautan');
+        $this->db->like('username', $username);
         $query = $this->db->get();
         return $query->result_array();
         // return $this->db->get_where($this->_table, ["username" => $username])->result_array();

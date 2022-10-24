@@ -5,6 +5,7 @@ class Video_model extends CI_Model
     private $_table = "video";
 
     public $id_video;
+    public $username;
     public $title;
     public $url;
     public $date_created;
@@ -20,8 +21,18 @@ class Video_model extends CI_Model
     public function getById($id_video)
     {
         $this->db->select('*');
-        $this->db->from('db_article');
+        $this->db->from('video');
         $this->db->order_by('date', "desc");
+        $query = $this->db->get();
+        return $query->result_array();
+        // return $this->db->get_where($this->_table, ["username" => $username])->result_array();
+    }
+
+    public function getByUser($username)
+    {
+        $this->db->select('*');
+        $this->db->from('video');
+        $this->db->like('username', $username);
         $query = $this->db->get();
         return $query->result_array();
         // return $this->db->get_where($this->_table, ["username" => $username])->result_array();

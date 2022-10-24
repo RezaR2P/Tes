@@ -1,18 +1,12 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Video extends CI_Controller
+class Comment extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('video_model');
-        $this->load->model('photo_model');
-    }
-
-    function alpha_dash_space($str_in = '')
-    {
-        return (!preg_match("/^([-a-z0-9_ ])+$/i", $str_in)) ? FALSE : TRUE;
+        $this->load->model('comment_model');
     }
 
     public function add() {
@@ -20,42 +14,42 @@ class Video extends CI_Controller
             redirect('auth');
         }
 
-        if (intval($this->session->userdata('role') == 3)) {
-            redirect('article');
-        }
-
         $this->load->library('form_validation');
-
-        $this->form_validation->set_rules('title', 'Title', 'required|xss_clean|callback_alpha_dash_space');
-        // $this->form_validation->set_rules('content', 'Content', 'required|xss_clean');
-        $this->form_validation->set_rules('url', 'Url', 'required');
+        $this->form_validation->set_rules('comment', 'Comment', 'required|xss_clean');
         
         $validation = $this->form_validation;
-        $this->form_validation->set_message('alpha_dash_space', '%s Hanya boleh diisi Huruf dan Angka');
         $this->form_validation->set_message('required', '%s Harus diisi');
 
+        $id_article =  $this->uri->segment(3);
+
         if ($validation->run() == FALSE) {
-            $this->session->set_flashdata('error', 'Video Gagal Ditambahkan');
+            $this->session->set_flashdata('error', 'Komentar Gagal Ditambahkan');
         } else {
-            $this->video_model->save();
-            $this->session->set_flashdata('videoSuccess', 'Ditambahkan');
-            redirect('article');
+            $this->comment_model->save();
+            $this->session->set_flashdata('commentSuccess', 'Ditambahkan');
+            redirect(base_url('article/maincontent/') . $this->input->post('id_article'));
+        }
+    }
+
+    public function edit($id_comment) 
+    {
+        if (!$this->session->userdata('username')) {
+            redirect('auth');
         }
 
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
-        $data["video"] = $this->video_model->getData();
-        $data["photo"] = $this->photo_model->getData();
-        $data["title"] = "Tambah Video";
+        $data["tautan"] = $this->tautan_model->getById($id_comment);
+        $data["title"] = "Edit Komentar";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
         $this->load->view("layout/subtitle", $data);
-        $this->load->view("video/add", $data);
+        $this->load->view("tautan/edit", $data);
         $this->load->view("layout/sidecontent", $data);
         $this->load->view("layout/footer", $data);
     }
 
-    public function edit() {
+    public function prosesEdit() {
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
@@ -75,31 +69,19 @@ class Video extends CI_Controller
         $this->form_validation->set_message('required', '%s Harus diisi');
 
         if ($validation->run() == FALSE) {
-            $this->session->set_flashdata('error', 'Video Gagal Ditambahkan');
+            $this->session->set_flashdata('error', 'Tautan Gagal Diubah');
         } else {
-            $this->video_model->update();
-            $this->session->set_flashdata('videoSuccess', 'Ditambahkan');
+            $this->tautan_model->update();
+            $this->session->set_flashdata('tautanSuccess', 'Diubah');
             redirect('article');
         }
-
-        $data['user'] = $this->db->get_where('user', ['username' =>
-        $this->session->userdata('username')])->row_array();
-        $data["video"] = $this->video_model->getData();
-        $data["photo"] = $this->photo_model->getData();
-        $data["title"] = "Edit Video";
-        $this->load->view("layout/header", $data);
-        $this->load->view("layout/navbar", $data);
-        $this->load->view("layout/subtitle", $data);
-        $this->load->view("video/edit", $data);
-        $this->load->view("layout/sidecontent", $data);
-        $this->load->view("layout/footer", $data);
     }
     
 
-    public function delete($id_video = null) {
+    public function delete($id_tautan = null) {
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
-        $content = $this->video_model->getById($id_video);
+        $content = $this->tautan_model->getById($id_tautan);
         if( !$this->session->userdata('username')) {
             redirect('auth');
         }
@@ -108,12 +90,12 @@ class Video extends CI_Controller
             redirect('article');
         }
 
-        if (!isset($id_video)) show_404();
+        if (!isset($id_tautan)) show_404();
         
         if($content->username != $this->session->userdata('username')) {
             redirect('article');
         } else {
-            if ($this->video_model->delete($id_video)) {
+            if ($this->tautan_model->delete($id_tautan)) {
                 $this->session->set_flashdata('success', 'Dihapus');
                 redirect(base_url('user/tautan/') . $content->username);
             }

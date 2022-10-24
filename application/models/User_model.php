@@ -17,17 +17,6 @@ class User_model extends CI_Model
         return $query->result();
     }
 
-    public function getByUser($username)
-    {
-        $this->db->select('*');
-        $this->db->from('db_article');
-        $this->db->like('username', $username);
-        $query = $this->db->get();
-        return $query->result_array();
-        // return $this->db->get_where($this->_table, ["username" => $username])->result_array();
-    }
-
-
     public function tampilData()
     {
         $this->db->from($this->_user);
