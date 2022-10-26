@@ -12,17 +12,45 @@ class Article extends CI_Controller
         $this->load->model('photo_model');
         $this->load->helper(array('form', 'url'));
         $this->load->library('upload');
-        
+       
     }
 
     public function index()
     {
+
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
+
+        // Search
+        if($this->input->post('keyword')) {
+           $data['keyword'] = $this->input->post('keyword');
+           $this->session->set_userdata('keyword', $data['keyword']);
+        } else {
+           $data['keyword'] =null;
+        }
+
+        // Pagination
+        $this->load->library('pagination');
+        $config['base_url'] = 'http://localhost/inti/article/index';
+        $this->db->like('title', $data['keyword']);
+        $this->db->or_like('content', $data['keyword']);
+        $this->db->or_like('username', $data['keyword']);
+        $this->db->or_like('category', $data['keyword']);
+        $this->db->from('db_article');
+        $config['total_rows'] = $this->db->count_all_results();
+        $data['total_rows'] = $config['total_rows'];
+        $config['per_page'] = 6;
+
+        
+        $this->pagination->initialize($config);
+        $offset = $this->uri->segment(3);
+
+
+
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
-        $data["db_article"] = $this->article_model->getData();
+        $data["db_article"] = $this->article_model->getData( $config['per_page'], $offset ,$data['keyword']);
         $data["video"] = $this->video_model->getData();
         $data["photo"] = $this->photo_model->getData();
         $data["title"] = "Dashboard";
@@ -39,14 +67,28 @@ class Article extends CI_Controller
         return (!preg_match("/^([-a-z0-9_ ])+$/i", $str_in)) ? FALSE : TRUE;
     }
 
-    public function artikel() 
+    public function artikel()
     {
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
+
+        // Pagination
+        $this->load->library('pagination');
+        $config['base_url'] = 'http://localhost/inti/article/artikel/index';
+        $config['total_rows'] = $this->article_model->getTotalRowsArtikel();
+        $data['total_rows'] = $config['total_rows'];
+        $config['per_page'] = 6;
+
+        
+        $this->pagination->initialize($config);
+        $offset = $this->uri->segment(4);
+
+
+
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
-        $data["db_article"] = $this->article_model->getDataArtikel();
+        $data["db_article"] = $this->article_model->getDataArtikel( $config['per_page'], $offset);
         $data["video"] = $this->video_model->getData();
         $data["photo"] = $this->photo_model->getData();
         $data["title"] = "Artikel";

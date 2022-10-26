@@ -16,12 +16,34 @@ class Tautan extends CI_Controller
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
+
+        // Search
+        if($this->input->post('keyword')) {
+           $data['keyword'] = $this->input->post('keyword');
+           $this->session->set_userdata('keyword', $data['keyword']);
+        } else {
+           $data['keyword'] =null;
+        }
+
+        // Pagination
+        $this->load->library('pagination');
+        $config['base_url'] = 'http://localhost/inti/tautan/inti/index';
+        $config['total_rows'] = $this->tautan_model->getTotalRowsInti();
+        $data['total_rows'] = $config['total_rows'];
+        $config['per_page'] = 10;
+
+        
+        $this->pagination->initialize($config);
+        $offset = $this->uri->segment(4);
+
+
+
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
-        $data["tautan"] = $this->tautan_model->getDataInti();
+        $data["tautan"] = $this->tautan_model->getDataInti( $config['per_page'], $offset ,$data['keyword']);
         $data["video"] = $this->video_model->getData();
         $data["photo"] = $this->photo_model->getData();
-        $data["title"] = "INTI";
+        $data["title"] = "Tautan Inti";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
         $this->load->view("layout/subtitle", $data);
@@ -35,12 +57,34 @@ class Tautan extends CI_Controller
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
+
+        // Search
+        if($this->input->post('keyword')) {
+           $data['keyword'] = $this->input->post('keyword');
+           $this->session->set_userdata('keyword', $data['keyword']);
+        } else {
+           $data['keyword'] =null;
+        }
+
+        // Pagination
+        $this->load->library('pagination');
+        $config['base_url'] = 'http://localhost/inti/tautan/koperasi/index';
+        $config['total_rows'] = $this->tautan_model->getTotalRowsKoperasi();
+        $data['total_rows'] = $config['total_rows'];
+        $config['per_page'] = 10;
+
+        
+        $this->pagination->initialize($config);
+        $offset = $this->uri->segment(4);
+
+
+
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
-        $data["tautan"] = $this->tautan_model->getDataKoperasi();
+        $data["tautan"] = $this->tautan_model->getDataKoperasi( $config['per_page'], $offset ,$data['keyword']);
         $data["video"] = $this->video_model->getData();
         $data["photo"] = $this->photo_model->getData();
-        $data["title"] = "Koperasi";
+        $data["title"] = "Tautan Koperasi";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
         $this->load->view("layout/subtitle", $data);
@@ -54,12 +98,34 @@ class Tautan extends CI_Controller
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
+
+        // Search
+        if($this->input->post('keyword')) {
+           $data['keyword'] = $this->input->post('keyword');
+           $this->session->set_userdata('keyword', $data['keyword']);
+        } else {
+           $data['keyword'] =null;
+        }
+
+        // Pagination
+        $this->load->library('pagination');
+        $config['base_url'] = 'http://localhost/inti/tautan/serikatkerja/index';
+        $config['total_rows'] = $this->tautan_model->getTotalRowsSerikat();
+        $data['total_rows'] = $config['total_rows'];
+        $config['per_page'] = 10;
+
+        
+        $this->pagination->initialize($config);
+        $offset = $this->uri->segment(4);
+
+
+
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
-        $data["tautan"] = $this->tautan_model->getDataKerja();
+        $data["tautan"] = $this->tautan_model->getDataSerikat( $config['per_page'], $offset ,$data['keyword']);
         $data["video"] = $this->video_model->getData();
         $data["photo"] = $this->photo_model->getData();
-        $data["title"] = "Serikat Kerja";
+        $data["title"] = "Tautan Serikat Kerja";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
         $this->load->view("layout/subtitle", $data);

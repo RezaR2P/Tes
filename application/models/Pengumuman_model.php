@@ -13,13 +13,18 @@ class pengumuman_model extends CI_Model
     public $category;
     public $comments;
 
-    public function getData()
+    public function getData($limit = null, $offset = null)
     {
-        $this->db->from($this->_table);
-        $this->db->order_by('date', "desc");
         $this->db->like('category', 'pengumuman');
-        $query = $this->db->get();
-        return $query->result();
+        $this->db->order_by('date', 'desc');
+        $query = $this->db->get($this->_table, $limit, $offset);
+        return $query->result_array();
+    }
+
+    public function getTotalRows() 
+    {   
+        $this->db->like('category', 'pengumuman');
+        return $this->db->get($this->_table)->num_rows();
     }
 
 }

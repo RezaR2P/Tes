@@ -11,31 +11,58 @@ class Tautan_model extends CI_Model
     public $category;
     public $date_created;
 
-    public function getDataInti()
+    public function getDataInti($limit = null, $offset = null ,$keyword = null)
     {
-        $this->db->from($this->_table);
-        $this->db->order_by('date_created', "desc");
         $this->db->like('category', 'inti');
-        $query = $this->db->get();
-        return $query->result();
+        if($keyword){
+			$this->db->or_like('title', $keyword);
+            $this->db->or_like('tautan', $keyword);
+        }
+        $this->db->order_by('date_created', 'desc');
+        $query = $this->db->get($this->_table, $limit, $offset);
+        return $query->result_array();
     }
 
-    public function getDataKoperasi()
+     public function getTotalRowsInti() 
     {
-        $this->db->from($this->_table);
-        $this->db->order_by('date_created', "desc");
+        $this->db->like('category', 'inti');
+        return $this->db->get($this->_table)->num_rows();
+    }
+
+    public function getDataKoperasi($limit = null, $offset = null ,$keyword = null)
+    {
         $this->db->like('category', 'koperasi');
-        $query = $this->db->get();
-        return $query->result();
+        if($keyword){
+			$this->db->or_like('title', $keyword);
+            $this->db->or_like('tautan', $keyword);
+        }
+        $this->db->order_by('date_created', 'desc');
+        $query = $this->db->get($this->_table, $limit, $offset);
+        return $query->result_array();
     }
 
-    public function getDataKerja()
+     public function getTotalRowsKoperasi() 
     {
-        $this->db->from($this->_table);
-        $this->db->order_by('date_created', "desc");
+        $this->db->like('category', 'koperasi');
+        return $this->db->get($this->_table)->num_rows();
+    }
+
+    public function getDataSerikat($limit = null, $offset = null ,$keyword = null)
+    {
         $this->db->like('category', 'serikatkerja');
-        $query = $this->db->get();
-        return $query->result();
+        if($keyword){
+			$this->db->or_like('title', $keyword);
+            $this->db->or_like('tautan', $keyword);
+        }
+        $this->db->order_by('date_created', 'desc');
+        $query = $this->db->get($this->_table, $limit, $offset);
+        return $query->result_array();
+    }
+
+     public function getTotalRowsSerikat() 
+    {
+        $this->db->like('category', 'serikatkerja');
+        return $this->db->get($this->_table)->num_rows();
     }
 
     public function getById($id_tautan)

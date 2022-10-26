@@ -13,12 +13,17 @@ class Article_model extends CI_Model
     public $category;
     public $comments;
 
-    public function getData()
+    public function getData($limit = null, $offset = null ,$keyword = null)
     {
-        $this->db->from($this->_table);
-        $this->db->order_by('date', "desc");
-        $query = $this->db->get();
-        return $query->result();
+        if($keyword){
+			$this->db->like('title', $keyword);
+            $this->db->or_like('content', $keyword);
+            $this->db->or_like('username', $keyword);
+            $this->db->or_like('category', $keyword);
+        }
+        $this->db->order_by('date', 'desc');
+        $query = $this->db->get($this->_table, $limit, $offset);
+        return $query->result_array();
     }
 
     public function getById($id_article)
@@ -36,13 +41,23 @@ class Article_model extends CI_Model
         // return $this->db->get_where($this->_table, ["username" => $username])->result_array();
     }
 
-    public function getDataArtikel() {
- 
-        $this->db->from($this->_table);
-        $this->db->order_by('date', "desc");
+    public function getTotalRows() 
+    {
+        return $this->db->get($this->_table)->num_rows();
+    }
+
+    public function getTotalRowsArtikel() 
+    {   
         $this->db->like('category', 'artikel');
-        $query = $this->db->get();
-        return $query->result();
+        return $this->db->get($this->_table)->num_rows();
+    }
+
+    public function getDataArtikel($limit = null, $offset = null) 
+    {
+        $this->db->like('category', 'artikel');
+        $this->db->order_by('date', 'desc');
+        $query = $this->db->get($this->_table, $limit, $offset);
+        return $query->result_array();
     
     }
 
