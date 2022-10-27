@@ -14,6 +14,7 @@ class Video_model extends CI_Model
     {
         $this->db->from($this->_table);
         $this->db->order_by('date_created', "desc");
+        $this->db->limit(10);
         $query = $this->db->get();
         return $query->result();
     }

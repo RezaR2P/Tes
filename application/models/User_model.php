@@ -9,6 +9,11 @@ class User_model extends CI_Model
     public $email;
     public $avatar;
 
+    public function getByUser($username)
+    {
+        return $this->db->get_where($this->_user, ["username" => $username])->row();
+    }
+
     public function getData()
     {
         $this->db->from($this->_table);
@@ -29,11 +34,12 @@ class User_model extends CI_Model
     {
 
         $post = $this->input->post();
+        $this->id_user = $post["id_user"];
         $this->name = $post["name"];
         $this->username = $post["username"];
         $this->email = $post["email"];
         $this->avatar = ($post["avatar"])  ? $post["avatar"] : "default.jpg";
-        return $this->db->update($this->_user, $this, array('name' => $post['name']));
+        return $this->db->update($this->_user, $this, array('id_user' => $post['id_user']));
 
     }
 }

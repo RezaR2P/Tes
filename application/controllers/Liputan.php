@@ -39,7 +39,7 @@ class Liputan extends CI_Controller
         $data["title"] = "Liputan";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
-        $this->load->view("layout/subtitle", $data);
+        $this->load->view("layout/subtitleSearch", $data);
         $this->load->view("liputan/index", $data);
         $this->load->view("layout/sidecontent", $data);
         $this->load->view("layout/footer", $data);
