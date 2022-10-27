@@ -3,6 +3,7 @@
 class User_model extends CI_Model
 {
     private $_user = "user";
+    public $id_user;
     public $name;
     public $username;
     public $email;
@@ -23,7 +24,8 @@ class User_model extends CI_Model
         $this->db->like('username', $username);
         $query = $this->db->get();
         return $query->result_array();
-        return $this->db->get_where($this->_table, ["username" => $username])->result_array();
+
+        // return $this->db->get_where($this->_table, ["username" => $username])->result_array();
     }
 
 

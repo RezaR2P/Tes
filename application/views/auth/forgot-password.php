@@ -30,7 +30,7 @@
                             <?php } ?>
                             <form class="user" method="post" action="<?= base_url('auth/forgotpassword') ?>">
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Username" value="<?= set_value('email'); ?>">
+                                    <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Masukan Email" value="<?= set_value('email'); ?>">
                                     <?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
                                 </div>
 
