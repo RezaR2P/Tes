@@ -14,6 +14,7 @@ class Photo_model extends CI_Model
     {
         $this->db->from($this->_table);
         $this->db->order_by('date_created', "desc");
+        $this->db->limit(10);
         $query = $this->db->get();
         return $query->result();
     }
@@ -23,7 +24,15 @@ class Photo_model extends CI_Model
         return $this->db->get_where($this->_table, ["id_photo" => $id_photo])->row();
     }
 
-
+    public function getByUser($username)
+    {
+        $this->db->select('*');
+        $this->db->from('photo');
+        $this->db->like('username', $username);
+        $query = $this->db->get();
+        return $query->result_array();
+        // return $this->db->get_where($this->_table, ["username" => $username])->result_array();
+    }
 
     public function save($data)
     {

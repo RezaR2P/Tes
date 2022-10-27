@@ -18,6 +18,7 @@
        const flashVideo = $('.flash-video').data('flashdata');
        const flashFoto = $('.flash-foto').data('flashdata');
        const flashTautan = $('.flash-tautan').data('flashdata');
+       const flashComment = $('.flash-comment').data('flashdata');
 
        if (flashData) {
            Swal.fire({
@@ -46,6 +47,14 @@
        if (flashTautan) {
            Swal.fire({
                title: 'Tautan Berhasil ' + flashTautan,
+               text: '',
+               icon: 'success'
+           });
+       }
+
+       if (flashComment) {
+           Swal.fire({
+               title: 'Komentar Berhasil ' + flashComment,
                text: '',
                icon: 'success'
            });

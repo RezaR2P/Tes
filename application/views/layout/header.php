@@ -27,18 +27,6 @@
 <script src="https://cdn.tailwindcss.com"></script>
   
     <style>
-
-
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="<?= base_url('dist/output.css'); ?>" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
-
-    <script src="<?= base_url(); ?>/dist/flowbite.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-
-
-    <style>
         body {
             font-family: 'Poppins', sans-serif;
         }
@@ -52,6 +40,15 @@
             font-weight: 600 !important;
         }
 
+        .sidebar {
+            overflow-y: scroll;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        }
+        .sidebar::-webkit-scrollbar { /* WebKit */
+            width: 0;
+            height: 0;
+        }
         .bg-cyan {
             background-color: #1A9DBF;
         }

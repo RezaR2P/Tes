@@ -17,15 +17,29 @@ class Berita extends CI_Controller
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
+
+        // Pagination
+        $this->load->library('pagination');
+        $config['base_url'] = 'http://localhost/inti/berita/index';
+        $config['total_rows'] = $this->berita_model->getTotalRows();
+        $data['total_rows'] = $config['total_rows'];
+        $config['per_page'] = 6;
+
+        
+        $this->pagination->initialize($config);
+        $offset = $this->uri->segment(3);
+
+
+
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
-        $data["db_article"] = $this->berita_model->getData();
+        $data["db_article"] = $this->berita_model->getData( $config['per_page'], $offset);
         $data["video"] = $this->video_model->getData();
         $data["photo"] = $this->photo_model->getData();
         $data["title"] = "Berita";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
-        $this->load->view("layout/subtitle", $data);
+        $this->load->view("layout/subtitleSearch", $data);
         $this->load->view("berita/index", $data);
         $this->load->view("layout/sidecontent", $data);
         $this->load->view("layout/footer", $data);
