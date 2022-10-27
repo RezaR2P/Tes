@@ -16,12 +16,34 @@ class Tautan extends CI_Controller
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
+
+        // Search
+        if($this->input->post('keyword')) {
+           $data['keyword'] = $this->input->post('keyword');
+           $this->session->set_userdata('keyword', $data['keyword']);
+        } else {
+           $data['keyword'] =null;
+        }
+
+        // Pagination
+        $this->load->library('pagination');
+        $config['base_url'] = 'http://localhost/inti/tautan/inti/index';
+        $config['total_rows'] = $this->tautan_model->getTotalRowsInti();
+        $data['total_rows'] = $config['total_rows'];
+        $config['per_page'] = 10;
+
+        
+        $this->pagination->initialize($config);
+        $offset = $this->uri->segment(4);
+
+
+
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
-        $data["tautan"] = $this->tautan_model->getDataInti();
+        $data["tautan"] = $this->tautan_model->getDataInti( $config['per_page'], $offset ,$data['keyword']);
         $data["video"] = $this->video_model->getData();
         $data["photo"] = $this->photo_model->getData();
-        $data["title"] = "INTI";
+        $data["title"] = "Tautan Inti";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
         $this->load->view("layout/subtitle", $data);
@@ -35,12 +57,34 @@ class Tautan extends CI_Controller
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
+
+        // Search
+        if($this->input->post('keyword')) {
+           $data['keyword'] = $this->input->post('keyword');
+           $this->session->set_userdata('keyword', $data['keyword']);
+        } else {
+           $data['keyword'] =null;
+        }
+
+        // Pagination
+        $this->load->library('pagination');
+        $config['base_url'] = 'http://localhost/inti/tautan/koperasi/index';
+        $config['total_rows'] = $this->tautan_model->getTotalRowsKoperasi();
+        $data['total_rows'] = $config['total_rows'];
+        $config['per_page'] = 10;
+
+        
+        $this->pagination->initialize($config);
+        $offset = $this->uri->segment(4);
+
+
+
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
-        $data["tautan"] = $this->tautan_model->getDataKoperasi();
+        $data["tautan"] = $this->tautan_model->getDataKoperasi( $config['per_page'], $offset ,$data['keyword']);
         $data["video"] = $this->video_model->getData();
         $data["photo"] = $this->photo_model->getData();
-        $data["title"] = "Koperasi";
+        $data["title"] = "Tautan Koperasi";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
         $this->load->view("layout/subtitle", $data);
@@ -54,12 +98,34 @@ class Tautan extends CI_Controller
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
+
+        // Search
+        if($this->input->post('keyword')) {
+           $data['keyword'] = $this->input->post('keyword');
+           $this->session->set_userdata('keyword', $data['keyword']);
+        } else {
+           $data['keyword'] =null;
+        }
+
+        // Pagination
+        $this->load->library('pagination');
+        $config['base_url'] = 'http://localhost/inti/tautan/serikatkerja/index';
+        $config['total_rows'] = $this->tautan_model->getTotalRowsSerikat();
+        $data['total_rows'] = $config['total_rows'];
+        $config['per_page'] = 10;
+
+        
+        $this->pagination->initialize($config);
+        $offset = $this->uri->segment(4);
+
+
+
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
-        $data["tautan"] = $this->tautan_model->getDataKerja();
+        $data["tautan"] = $this->tautan_model->getDataSerikat( $config['per_page'], $offset ,$data['keyword']);
         $data["video"] = $this->video_model->getData();
         $data["photo"] = $this->photo_model->getData();
-        $data["title"] = "Serikat Kerja";
+        $data["title"] = "Tautan Serikat Kerja";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
         $this->load->view("layout/subtitle", $data);
@@ -102,6 +168,8 @@ class Tautan extends CI_Controller
 
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
+        $data["video"] = $this->video_model->getData();
+        $data["photo"] = $this->photo_model->getData();
         $data["title"] = "Tambah Tautan";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
@@ -111,7 +179,31 @@ class Tautan extends CI_Controller
         $this->load->view("layout/footer", $data);
     }
 
-    public function edit() {
+    public function edit($id_tautan) 
+    {
+        if (!$this->session->userdata('username')) {
+            redirect('auth');
+        }
+
+        if (intval($this->session->userdata('role') == 3)) {
+            redirect('article');
+        }
+
+        $data['user'] = $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
+        $data["tautan"] = $this->tautan_model->getById($id_tautan);
+        $data["video"] = $this->video_model->getData();
+        $data["photo"] = $this->photo_model->getData();
+        $data["title"] = "Edit Tautan";
+        $this->load->view("layout/header", $data);
+        $this->load->view("layout/navbar", $data);
+        $this->load->view("layout/subtitle", $data);
+        $this->load->view("tautan/edit", $data);
+        $this->load->view("layout/sidecontent", $data);
+        $this->load->view("layout/footer", $data);
+    }
+
+    public function prosesEdit() {
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
@@ -131,16 +223,19 @@ class Tautan extends CI_Controller
         $this->form_validation->set_message('required', '%s Harus diisi');
 
         if ($validation->run() == FALSE) {
-            $this->session->set_flashdata('error', 'Video Gagal Ditambahkan');
+            $this->session->set_flashdata('error', 'Tautan Gagal Diubah');
         } else {
-            $this->video_model->update();
-            $this->session->set_flashdata('videoSuccess', 'Ditambahkan');
+            $this->tautan_model->update();
+            $this->session->set_flashdata('tautanSuccess', 'Diubah');
             redirect('article');
         }
     }
     
 
-    public function deleteVideo($id_video) {
+    public function delete($id_tautan = null) {
+        $data['user'] = $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
+        $content = $this->tautan_model->getById($id_tautan);
         if( !$this->session->userdata('username')) {
             redirect('auth');
         }
@@ -149,11 +244,15 @@ class Tautan extends CI_Controller
             redirect('article');
         }
 
-        if (!isset($id_video)) show_404();
+        if (!isset($id_tautan)) show_404();
         
-        if ($this->article_model->delete($id_video)) {
-            $this->session->set_flashdata('videoSuccess', 'Dihapus');
+        if($content->username != $this->session->userdata('username')) {
             redirect('article');
+        } else {
+            if ($this->tautan_model->delete($id_tautan)) {
+                $this->session->set_flashdata('success', 'Dihapus');
+                redirect(base_url('user/tautan/') . $content->username);
+            }
         }
     }
 }

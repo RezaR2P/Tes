@@ -7,6 +7,7 @@ class Article extends CI_Controller
     {
         parent::__construct();
         $this->load->model('article_model');
+        $this->load->model('comment_model');
         $this->load->model('video_model');
         $this->load->model('photo_model');
         $this->load->helper(array('form', 'url'));
@@ -15,18 +16,46 @@ class Article extends CI_Controller
 
     public function index()
     {
+
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
+
+        // Search
+        if ($this->input->post('keyword')) {
+            $data['keyword'] = $this->input->post('keyword');
+            $this->session->set_userdata('keyword', $data['keyword']);
+        } else {
+            $data['keyword'] = null;
+        }
+
+        // Pagination
+        $this->load->library('pagination');
+        $config['base_url'] = 'http://localhost/inti/article/index';
+        $this->db->like('title', $data['keyword']);
+        $this->db->or_like('content', $data['keyword']);
+        $this->db->or_like('username', $data['keyword']);
+        $this->db->or_like('category', $data['keyword']);
+        $this->db->from('db_article');
+        $config['total_rows'] = $this->db->count_all_results();
+        $data['total_rows'] = $config['total_rows'];
+        $config['per_page'] = 6;
+
+
+        $this->pagination->initialize($config);
+        $offset = $this->uri->segment(3);
+
+
+
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
-        $data["db_article"] = $this->article_model->getData();
+        $data["db_article"] = $this->article_model->getData($config['per_page'], $offset, $data['keyword']);
         $data["video"] = $this->video_model->getData();
         $data["photo"] = $this->photo_model->getData();
         $data["title"] = "Dashboard";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
-        $this->load->view("layout/subtitle", $data);
+        $this->load->view("layout/subtitleSearch", $data);
         $this->load->view("article/index", $data);
         $this->load->view("layout/sidecontent", $data);
         $this->load->view("layout/footer", $data);
@@ -42,15 +71,29 @@ class Article extends CI_Controller
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
+
+        // Pagination
+        $this->load->library('pagination');
+        $config['base_url'] = 'http://localhost/inti/article/artikel/index';
+        $config['total_rows'] = $this->article_model->getTotalRowsArtikel();
+        $data['total_rows'] = $config['total_rows'];
+        $config['per_page'] = 6;
+
+
+        $this->pagination->initialize($config);
+        $offset = $this->uri->segment(4);
+
+
+
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
-        $data["db_article"] = $this->article_model->getDataArtikel();
+        $data["db_article"] = $this->article_model->getDataArtikel($config['per_page'], $offset);
         $data["video"] = $this->video_model->getData();
         $data["photo"] = $this->photo_model->getData();
         $data["title"] = "Artikel";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
-        $this->load->view("layout/subtitle", $data);
+        $this->load->view("layout/subtitleSearch", $data);
         $this->load->view("article/artikel", $data);
         $this->load->view("layout/sidecontent", $data);
         $this->load->view("layout/footer", $data);
@@ -126,6 +169,8 @@ class Article extends CI_Controller
 
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
+        $data["video"] = $this->video_model->getData();
+        $data["photo"] = $this->photo_model->getData();
         $data["title"] = "Tambah Artikel";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
@@ -265,7 +310,12 @@ class Article extends CI_Controller
         }
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
+        $data["video"] = $this->video_model->getData();
+        $data["photo"] = $this->photo_model->getData();
         $data["content"] = $this->article_model->getById($id_article);
+        $data["cfirst"] = $this->comment_model->getByArticle($id_article);
+        $data["comment"] = $this->comment_model->getData();
+        $data["countComment"] = $this->comment_model->countData($id_article);
         $data["title"] = "Konten Artikel";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);

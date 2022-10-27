@@ -1,6 +1,6 @@
 <div class="flash-data" data-flashdata="<?= $this->session->flashdata('success'); ?>"></div>
 
-<div class="basis-10/12 py-4 px-8  bg-gray-50 max-h-screen overflow-y-scroll">
+<div class="basis-[79.1666664%] py-4 px-8  bg-gray-50 max-h-screen overflow-y-scroll">
     <h1 class="text-3xl font-bold text-gray-800">Artikel Saya</h1>
 
     <section id="filter">
