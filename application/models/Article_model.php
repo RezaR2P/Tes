@@ -31,6 +31,26 @@ class Article_model extends CI_Model
         return $this->db->get_where($this->_table, ["id_article" => $id_article])->row();
     }
 
+    public function getByImage($coverImage)
+    {
+        return $this->db->get_where($this->_table, ["coverImage" => $coverImage])->row();
+    }
+
+    public function getReadData()
+    {
+        $query = ('SELECT no_of_click FROM article WHERE id = '. $this->id_article);
+    }
+
+    public function getAllData()
+    {
+        
+        $this->db->from($this->_table);
+        $this->db->order_by('date', "desc");
+        $query = $this->db->get();
+        return $query->result_array();
+        // return $this->db->get_where($this->_table, ["username" => $username])->result_array();
+    }
+
     public function getByUser($username)
     {
         $this->db->select('*');

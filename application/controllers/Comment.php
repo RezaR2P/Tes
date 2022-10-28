@@ -6,8 +6,14 @@ class Comment extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('article_model');
+        $this->load->model('photo_model');
+        $this->load->model('video_model');
         $this->load->model('comment_model');
+        $this->load->helper(array('form', 'url'));
+        
     }
+
 
     public function add() {
         if (!$this->session->userdata('username')) {
@@ -78,10 +84,7 @@ class Comment extends CI_Controller
     }
     
 
-    public function delete($id_tautan = null) {
-        $data['user'] = $this->db->get_where('user', ['username' =>
-        $this->session->userdata('username')])->row_array();
-        $content = $this->tautan_model->getById($id_tautan);
+    public function delete($id_comment = null) {
         if( !$this->session->userdata('username')) {
             redirect('auth');
         }
@@ -90,15 +93,16 @@ class Comment extends CI_Controller
             redirect('article');
         }
 
-        if (!isset($id_tautan)) show_404();
+        if (!isset($id_comment)) show_404();
         
-        if($content->username != $this->session->userdata('username')) {
-            redirect('article');
-        } else {
-            if ($this->tautan_model->delete($id_tautan)) {
-                $this->session->set_flashdata('success', 'Dihapus');
-                redirect(base_url('user/tautan/') . $content->username);
+        if ($this->comment_model->delete($id_comment)) {
+            $this->session->set_flashdata('commentSuccess', 'Dihapus');
+            if($this->session->userdata('role') == 1) {
+                redirect(base_url('admin/comment/'));
+            } else {
+                redirect(base_url('user/comment/') . $this->session->userdata('username'));
             }
+            
         }
     }
 }

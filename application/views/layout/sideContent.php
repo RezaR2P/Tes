@@ -3,66 +3,61 @@
         <?php if (intval($this->session->userdata('role') == 1 || intval($this->session->userdata('role') == 2))) : ?>
                 <section id="menuadmin">
                     
-                    <div class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                        <div class="">
-                            <h5 class="mb-2 text-xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">Admin Menu</h5>
+                    <div class="max-w-sm bg-white rounded-b-xl overflow-hidden border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                        <div class="bg-[#150544] text-white py-2">
+                            <h5 class="mb-2 text-xl text-center font-semibold tracking-tight dark:text-white">Admin Menu</h5>
                         
-                        <p class="mb-3 font-normal text-center text-gray-800 dark:text-gray-400">Halo <?= $user["username"]; ?></p>
+                        <p class="font-normal text-center dark:text-gray-400">Halo <?= $user["username"]; ?></p>
                         </div>
                         <aside class="w-full" aria-label="Sidebar">
-                    <div class="">
+                    <div class="bg-[#23BBD1]  px-4 py-2">
                         <ul class="">
                             <li>
-                                <a href="<?= base_url("article"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <i class="fa-solid fa-gauge fa-fw text-gray-500 text-xl"></i>
+                                <a href="<?= base_url("article"); ?>" class="text-white flex items-center p-2 text-base font-normal rounded-lg active:bg-dark dark:text-white hover:bg-[#150544] dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-gauge fa-fwtext-xl"></i>
                                 <span class="ml-3">Dashboard</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?= base_url("article/arsip"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <i class="fa-solid fa-calendar-days fa-fw text-gray-500 text-xl"></i>
+                                <a href="<?= base_url("article/archive"); ?>" class="flex items-center p-2 text-base font-normal text-white rounded-lg active:bg-dark dark:text-white hover:bg-[#150544] dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-calendar-days fa-fwtext-xl"></i>
                                 <span class="ml-3">Arsip Artikel</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?= base_url("article/add"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <i class="fa-solid fa-pen fa-fw text-gray-500 text-xl"></i>
+                                <a href="<?= base_url("article/add"); ?>" class="flex items-center p-2 text-base font-normal text-white rounded-lg active:bg-dark dark:text-white hover:bg-[#150544] dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-pen fa-fwtext-xl"></i>
                                 <span class="ml-3">Tambah Artikel</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?= base_url("photo/add"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <i class="fa-solid fa-camera fa-fw text-gray-500 text-xl"></i>
+                                <a href="<?= base_url("photo/add"); ?>" class="flex items-center p-2 text-base font-normal text-white rounded-lg active:bg-dark dark:text-white hover:bg-[#150544] dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-camera fa-fwtext-xl"></i>
                                 <span class="ml-3">Tambah Foto</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?= base_url("tautan/add"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <i class="fa-solid fa-link fa-fw text-gray-500 text-xl"></i>
+                                <a href="<?= base_url("tautan/add"); ?>" class="flex items-center p-2 text-base font-normal text-white rounded-lg active:bg-dark dark:text-white hover:bg-[#150544] dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-link fa-fwtext-xl"></i>
                                 <span class="ml-3">Tambah Tautan</span>
                                 </a>
                             </li>
                              <li>
-                                <a href="<?= base_url("video/add"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <i class="fa-solid fa-video fa-fw text-gray-500 text-xl"></i>
+                                <a href="<?= base_url("video/add"); ?>" class="flex items-center p-2 text-base font-normal text-white rounded-lg active:bg-dark dark:text-white hover:bg-[#150544] dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-video fa-fwtext-xl"></i>
                                 <span class="ml-3">Tambah Video</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?= base_url("article/kliping"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <i class="fa-solid fa-book fa-fw text-gray-500 text-xl"></i>
+                                <a href="<?= base_url("article/kliping"); ?>" class="flex items-center p-2 text-base font-normal text-white rounded-lg active:bg-dark dark:text-white hover:bg-[#150544] dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-book fa-fwtext-xl"></i>
                                 <span class="ml-3">Kliping</span>
                                 </a>
                             </li>
+                            
                             <li>
-                                <a href="<?= base_url("article/comments"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <i class="fa-solid fa-comment fa-fw text-gray-500 text-xl"></i>
-                                <span class="ml-3">Maintain Komen</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url("auth/logout"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <i class="fa-solid fa-right-from-bracket fa-fw text-gray-500 text-xl"></i>
+                                <a href="<?= base_url("auth/logout"); ?>" class="flex items-center p-2 text-base font-normal text-white rounded-lg active:bg-dark dark:text-white hover:bg-[#150544] dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-right-from-bracket fa-fwtext-xl"></i>
                                 <span class="ml-3">Logout</span>
                                 </a>
                             </li>
@@ -75,23 +70,34 @@
                 <?php endif; ?>
                 <section id="pengumuman">
 
-                <div class="mt-4 p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                    
-                    
-                    <h5 class="mb-2 text-xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">Pengumuman</h5>
-                
-                <p class="mt-3 font-normal text-sm text-start text-gray-800 dark:text-gray-400">Senin, 19 Februari 2018</p>
-                <p class="font-semibold text-md text-start text-gray-800 dark:text-gray-400">NEWS: PUBLIKASI PERATURAN DANA PENSIUN INTI YANG TERBARU (TAHUN 2017)</p>
-            
+                <div class="mt-4 max-w-sm bg-white  rounded-b-xl overflow-hidden shadow-md dark:bg-gray-800 dark:border-gray-700">
+                    <div class="bg-[#150544] text-white py-2">
+                        <h5 class=" text-xl text-center font-semibold tracking-tight dark:text-white">Pengumuman</h5>
+                    </div>
+
+                    <?php  if(empty($pengumuman)) : ?>
+                        <div class="bg-[#23BBD1]  px-4 py-3">
+                        <h5 class=" text-2xl italic text-center font-semibold tracking-tight dark:text-white">Tidak Ada Pengumuman</h5>
+                        </div>
+                    <?php else : ?>
+                        <div class="bg-[#23BBD1]  px-4 py-3">
+                        <p class=" font-normal text-sm text-start text-white dark:text-gray-400"><?= date('D, d M Y', $pengumuman->date); ?></p>
+                        <a href="<?= base_url('article/maincontent/') . $pengumuman->id_article; ?>"><p class="font-semibold text-md text-start text-white dark:text-gray-400"><?= $pengumuman->title; ?></p></a>
+                        </div>
+                    <?php endif ; ?>
+                   
+                   
                 </div>
 
                 </section>
 
                 <section id="foto">
-                <div class="mt-4 p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                        <h5 class="mb-4 text-xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">Foto Terbaru</h5>
-                    
-                        <div class="swiper">
+                <div class="mt-4 max-w-sm bg-white rounded-b-xl overflow-hidden  shadow-md shad dark:bg-gray-800 dark:border-gray-700">
+                    <div class="bg-[#150544] text-white py-2">
+                        <h5 class=" text-xl text-center font-semibold tracking-tight dark:text-white">Foto Terbaru</h5>
+                    </div>  
+                    <div class="bg-[#23BBD1]  px-4 py-3">
+                        <div class="swiper bg-white rounded-md">
                         <!-- Additional required wrapper -->
                         <div class="swiper-wrapper">
                             <?php foreach($photo as $p): ?>
@@ -112,14 +118,17 @@
                         <!-- If we need scrollbar -->
                         <div class="swiper-scrollbar"></div>
                         </div>
+                    </div>
                 </div>
                 </section>
 
                 <section id="video">
                 
-                <div class="mt-4 p-2 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                        <h5 class="mb-4 mt-3 text-xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">Video Terbaru</h5>
-
+                <div class="mt-4 mb-3 max-w-sm bg-white  rounded-b-xl overflow-hidden  shadow-md dark:bg-gray-800 dark:border-gray-700">
+                    <div class="bg-[#150544] text-white py-2">
+                        <h5 class=" text-xl text-center font-semibold tracking-tight dark:text-white">Video Profil</h5>
+                    </div>  
+                    <div class="bg-[#23BBD1]  px-2 py-3">
                         <!-- Slider main container -->
                         <div class="swiper h-48">
                         <!-- Additional required wrapper -->
@@ -143,7 +152,7 @@
                         </div>
 
 
-                        
+                    </div>
                 </div>
                 </section>
 </div>

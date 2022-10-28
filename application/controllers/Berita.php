@@ -9,6 +9,7 @@ class Berita extends CI_Controller
         $this->load->model('berita_model');
         $this->load->model('video_model');
         $this->load->model('photo_model');
+        $this->load->model('pengumuman_model');
         
     }
 
@@ -35,7 +36,7 @@ class Berita extends CI_Controller
         $this->session->userdata('username')])->row_array();
         $data["db_article"] = $this->berita_model->getData( $config['per_page'], $offset);
         $data["video"] = $this->video_model->getData();
-        $data["photo"] = $this->photo_model->getData();
+        $data["photo"] = $this->photo_model->getData();        $data["pengumuman"] = $this->pengumuman_model->getOneData();
         $data["title"] = "Berita";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);

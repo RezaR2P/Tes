@@ -6,10 +6,11 @@ class Article extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('article_model');
+         $this->load->model('article_model');
         $this->load->model('comment_model');
         $this->load->model('video_model');
-        $this->load->model('photo_model');
+        $this->load->model('photo_model');   
+        $this->load->model('pengumuman_model');
         $this->load->helper(array('form', 'url'));
         $this->load->library('upload');
        
@@ -52,7 +53,7 @@ class Article extends CI_Controller
         $this->session->userdata('username')])->row_array();
         $data["db_article"] = $this->article_model->getData( $config['per_page'], $offset ,$data['keyword']);
         $data["video"] = $this->video_model->getData();
-        $data["photo"] = $this->photo_model->getData();
+        $data["photo"] = $this->photo_model->getData();        $data["pengumuman"] = $this->pengumuman_model->getOneData();
         $data["title"] = "Dashboard";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
@@ -90,7 +91,7 @@ class Article extends CI_Controller
         $this->session->userdata('username')])->row_array();
         $data["db_article"] = $this->article_model->getDataArtikel( $config['per_page'], $offset);
         $data["video"] = $this->video_model->getData();
-        $data["photo"] = $this->photo_model->getData();
+        $data["photo"] = $this->photo_model->getData();        $data["pengumuman"] = $this->pengumuman_model->getOneData();
         $data["title"] = "Artikel";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
@@ -158,7 +159,7 @@ class Article extends CI_Controller
                     'content' => $this->input->post('content'),
                     'coverImage' => $upload['file_name'],
                     'category' => $this->input->post('category'),
-                    'comments' => 1
+                    'comments' => $this->input->post('comments')
 
 				);
 				$this->article_model->save($data);
@@ -172,7 +173,7 @@ class Article extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
         $data["video"] = $this->video_model->getData();
-        $data["photo"] = $this->photo_model->getData();
+        $data["photo"] = $this->photo_model->getData();        $data["pengumuman"] = $this->pengumuman_model->getOneData();
         $data["title"] = "Tambah Artikel";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
@@ -207,6 +208,11 @@ class Article extends CI_Controller
         $this->load->view("layout/footer", $data);
     }
 
+    public function pdf($id_article)
+    {
+        $data["preview"] = $this->article_model->getById($id_article);
+        $this->load->view("article/pdf", $data);
+    }
 
     public function prosesEdit()
     {
@@ -292,17 +298,40 @@ class Article extends CI_Controller
 
         if (!isset($id_article)) show_404();
         
-        if($content->username != $this->session->userdata('username')) {
-            redirect('article');
-        } else {
-            if ($this->article_model->delete($id_article)) {
-                $this->session->set_flashdata('success', 'Dihapus');
-                redirect('article');
-            }
+        if ($this->article_model->delete($id_article)) {
+            $this->session->set_flashdata('success', 'Dihapus');
+            redirect(base_url('user/article/') . $content->username);
         }
+        
     }
 
-   
+    public function archive()
+    {
+        if (!$this->session->userdata('username')) {
+            redirect('auth');
+        }
+        $data['user'] = $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
+        $data['title'] = 'Arsip Artikel';
+        $this->load->view("layout/header", $data);
+        $this->load->view("layout/sidebar", $data);
+        $this->load->view("article/archive", $data);
+        $this->load->view("layout/footer", $data);
+    }
+
+    public function kliping()
+    {
+        if (!$this->session->userdata('username')) {
+            redirect('auth');
+        }
+        $data['user'] = $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
+        $data['title'] = 'Kliping';
+        $this->load->view("layout/header", $data);
+        $this->load->view("layout/sidebar", $data);
+        $this->load->view("article/kliping", $data);
+        $this->load->view("layout/footer", $data);
+    }
 
     public function mainContent($id_article)
     {
@@ -312,7 +341,7 @@ class Article extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
         $data["video"] = $this->video_model->getData();
-        $data["photo"] = $this->photo_model->getData();
+        $data["photo"] = $this->photo_model->getData();        $data["pengumuman"] = $this->pengumuman_model->getOneData();
         $data["content"] = $this->article_model->getById($id_article);
         $data["cfirst"] = $this->comment_model->getByArticle($id_article);
         $data["comment"] = $this->comment_model->getData();

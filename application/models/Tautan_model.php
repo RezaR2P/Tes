@@ -11,6 +11,16 @@ class Tautan_model extends CI_Model
     public $category;
     public $date_created;
 
+    public function getAllData()
+    {
+        
+        $this->db->from($this->_table);
+        $this->db->order_by('date_created', "desc");
+        $query = $this->db->get();
+        return $query->result_array();
+        // return $this->db->get_where($this->_table, ["username" => $username])->result_array();
+    }
+
     public function getDataInti($limit = null, $offset = null ,$keyword = null)
     {
         $this->db->like('category', 'inti');
