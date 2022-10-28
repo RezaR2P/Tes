@@ -22,6 +22,12 @@ class User_model extends CI_Model
         return $query->result();
     }
 
+    public function getByUser($username)
+    {
+        return $this->db->get_where($this->_user, ["username" => $username])->row();
+    }
+
+
     public function tampilData()
     {
         $this->db->from($this->_user);
@@ -32,8 +38,10 @@ class User_model extends CI_Model
 
     public function update($data, $id_user)
     {
+
         $this->db->where('id_user', $id_user);
         $query = $this->db->update($this->_user, $data);
         return $query;
+
     }
 }
