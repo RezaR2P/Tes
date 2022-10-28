@@ -14,11 +14,33 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
+     // tombol hapus
+    //  $('.tombol-hapus').on('click', function(e) {
+    //        e.preventDefault();
+
+    //        const href = $(this).attr('href');
+
+
+    //        Swal.fire({
+    //            title: 'Apakah kamu ingin menghapus Data ini?',
+    //            icon: 'warning',
+    //            showCancelButton: true,
+    //            confirmButtonText: 'Hapus',
+    //        }).then((result) => {
+    //            if (result.isConfirmed) {
+    //                document.location.href = href;
+    //            }
+    //        });
+    //    });
+</script>
+<script>
        const flashData = $('.flash-data').data('flashdata');
        const flashVideo = $('.flash-video').data('flashdata');
        const flashFoto = $('.flash-foto').data('flashdata');
        const flashTautan = $('.flash-tautan').data('flashdata');
        const flashComment = $('.flash-comment').data('flashdata');
+       const flashAdmin = $('.flash-admin').data('flashdata');
+       const flashUser = $('.flash-user').data('flashdata');
 
        if (flashData) {
            Swal.fire({
@@ -60,32 +82,24 @@
            });
        }
 
-
-       // tombol hapus
-       $('.tombol-hapus').click(function(e) {
-           e.preventDefault();
-
-           const href = $(this).attr('href');
-
-
+       if (flashAdmin) {
            Swal.fire({
-               text: "Setelah dihapus, artikel ini tidak dapat diakses lagi!",
-                icon: 'warning',
-                cancelButtonColor: "#9CA3AF",
-                confirmButtonColor: "#DD6B55",
-               title: 'Apakah kamu yakin ingin menghapus Artikel ini?',
-               showCancelButton: true,
-               confirmButtonText: 'Hapus',
-           }).then((result) => {
-               /* Read more about isConfirmed, isDenied below */
-               if (result.isConfirmed) {
-                   inputAttributes: {
-                       name: "deleteArticle"
-                   }
-                   document.location.href = href;
-               }
+               title: 'Admin Berhasil ' + flashAdmin,
+               text: '',
+               icon: 'success'
            });
-       });
+       }
+
+       if (flashUser) {
+           Swal.fire({
+               title: 'Akun Berhasil ' + flashUser,
+               text: '',
+               icon: 'success'
+           });
+       }
+
+
+      
    </script>
    
    <script>
@@ -120,32 +134,7 @@
         
     });
     
-    // let quill = new Quill('#editor', {
-    //     theme: 'snow',
-    //     modules: {
-    //         toolbar: [
-    //             [{
-    //                 font: []
-    //             }],
-    //             ["bold", "italic"],
-    //             ["link", "blockquote", "code-block", "image", "align"],
-    //             [{
-    //                 list: "ordered"
-    //             }, {
-    //                 list: "bullet"
-    //             }],
-    //             [{
-    //                 'align': []
-    //             }],
-    //         ]
-
-    //     },
-    //     placeholder: 'Masukkan Konten artikel disini.....',
-    // });
-
-    // quill.on('text-change', function(delta, oldDelta, source) {
-    //     document.querySelector("input[name='content']").value = quill.root.innerHTML;
-    // });
+    
 </script>
 <script>
     // $('.custom-file-input').on('change', function() {

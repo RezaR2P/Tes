@@ -16,25 +16,31 @@
     <?php endif; ?>
     <?php foreach ($db_article as $article) : ?>
         <div class="flex gap-6 border-b-2 py-4">
+       
             <div class="basis-2/6">
                 <a href="<?= base_url("article/maincontent/") . $article['id_article']; ?>">
-                    <img class="border-4 border-slate-700 shadow-lg rounded-lg mx-auto w-auto max-h-72" src="<?= base_url('assets/img/content/') . $article['coverImage']; ?>" alt="<?= $article['title']; ?>"></a>
+                <?php $type = explode(".", $article['coverImage']); ?>
+                    <?php if($type[1] == 'pdf') : ?>
+                    <img class="border-4 border-slate-700 shadow-lg rounded-lg mx-auto w-auto max-h-72" src="<?= base_url('assets/img/content/no-preview.png') ?>" alt="<?= $article['title']; ?>"></a>
+                    <?php else : ?>
+                        <img class="border-4 border-slate-700 shadow-lg rounded-lg mx-auto w-auto max-h-72" src="<?= base_url('assets/img/content/') . $article['coverImage']; ?>" alt="<?= $article['title']; ?>"></a>
+                    <?php endif; ?>
             </div>
             <div class="basis-4/6">
                 <h5 class="text-xl"><?= $article['title']; ?></h5>
                 
-                <p class="text-sm mb-2"><?= $article['username']; ?> | <?= date('d F Y', $article['date']); ?> (41 Dibaca)
+                <p class="text-sm mb-2"><?= $article['username']; ?> | <?= date('d F Y', $article['date']); ?>
                 </p>
-                <div class="mb-3"><?= (str_word_count($article['content']) > 60 ? substr($article['content'], 0, 200) . " ........." : '<div>' . $article['content'] . '</div>') ?>
+                <div class="mb-4"><?= (str_word_count($article['content']) > 60 ? substr($article['content'], 0, 200) . " ........." : '<div>' . $article['content'] . '</div>') ?>
                 </div>
 
-                <a class="text-cyan-500 hover:text-cyan-700" href="<?= base_url("article/maincontent/") . $article['id_article']; ?>">Selengkapnya</a>
+                <a href="<?= base_url('article/maincontent') . $article['id_article'] ?>" class="text[#150544] bg-gray-100 hover:bg-[#150544] hover:text-white px-4 py-2 rounded-full text-sm font-semibold">Baca Lebih</a>
             </div>
 
         </div>
     <?php endforeach; ?>
 
-    <div class="flex justify-end mt-4">
+    <div class="flex justify-center mt-4">
     <?= $this->pagination->create_links(); ?>
     </div>
 </div>

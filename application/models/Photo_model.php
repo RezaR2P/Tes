@@ -10,6 +10,16 @@ class Photo_model extends CI_Model
     public $date_created;
     public $photo;
 
+    public function getAllData()
+    {
+        
+        $this->db->from($this->_table);
+        $this->db->order_by('date_created', "desc");
+        $query = $this->db->get();
+        return $query->result_array();
+        // return $this->db->get_where($this->_table, ["username" => $username])->result_array();
+    }
+
     public function getData()
     {
         $this->db->from($this->_table);
@@ -40,15 +50,8 @@ class Photo_model extends CI_Model
         return $this->db->insert($this->_table, $data);
     }
 
-    public function updateArticle($data, $id_article)
+    public function delete($id_photo)
     {
-        $this->db->where('id_article', $id_article);
-        $query = $this->db->update($this->_table, $data);
-        return $query;
-    }
-
-    public function delete($id_article)
-    {
-        return $this->db->delete($this->_table, array("id_article" => $id_article));
+        return $this->db->delete($this->_table, array("id_photo" => $id_photo));
     }
 }

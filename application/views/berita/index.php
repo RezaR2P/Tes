@@ -25,7 +25,7 @@
         </div>
     <?php endforeach; ?>
 
-    <div class="flex justify-end mt-4">
+    <div class="flex justify-center mt-4">
     <?= $this->pagination->create_links(); ?>
     </div>
 </div>

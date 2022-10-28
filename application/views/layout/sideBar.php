@@ -11,6 +11,12 @@
 
                 <ul class="space-y-1 mt-4">
                             <li>
+                                <a href="<?= base_url("user/profile/") . $user['username']; ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-user fa-fw text-gray-500 text-xl"></i>
+                                <span class="ml-3">Profil Saya</span>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="<?= base_url("user/edit/") . $user['username']; ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <i class="fa-solid fa-user-edit fa-fw text-gray-500 text-xl"></i>
                                 <span class="ml-3">Edit Profil</span>
@@ -112,15 +118,45 @@
                             </li>
                             <?php if (intval($this->session->userdata('role') == 1)) : ?>
                             <li>
-                                <a href="<?= base_url("menu/maintenance"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <i class="fa-solid fa-menu fa-fw text-gray-500 text-xl"></i>
+                                <a href="<?= base_url("admin/registration"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-users fa-fw text-gray-500 text-xl"></i>
+                                <span class="ml-3">Tambah Admin</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url("admin/menu"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-bars fa-fw text-gray-500 text-xl"></i>
                                 <span class="ml-3">Maintain Menu</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?= base_url("comment/maintenance"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <a href="<?= base_url("admin/comment"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <i class="fa-solid fa-comment fa-fw text-gray-500 text-xl"></i>
                                 <span class="ml-3">Maintain Komen</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url("admin/article"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-newspaper fa-fw text-gray-500 text-xl"></i>
+                                <span class="ml-3">Maintain Artikel</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url("admin/tautan"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-link fa-fw text-gray-500 text-xl"></i>
+                                <span class="ml-3">Maintain Tautan</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url("admin/photo"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-camera fa-fw text-gray-500 text-xl"></i>
+                                <span class="ml-3">Maintain Foto</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url("admin/video"); ?>" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg active:bg-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-video fa-fw text-gray-500 text-xl"></i>
+                                <span class="ml-3">Maintain Video</span>
                                 </a>
                             </li>
                             <?php endif; ?>

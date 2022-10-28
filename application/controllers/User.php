@@ -10,6 +10,7 @@ class User extends CI_Controller
         $this->load->model('article_model');
         $this->load->model('photo_model');
         $this->load->model('video_model');
+        $this->load->model('comment_model');
         $this->load->model('tautan_model');
         $this->load->library('upload');
 
@@ -31,9 +32,15 @@ class User extends CI_Controller
 
     public function article($username)
     {
+        $user = $this->user_model->getByUser($username);
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
+
+        if($this->session->userdata('username') != $user->username) {
+            redirect(base_url('user/article/') . $this->session->userdata('username'));
+        }
+
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
         $data["contentuser"] = $this->article_model->getByUser($username);
@@ -46,9 +53,15 @@ class User extends CI_Controller
     }
 
     public function photo($username) {
+        $user = $this->user_model->getByUser($username);
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
+
+        if($this->session->userdata('username') != $user->username) {
+            redirect(base_url('user/photo/') . $this->session->userdata('username'));
+        }
+
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
         $data["photo"] = $this->photo_model->getByUser($username);
@@ -61,9 +74,15 @@ class User extends CI_Controller
     }
 
     public function video($username) {
+        $user = $this->user_model->getByUser($username);
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
+
+        if($this->session->userdata('username') != $user->username) {
+            redirect(base_url('user/video/') . $this->session->userdata('username'));
+        }
+
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
         $data["video"] = $this->video_model->getByUser($username);
@@ -76,9 +95,15 @@ class User extends CI_Controller
     }
 
     public function tautan($username) {
+        $user = $this->user_model->getByUser($username);
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
+
+        if($this->session->userdata('username') != $user->username) {
+            redirect(base_url('user/tautan/') . $this->session->userdata('username'));
+        }
+
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
         $data["tautan"] = $this->tautan_model->getByUser($username);
@@ -90,17 +115,39 @@ class User extends CI_Controller
         $this->load->view("layout/footer", $data);
     }
 
-    public function profile() {
+    public function comment($username) {
+        $user = $this->user_model->getByUser($username);
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
+
+        if($this->session->userdata('username') != $user->username) {
+            redirect(base_url('user/comment/') . $this->session->userdata('username'));
+        }
+
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
+        $data["comments"] = $this->comment_model->getByUser($username);
         
-        $data["title"] = "Profil Saya";
+        $data["title"] = "Komentar Saya";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/sidebar", $data);
-        $this->load->view("user/index", $data);
+        $this->load->view("user/comment", $data);
+        $this->load->view("layout/footer", $data);
+    }
+
+    public function profile()
+    {
+        if (!$this->session->userdata('username')) {
+            redirect('auth');
+        }
+
+        $data['user'] = $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
+        $data['title'] = 'Menu Management';
+        $this->load->view("layout/header", $data);
+        $this->load->view("layout/sidebar", $data);
+        $this->load->view("user/profile", $data);
         $this->load->view("layout/footer", $data);
     }
 
@@ -151,16 +198,25 @@ class User extends CI_Controller
         } else {
                 
             
-            $config['upload_path']          = './assets/img/profile/';
+            $config['upload_path']          = './assets/img/content/';
             $config['allowed_types']        = 'gif|jpg|png|jpeg|pdf';
             $config['max_size']             = 20480000;
             $config['overwrite'] = TRUE;
             $this->upload->initialize($config);
-			if(!$this->upload->do_upload('gambar')){ 
-                // $id = $this->uri->segment(3);
-                // $old_image = $this->article_model->getById($id);
+
+
+            if (!$this->upload->do_upload('avatar')) {
+                $this->session->set_userdata('upload_error', $this->upload->display_errors());
+                redirect(base_url('user/edit/'). $this->session->userdata('username'));
+            } else {
+                // Hapus session upload error_get_last
+                $this->session->unset_userdata('upload_error');
+
+                // Ambil data avatar yang di upload
+                $upload = $this->upload->data();
+
                 $data = array(
-                    'avatar' => $user->avatar, 
+                    'avatar' => ( $this->upload->data()) ? $upload['file_name'] : $user->avatar,
                     'id_user' => $this->input->post('id_user'),
                     'name' => $this->input->post('name'),
                     'username' => $this->input->post('username'),
@@ -168,26 +224,7 @@ class User extends CI_Controller
                 $this->user_model->update($data, $this->input->post('id_user'));
                 $this->session->set_flashdata('userSuccess', 'Diubah');
                 redirect(base_url('user/edit/'). $this->session->userdata('username'));
-            }else {
-                $old_image = $user->avatar;
-                if ($old_image != 'default.jpg') {
-                    unlink(FCPATH . 'assets/img/content/' . $old_image);
-                }
-                
-                $new_image = $this->upload->data('file_name');
-               
-                $data = array(
-                    'avatar' => $new_image, 
-                    'id_user' => $this->input->post('id_user'),
-                    'name' => $this->input->post('name'),
-                    'username' => $this->input->post('username'),
-                );
-                $this->user_model->update($data, $this->input->post('id_user'));
-                $this->session->set_flashdata('success', 'Diubah');
-                redirect(base_url('user/profile/'). $this->session->userdata('username'));
             }
-                
         }
-
     }
 }

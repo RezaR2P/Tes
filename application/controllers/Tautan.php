@@ -6,10 +6,15 @@ class Tautan extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('tautan_model');
-        $this->load->model('video_model');
+        $this->load->model('article_model');
         $this->load->model('photo_model');
+        $this->load->model('video_model');
+        $this->load->model('tautan_model');
+        $this->load->model('pengumuman_model');
+        $this->load->helper(array('form', 'url'));
+        
     }
+
 
     public function inti() 
     {
@@ -42,7 +47,7 @@ class Tautan extends CI_Controller
         $this->session->userdata('username')])->row_array();
         $data["tautan"] = $this->tautan_model->getDataInti( $config['per_page'], $offset ,$data['keyword']);
         $data["video"] = $this->video_model->getData();
-        $data["photo"] = $this->photo_model->getData();
+        $data["photo"] = $this->photo_model->getData();        $data["pengumuman"] = $this->pengumuman_model->getOneData();
         $data["title"] = "Tautan Inti";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
@@ -83,7 +88,7 @@ class Tautan extends CI_Controller
         $this->session->userdata('username')])->row_array();
         $data["tautan"] = $this->tautan_model->getDataKoperasi( $config['per_page'], $offset ,$data['keyword']);
         $data["video"] = $this->video_model->getData();
-        $data["photo"] = $this->photo_model->getData();
+        $data["photo"] = $this->photo_model->getData();        $data["pengumuman"] = $this->pengumuman_model->getOneData();
         $data["title"] = "Tautan Koperasi";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
@@ -124,7 +129,7 @@ class Tautan extends CI_Controller
         $this->session->userdata('username')])->row_array();
         $data["tautan"] = $this->tautan_model->getDataSerikat( $config['per_page'], $offset ,$data['keyword']);
         $data["video"] = $this->video_model->getData();
-        $data["photo"] = $this->photo_model->getData();
+        $data["photo"] = $this->photo_model->getData();        $data["pengumuman"] = $this->pengumuman_model->getOneData();
         $data["title"] = "Tautan Serikat Kerja";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
@@ -169,7 +174,7 @@ class Tautan extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
         $data["video"] = $this->video_model->getData();
-        $data["photo"] = $this->photo_model->getData();
+        $data["photo"] = $this->photo_model->getData();        $data["pengumuman"] = $this->pengumuman_model->getOneData();
         $data["title"] = "Tambah Tautan";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
@@ -193,7 +198,7 @@ class Tautan extends CI_Controller
         $this->session->userdata('username')])->row_array();
         $data["tautan"] = $this->tautan_model->getById($id_tautan);
         $data["video"] = $this->video_model->getData();
-        $data["photo"] = $this->photo_model->getData();
+        $data["photo"] = $this->photo_model->getData();        $data["pengumuman"] = $this->pengumuman_model->getOneData();
         $data["title"] = "Edit Tautan";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
@@ -233,9 +238,6 @@ class Tautan extends CI_Controller
     
 
     public function delete($id_tautan = null) {
-        $data['user'] = $this->db->get_where('user', ['username' =>
-        $this->session->userdata('username')])->row_array();
-        $content = $this->tautan_model->getById($id_tautan);
         if( !$this->session->userdata('username')) {
             redirect('auth');
         }
@@ -246,13 +248,11 @@ class Tautan extends CI_Controller
 
         if (!isset($id_tautan)) show_404();
         
-        if($content->username != $this->session->userdata('username')) {
-            redirect('article');
-        } else {
-            if ($this->tautan_model->delete($id_tautan)) {
-                $this->session->set_flashdata('success', 'Dihapus');
-                redirect(base_url('user/tautan/') . $content->username);
-            }
+    
+        if ($this->tautan_model->delete($id_tautan)) {
+                $this->session->set_flashdata('tautanSuccess', 'Dihapus');
+                redirect(base_url('user/tautan/') . $this->session->userdata('username'));
         }
+        
     }
 }

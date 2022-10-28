@@ -6,9 +6,14 @@ class Video extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('video_model');
+        $this->load->model('article_model');
         $this->load->model('photo_model');
+        $this->load->model('video_model');
+        $this->load->model('pengumuman_model');
+        $this->load->helper(array('form', 'url'));
+        
     }
+
 
     function alpha_dash_space($str_in = '')
     {
@@ -45,7 +50,7 @@ class Video extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
         $data["video"] = $this->video_model->getData();
-        $data["photo"] = $this->photo_model->getData();
+        $data["photo"] = $this->photo_model->getData();        $data["pengumuman"] = $this->pengumuman_model->getOneData();
         $data["title"] = "Tambah Video";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
@@ -85,7 +90,7 @@ class Video extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
         $data["video"] = $this->video_model->getData();
-        $data["photo"] = $this->photo_model->getData();
+        $data["photo"] = $this->photo_model->getData();        $data["pengumuman"] = $this->pengumuman_model->getOneData();
         $data["title"] = "Edit Video";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);
@@ -97,9 +102,7 @@ class Video extends CI_Controller
     
 
     public function delete($id_video = null) {
-        $data['user'] = $this->db->get_where('user', ['username' =>
-        $this->session->userdata('username')])->row_array();
-        $content = $this->video_model->getById($id_video);
+        
         if( !$this->session->userdata('username')) {
             redirect('auth');
         }
@@ -110,13 +113,10 @@ class Video extends CI_Controller
 
         if (!isset($id_video)) show_404();
         
-        if($content->username != $this->session->userdata('username')) {
-            redirect('article');
-        } else {
-            if ($this->video_model->delete($id_video)) {
-                $this->session->set_flashdata('success', 'Dihapus');
-                redirect(base_url('user/tautan/') . $content->username);
-            }
+        if ($this->video_model->delete($id_video)) {
+            $this->session->set_flashdata('videoSuccess', 'Dihapus');
+            redirect(base_url('user/video/') . $this->session->userdata('username'));
         }
+    
     }
 }

@@ -21,6 +21,17 @@ class pengumuman_model extends CI_Model
         return $query->result_array();
     }
 
+    public function getOneData()
+    {
+        $this->db->from($this->_table);
+        $this->db->order_by('date', "desc");
+        $this->db->like('category', 'pengumuman');
+        $this->db->limit(1);
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+
     public function getTotalRows() 
     {   
         $this->db->like('category', 'pengumuman');

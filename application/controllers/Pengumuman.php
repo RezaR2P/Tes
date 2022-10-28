@@ -9,7 +9,7 @@ class Pengumuman extends CI_Controller
         $this->load->model('pengumuman_model');
         $this->load->model('video_model');
         $this->load->model('photo_model');
-        
+        $this->load->model('pengumuman_model');
     }
 
     public function index()
@@ -35,7 +35,7 @@ class Pengumuman extends CI_Controller
         $this->session->userdata('username')])->row_array();
         $data["db_article"] = $this->pengumuman_model->getData( $config['per_page'], $offset);
         $data["video"] = $this->video_model->getData();
-        $data["photo"] = $this->photo_model->getData();
+        $data["photo"] = $this->photo_model->getData();        $data["pengumuman"] = $this->pengumuman_model->getOneData();
         $data["title"] = "Pengumuman";
         $this->load->view("layout/header", $data);
         $this->load->view("layout/navbar", $data);

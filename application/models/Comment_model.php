@@ -31,6 +31,14 @@ class Comment_model extends CI_Model
         return $query->result_array();
     }
 
+    public function getAllData()
+    {
+        $this->db->from($this->_table);
+        $this->db->order_by('date_created', "desc");
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
 
     public function countData($id_article)
     {
@@ -43,7 +51,7 @@ class Comment_model extends CI_Model
     public function getByUser($username)
     {
         $this->db->select('*');
-        $this->db->from('tautan');
+        $this->db->from('comments');
         $this->db->like('username', $username);
         $query = $this->db->get();
         return $query->result_array();

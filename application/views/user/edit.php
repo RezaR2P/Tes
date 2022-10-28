@@ -5,6 +5,15 @@
     <div class="w-9/12 flex justify-between">
     <h1 class="text-3xl font-bold text-gray-800">Edit Profil</h1>
     </div>
+    <?php if (validation_errors() == true): ?>
+                <div class="px-4 py-3 mb-3 text-md text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+                <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+                <span class="font-semibold"><?= $this->session->flashdata('error'); ?></span> 
+                </div>
+     
+                
+    <?php endif; ?>
+
 
         <div class="w-9/12 shadow-lg rounded-lg bg-white mt-4 p-4">
         <form action="<?= base_url('user/prosesedit') ?>" method="post" enctype="mulripart/form-data">
@@ -44,7 +53,7 @@
                         <img src="<?=  base_url('assets/img/profile/') . $user['avatar']; ?>" id="preview" class="border-4 border-slate-700 shadow-lg rounded-lg max-w-full">
                     </div>
                     <div class="basis-9/12 ">
-                        <input type="file" name="gambar" class="file d-none">
+                        <input type="file" name="avatar" class="file d-none">
 
                         <div class="input-group ">
                             <input type="text" class="form-control bg-gray-50 border border-gray-300 text-gray-900 rounded-lg" disabled placeholder="Upload Avatar" id="file">
@@ -52,7 +61,6 @@
                                 <button type="button" id="pilih_gambar" class="browse text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-r-lg text-sm px-2 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Pilih Avatar</button>
                             </div>
                         </div>
-                        <?= form_error('avatar', '<p class="text-danger pl-1 pt-2 text-sm font-medium">', '</p>'); ?>
                     </div>
                 </div>
                 </div>

@@ -11,6 +11,7 @@ class Auth extends CI_Controller
     {
         parent::__construct();
         $this->load->library('form_validation');
+        $this->load->model('auth_model');
     }
     public function index()
     {
@@ -82,7 +83,37 @@ class Auth extends CI_Controller
         }
     }
 
+    public function registration()
+    {
+        $data['user'] = $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
+        $data['title'] = 'Registrasi';
+        $this->load->view("layout/header", $data);
+            $this->load->view("auth/registration");
+            $this->load->view("layout/footer");
 
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('name', 'Name', 'required|trim');
+        $this->form_validation->set_rules('username', 'Username', 'required|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
+            'is_unique' => 'Email ini sudah Terdaftar'
+        ]);
+        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
+            'matches' => 'Password tidak sama',
+            'min_length' => 'Password terlalu Singkat!'
+        ]);
+        $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
+
+        if ($this->form_validation->run() == false) {
+            $this->session->set_flashdata('error', 'Akun gagal Dibuat');
+        } else {
+            $this->auth_model->save();
+            $this->session->set_flashdata('userSuccess', 'Dibuat');
+            redirect('auth');
+        }
+
+     
+    }
 
 
 

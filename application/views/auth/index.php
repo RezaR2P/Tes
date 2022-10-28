@@ -1,4 +1,5 @@
 <div class="flex ">
+    <div class="flash-user" data-flashdata="<?= $this->session->flashdata('userSuccess'); ?>"></div>
     <div class="basis-7/12 bg-[#1A9DBF]  h-screen flex justify-center items-center">
         <div class="bungkus flex items-center flex-col">
             <img src="<?= base_url('assets/'); ?>img/login/pablita-522 1.png" class="w-75 mb-10 mx-auto aspect-video" alt="" srcset="">
@@ -52,10 +53,16 @@
 
 
 
-                <div>
-                    <button type="submit" class="hover:shadow-form rounded-md bg-[#150544] w-full py-3 px-8text-center text-base font-semibold text-white outline-none">
+                <div class="border-b-2">
+                    <button type="submit" class=" mb-3 hover:shadow-form rounded-md bg-[#150544] w-full py-3 px-8text-center text-base font-semibold text-white outline-none">
                         Login
                     </button>
+                </div>
+                <div class="mt-2">
+                    <a href="<?= base_url('auth/registration'); ?>"><button type="button" class="hover:shadow-form rounded-md bg-gray-100  w-full py-3 px-8text-center text-base font-semibold text-[#150544] outline-none">
+                        Registrasi
+                    </button>
+                    </a>
                 </div>
             </form>
         </div>

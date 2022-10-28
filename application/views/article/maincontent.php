@@ -2,18 +2,14 @@
 <div class="basis-8/12 mt-4" id="maincontent">
     <h2 class="text-4xl"><?= $content->title; ?></h2>
     <p class="text-sm mb-2"><?= $content->username; ?> - <?= date('d F Y', $content->date); ?></p>
-    <a href="" data-lightbox="<?= $content->coverImage; ?>" data-alt="<?= $content->coverImage; ?>">
     <?php $type = explode(".", $content->coverImage); ?>
     <?php if($type[1] == 'pdf') : ?>
-        <?php
-            $imagick = new Imagick(base_url('assets/img/content/'). $content->coverImage . '[0]');
-            $imagick->readImage(base_url('assets/img/content/') . $type[0].'.pdf');
-        ?>
-        <iframe src="<?= base_url('assets/img/content/') . $content->coverImage; ?>#toolbar=0" class="mx-auto w-auto h-96 overflow-y-hidden rounded-lg shadow-xl"></iframe>
+        <a href="<?= base_url('article/pdf/') . $content->id_article; ?>" target="_blank" rel="noopener noreferrer">
+        <img src="<?= base_url('assets/img/content/no-preview.png') ?>" class="mx-auto w-auto max-h-[28rem] rounded-lg shadow-xl dark:shadow-gray-800" alt="Responsive image">
+        </a>
     <?php else : ?>
         <img src="<?= base_url('assets/img/content/') . $content->coverImage; ?>" class="mx-auto w-auto max-h-[28rem] rounded-lg shadow-xl dark:shadow-gray-800" alt="Responsive image">
     <?php endif; ?>
-    </a>
     <div class="content mt-4">
         <?= $content->content; ?>
     </div>
