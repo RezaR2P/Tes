@@ -28,6 +28,9 @@
                         <th scope="col" class="py-3 px-6">
                             Judul
                         </th>
+                         <th scope="col" class="py-3 px-6 text-center">
+                            Username
+                        </th>
                         <th scope="col" class="py-3 px-6 text-center">
                             Tanggal Posting
                         </th>
@@ -48,6 +51,9 @@
                             </td>
                             <td class="py-4 px-6 text-slate-600">
                                 <?= $p['title']; ?>
+                            </td>
+                            <td class="py-4 px-6 text-slate-600">
+                                <?= $p['username']; ?>
                             </td>
                             <td class="py-4 px-6 text-slate-600 text-center">
                                 <?= date('Y-m-d', $p['date_created']); ?>
